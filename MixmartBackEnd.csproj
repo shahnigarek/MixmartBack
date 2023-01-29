@@ -5,18 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20230126185041_CreatedCategoiesTable.cs" />
+    <Compile Remove="Migrations\20230126185041_CreatedCategoiesTable.Designer.cs" />
+    <Compile Remove="Migrations\20230126185211_CreatedTagsTable.cs" />
+    <Compile Remove="Migrations\20230126185211_CreatedTagsTable.Designer.cs" />
+    <Compile Remove="Migrations\20230126202123_CreatedPaymentMethodTable.cs" />
+    <Compile Remove="Migrations\20230126202123_CreatedPaymentMethodTable.Designer.cs" />
+    <Compile Remove="Migrations\20230126203651_CreatedPositionTable.cs" />
+    <Compile Remove="Migrations\20230126203651_CreatedPositionTable.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Manage\Controllers\" />
     <Folder Include="Areas\Manage\Data\" />
     <Folder Include="Areas\Manage\Models\" />
     <Folder Include="Areas\Manage\Views\" />
-    <Folder Include="Models\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Extentions\" />
     <Folder Include="Helpers\" />
     <Folder Include="ViewComponents\" />
-    <Folder Include="Services\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>

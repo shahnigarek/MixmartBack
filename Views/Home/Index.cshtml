@@ -1,0 +1,610 @@
+﻿
+@inject ILayoutServices layoutservices
+@model HomeVM
+@{
+    Dictionary<string, string> settings = await layoutservices.GetSettingsAsync();
+    Layout = null;
+    ViewData["Title"] = "Index";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixmart - Handmade Shop WordPress WooCommerce Theme Preview - ThemeForest</title>
+    <link rel="stylesheet" href="~/assets/slick/slick.css">
+    <link rel="stylesheet" href="~/assets/slick/slick-theme.css">
+    <link rel="icon" style="width:max-content" type="image/x-icon" href="~/assets/images/favicon/logo.svg">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+
+<body>
+
+    <header class="top">
+        <div class="header-top">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="header-top-left">
+                        <a href="">Store Location</a>
+                        <a style="padding-left: 10px;" href="">Order Status</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="header-top-middle">
+                        <p>Summer sale discount 50% off. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="header-top-right">
+                        <a href="@settings.First(s => s.Key == "FacebookUrl").Value"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="@settings.First(s => s.Key == "TwitterUrl").Value"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="@settings.First(s => s.Key == "InstagramUrl").Value"><i class="fa-brands fa-instagram"></i></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="header-middle-left">
+                        <div style="margin-right:8px;" class="phone-icon">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <span class="phone-box">
+                            <p style="margin: 0;" class="title">CALL US</p>
+                            <p style="margin: 0;" class="number"> @settings.First(s => s.Key == "CallUs").Value</p>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="header-middle-middle ">
+                        <a href=""><img style="width: 190px;" src="~/assets/images/favicon/@settings.First(s => s.Key == "Logo").Value"></a>
+                        <div class="sidenavigation">
+                            <div id="mySidenav" class="sidenav">
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                <a href="#">About</a>
+                                <a href="#">Services</a>
+                                <a href="#">Clients</a>
+                                <a href="#">Contact</a>
+                            </div>
+
+                            <span onclick="openNav()"><i class="fa-solid fa-bars-staggered"></i></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="header-middle-right">
+                        <div style="padding: 10px;" class="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div style="padding: 10px;" class="account">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <div style="padding: 10px;" class="wishlist">
+                            <a href=""><i class="fa-regular fa-heart"></i></a>
+                        </div>
+                        <div style="padding: 10px;" class="cart"><i class="fa-solid fa-cart-shopping"></i></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="header-bottom text-center">
+            <div class="container-fluid">
+                <nav class="nav-bar ">
+                    <ul class="site-nav">
+                        <li class="site-nav__item">
+                            <a asp-action="index" asp-controller="home" class="site-nav__link">Home</a>
+                        </li>
+                        <li class="site-nav__item site-nav__item-normal  site-nav--active">
+                            <a asp-action="index" asp-controller="shop" class="site-nav__link dropdown-toggle">Shop</a>
+                            <div class="site-nav__dropdown meganav">
+                                <ul class="meganav__nav">
+                                    <div class="meganav__list">
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                        <a asp-action="index" asp-controller="home" class="meganav__link ">Shipping Method</a>
+                                    </li>
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                        <a asp-action="index" asp-controller="home" class="meganav__link ">Payment Method</a>
+                                    </li>
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                        <a asp-action="index" asp-controller="home" class="meganav__link ">Cart</a>
+                                    </li>
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                        <a asp-action="index" asp-controller="home" class="meganav__link ">My account</a>
+                                    </li>
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                      <a  asp-action="index" asp-controller="home" class="meganav__link ">Order Tracking</a>
+                                    </li>
+                            </div>
+                    </ul>
+            </div>
+            </li>
+            <li class="site-nav__item">
+                <a asp-action="detail" asp-controller="shop" class="site-nav__link">Product</a>
+            </li>
+            <li class="site-nav__item site-nav__item-normal  site-nav--active">
+                <a href="" class="site-nav__link dropdown-toggle">Page</a>
+                <div class="site-nav__dropdown meganav">
+                    <ul class="meganav__nav">
+                        <div class="meganav__list">
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a asp-action="index" asp-controller="about" class="meganav__link ">About Us</a>
+                        </li>
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a href="404.html" class="meganav__link ">404</a>
+                        </li>
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a asp-action="index" asp-controller="home" class="meganav__link ">Support Page</a>
+                        </li>
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a asp-action="index" asp-controller="home" class="meganav__link ">
+                                Warranty and
+                                Services
+                            </a>
+                        </li>
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a asp-action="index" asp-controller="home" class="meganav__link ">Term & Conditions</a>
+                        </li>
+                </div>
+                </ul>
+        </div>
+        </li>
+        <li class="site-nav__item">
+            <a asp-action="index" asp-controller="blog" class="site-nav__link">Blog</a>
+        </li>
+        <li class="site-nav__item">
+            <a asp-action="index" asp-controller="contact" class="site-nav__link">Contact Us</a>
+        </li>
+        </ul>
+        </nav>
+        </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="slider">
+            @foreach (Slider slider in Model.Sliders)
+            {
+                <div class="slider-content">
+
+                    <div class="slider-image " style="background-image: url(/assets/images/index/slider/@slider.Image);">
+                        <div class="slider-txt" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                            <img src="~/assets/images/index/slider/@slider.SubTitle" alt="">
+                            <h1 style=" font-size: 62px;font-weight: 700;color: #3A3D46;width: 65%;">
+                                @slider.MainTitle
+                            </h1>
+                            <div class="slider-btn">
+                                <a class="" href="">
+                                    <span>Show more</span>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="making">
+            <div class="container">
+                <div class="row" style="text-align: center;" data-aos="fade-up">
+                    <div class="making-text">
+                        <p>
+                            MAKING & CRAFTING
+                        </p>
+                    </div>
+                    <div class="making-image mb-0">
+                        <img src="~/assets/images/index/slider/crafted.png" alt="">
+                    </div>
+                </div>
+
+                <div class="handmade">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 image1 col-md-6 col-sm-12 ">
+                                <div class="product-cart">
+                                    <div class="cart-image ">
+                                        <img style="width: 540px;" src="~/assets/images/index/product/@Model.Crafted.Image1"
+                                             alt="">
+                                    </div>
+                                    <div class="cart-content cart1" style="text-align: center; ">
+                                        <div class="content-header">
+                                            <div class="title">
+                                                <a href="">
+                                                    <span class="title-text">@Model.Crafted.Title</span>
+                                                </a>
+                                            </div>
+                                            <div style="color: #999;margin-top:10px;"> @Model.Crafted.ProductCount products </div>
+                                        </div>
+                                        <div class="button">
+                                            <a class="cart-button" href=""> + Show all </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6  col-md-6 col-sm-12">
+                                <div class="product-cart">
+                                    <div class="cart-image">
+                                        <img style="width: 550px;" src="~/assets/images/index/product/@Model.Crafted.Image2"
+                                             alt="">
+                                    </div>
+                                    <div class="cart-content " style="text-align: center;">
+                                        <div class="content-header">
+                                            <div class="title">
+                                                <a href="">
+                                                    <span class="title-text">@Model.Crafted.Title2 <span>
+                                                </a>
+                                            </div>
+                                            <div style="color: #999;margin-top:10px;"> @Model.Crafted.ProductCount2 products </div>
+                                        </div>
+                                        <div class="button">
+                                            <a class="cart-button" href=""> + Show all </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 115px; text-align: center;" class="col-md col-sm-12">
+                                <div class="product-cart">
+                                    <div class="cart-image">
+                                        <img src="~/assets/images/index/product/@Model.Crafted.Image3" alt="">
+                                    </div>
+                                    <div class="cart-content " style="text-align: center;">
+                                        <div class="content-header">
+                                            <div class="title">
+                                                <a href="">
+                                                    <span class="title-text">@Model.Crafted.Title3</span>
+                                                </a>
+                                            </div>
+                                            <div style="color: #999;margin-top:10px; "> @Model.Crafted.ProductCount3 products </div>
+                                        </div>
+                                        <div class="button">
+                                            <a class="cart-button" href=""> + Show all </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new-arrivals">
+            <div class="container">
+                <div class="row" style="text-align: center;" data-aos="fade-up">
+                    <div class="arrival-text">
+                        <p>WELCOME TO MIXMART</p>
+                    </div>
+                    <div class="arrival-image">
+                        <h2 style="font-size: 62px;">New arrivals</h2>
+                    </div>
+                </div>
+                <div class="newproducts">
+                    <div class="container">
+                        <div class="row">
+                            @foreach (Product newArrival in Model.IsNewArrival)
+                            {
+
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="productcart">
+                                        <div class="product-image">
+                                            <img src="~/assets/images/index/shop/@newArrival.Image" alt="">
+                                        </div>
+                                        <div class="action">
+                                            <div class="addtowishlist">
+                                                <a href=""><i class="fa-regular fa-heart"></i></a>
+                                            </div>
+                                            <div class="addtocart">
+                                                <a href=""><i class="fa-brands fa-opencart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-caption">
+                                            <h3><a href="">@newArrival.Title</a></h3>
+                                            <span class="price">$@newArrival.Price</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="movement">
+
+            <div class="row">
+                <div class="movement-image"
+                     style="text-align: center;position: absolute;z-index: 100;margin-top: -130px;" data-aos="fade-up">
+                    <img src="~/assets/images/index/handmademovement.png" alt="">
+                </div>
+                <div class="slider2" data-aos="zoom-in">
+                    @foreach (Movement movement in Model.Movements)
+                    {
+                        <div class="sliderr-image" style="background-image: url(/assets/images/index/slider/@movement.Image);">
+                        </div>
+
+                    }
+
+                </div>
+                <div class="cardboxes">
+                    @foreach (Movement movement1 in Model.Movements)
+                    {
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="cardcontainer">
+                                <div class="cardcontainercontent">
+                                    <div class="containertext">
+                                        <a href="">
+                                            <p>@movement1.Title</p>
+                                        </a>
+                                        <div class="producttotal">
+                                            @movement1.ProductCount products
+                                        </div>
+                                    </div>
+                                    <div class="buton">
+                                        <a class="cart-buton" href=""> +VIEW COLLECTION </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="best-sellers">
+
+            <div class="row" style="text-align: center;" data-aos="fade-up">
+                <div class="bestseller-text">
+                    <p>WELCOME TO MIXMART</p>
+                </div>
+                <div class="bestseller-image">
+                    <h2 style="font-size: 62px;">Shop our best-sellers</h2>
+                </div>
+            </div>
+            <div class="bestsellerproducts">
+                <div class="row">
+                    @foreach (Product bestseller in Model.IsBestSeller)
+                    {
+                        <div class="col-lg-3 col-md-6  prc">
+                            <div class="col-lg-6">
+                                <div class="productcart">
+                                    <div style="position:relative" class="product-image">
+                                        @if (bestseller.DiscountedPrice > 0)
+                                        {
+                                            <span class="onsale">-@((((bestseller.Price * 100) / bestseller.DiscountedPrice) - 100).ToString("0.##"))%</span>
+
+                                        }
+                                        <img src="~/assets/images/index/shop/@bestseller.Image" alt="">
+                                    </div>
+                                    <div class="product-caption">
+                                        <h3><a href="">@bestseller.Title</a></h3>
+                                        @if (bestseller.DiscountedPrice > 0)
+                                        {
+                                            <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
+                                                  class="old-price">$@bestseller.Price</span>
+                                                <span class="price">$@bestseller.DiscountedPrice</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="price">$@bestseller.Price</span>
+                                            }
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    }
+
+
+                    <div class="buttn" style="text-align: center;" data-aos="fade-up">
+                        <button class="button-text">Show More</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="product">
+            <div class="container">
+                <div class="row">
+                    <div class="product-info">
+                        <h1>@Model.Ceramics.Title</h1>
+                        <div class="product-author">
+                            <span class="author-name">@Model.Ceramics.Author </span>
+                            <span class="line"></span>
+                        </div>
+
+                        <p class="price" style="padding-left: 215px;">
+                            <span class="new-price">$@Model.Ceramics.DiscountedPrice</span>
+                            <span class="old-price">$@Model.Ceramics.Price.ToString("00.##")</span>
+                        </p>
+                        <form class="cart" action="" method="post" enctype="multipart/form-data">
+                            <button type="submit" class="addtocartbtn">Add To Cart</button>
+                        </form>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="blog">
+            <div class="container">
+                <div class="row" style="text-align: center;" data-aos="fade-up">
+                    <div class="blog-text">
+                        <p>LATEST NEW</p>
+                    </div>
+                    <div class="blog-image">
+                        <h2 style="font-size: 62px;">From Our Blogs</h2>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="row">
+                        <div class="postinner">
+                            @foreach (Blog blog in Model.Blogs.Take(3))
+                            {
+                                <div class="post-content col-md-6 col-lg-4">
+                                    <div class="post-image">
+                                        <a href=""><img src="~/assets/images/index/blog/@blog.Image" alt=""></a>
+                                    </div>
+                                    <div class="post-text">
+                                        <div class="categories">
+                                            @foreach (BlogCategory blogCategory in Model.Blog.BlogCategories)
+                                            {
+
+                                                <a href="">@blogCategory.Category.Name</a>
+
+                                            }
+
+                                        </div>
+                                        <h3>@blog.Title</h3>
+                                    </div>
+
+                                </div>
+
+                            }
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="instagram" style="overflow: hidden; padding:135px 0px;">
+            <div class="row" style="text-align: center;" data-aos="fade-up">
+                <div class="instagram-text">
+                    <p>INSTAGRAM</p>
+                </div>
+                <div class="instragram-image " style="margin-bottom: 55px;">
+                    <img src="~/assets/images/index/instagrampageimage.png" alt="">
+                </div>
+
+            </div>
+            <div class="photos">
+                @foreach (Instagram instagram in Model.Instagrams)
+                {
+                    <div class="item col-md-4 col-lg-auto">
+                        <img src="~/assets/images/index/instagram/@instagram.Image" alt="">
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </main>
+
+
+
+    <footer class="footer">
+        <div class="footer1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="footer-logo">
+                            <img style="width:190px" src="~/assets/images/favicon/@settings.First(s => s.Key == "Logo1").Value" alt="">
+                        </div>
+                        <div class="settings">
+                            <p>T : @settings.First(s => s.Key == "PhoneNumber").Value</p>
+                            <p>E : @settings.First(s => s.Key == "Email").Value</p>
+                            <p>A : @settings.First(s => s.Key == "Address").Value</p>
+                        </div>
+                    </div>
+                    <div class="footer-menu col-lg-3  col-md " style="margin-top: 100px;">
+                        <ul class="menu-list">
+                            <li class="menu-item"><a href="">Shop</a></li>
+                            <li class="menu-item"><a href="">Out Work</a></li>
+                            <li class="menu-item"><a href="">History</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-menu col-lg-3  col-md" style="margin-top: 100px;">
+                        <ul class="menu-list">
+                            <li class="menu-item"><a href="">About Us</a></li>
+                            <li class="menu-item"><a href="">Privacy Policy</a></li>
+                            <li class="menu-item"><a href="">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-newsletter col-lg-3 col-md-3  col-12 " style="margin-top: 100px; ">
+                        <div class="newsletter-form">
+                            <form method="post" action="" class="contact-form">
+                                <input type="hidden" name="form_type"
+                                       value="customer" /><input type="hidden" name="utf8" value="✓" />
+                                <label for="NewsletterEmail-1567467787738" class="footer-label">
+                                    <p style="color: #fff; font-weight: 400;">Newsletter</p>
+                                </label>
+                                <div class="input-group">
+                                    <input style="padding: 15px 0px;" type="email" value="" placeholder="Your email"
+                                           name="contact[email]" id="NewsletterEmail-1567467787738" class="form-control"
+                                           autocorrect="off" autocapitalize="off">
+                                    <div class="input-group-append">
+                                        <button style="color:#fff ;" type="submit" value="submit">
+                                            <span>SEND</span>
+                                            <span class="d-lg-none d-inline-block">
+                                                <i class="opal-icon-arrow-right"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <p>
+                            2022 MIXMART THEMES
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 footer-copyright-right" style="text-align:right;">
+
+                        <a href="@settings.First(s => s.Key == "FacebookUrl").Value"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="@settings.First(s => s.Key == "TwitterUrl").Value"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="@settings.First(s => s.Key == "InstagramUrl").Value"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="~/assets/slick/slick.min.js"></script>
+<script src="~/assets/js/main.js"></script>
+<script src="~/assets/js/bootstrap.js"></script>
+
+</html>

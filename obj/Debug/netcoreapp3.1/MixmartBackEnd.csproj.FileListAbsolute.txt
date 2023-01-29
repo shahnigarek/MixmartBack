@@ -144,3 +144,10 @@ C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\MixmartBackEnd.RazorTargetAssemblyInfo.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\MixmartBackEnd.Views.pdb
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Index.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Detail.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\About\Index.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Detail.cshtml.g.cs

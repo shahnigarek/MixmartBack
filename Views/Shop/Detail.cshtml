@@ -1,0 +1,158 @@
+﻿@model ShopVM
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="title-bar"
+     style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 85px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="title-bar-text" style="text-align: center;">
+                <div class="title-bar-breadcrumb">
+                    <span style="color: #777777;font-size: 15px;">Home</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Products</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Uncategorized</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Peach Wood Chopsticks</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="productcontent">
+        <div class="row">
+            <div class="col-lg-7">
+                <img style="width: 810px; height: 810px;" src="~/assets/images/index/shop/@Model.Product.Image" alt="">
+            </div>
+            <div class="col-lg-5">
+                <div class="productinfo">
+                    <h1>@Model.Product.Title</h1>
+                    <div class="productrating">
+                        <div class="staricon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a href="">(5 customer reviews)</a>
+                    </div>
+                    @if (Model.Product.DiscountedPrice > 0)
+                    {
+                        <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
+                              class="old-price">$@Model.Product.Price</span>
+                            <span class="price">$@Model.Product.DiscountedPrice</span>
+                        }
+                        else
+                        {
+                            <span class="price">$@Model.Product.Price</span>
+                        }
+                    <div class="productdetails">
+                        <p class="p">
+                            @Model.Product.Description1
+                        </p>
+                        <p style="margin-top: 30px;font-weight: 400;font-size: 15px;color: #777777;">
+                            @Model.Product.Description2
+                        </p>
+                        <ul style="padding-left: 0px;margin-bottom: 24px;">
+                            <li>
+                                @Model.Product.Description3
+                            </li>
+                        </ul>
+                    </div>
+                    <form action="">
+                        <div class="buttons">
+                            <input type="number" value="1" id="quantity" name="quantity" min="1" max="90">
+                        </div>
+                        <button>
+                            <i style="margin-right: 10px;" class="fa-brands fa-opencart"></i>Add To
+                            Cart
+                        </button>
+                    </form>
+                    <div class="addtowishlist">
+                        <a href=""> + Add to Wishlist</a>
+                    </div>
+                    <div class="categoryproduct">
+                        <span style="display: block;color: #333;line-height: 2;">
+                            Category:@foreach (Category category in Model.Categories)
+                            {
+                                <a style="color: #777777;"
+                                   href="">@category.Name</a>
+
+                            }
+                        </span>
+                    </div>
+                    <div class="socialshare">
+                        <span>Share on:</span>
+                       
+                        <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href=""><i class="fa-brands fa-tumblr"></i></a>
+                        <a href=""><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href=""><i class="fa-brands fa-pinterest"></i></a>
+                        <a href=""><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="relatedproducts">
+                <h2>Related products</h2>
+                <div class="relatedproductss">
+                    <div class="row">
+                      
+                        <div class="col-lg-4 col-md-4">
+                            <div class="" style=" margin-top: 45px;">
+                                <div class="productcart">
+                                    <div class="product-image" style="position: relative;">
+                                        <span class="onsale">-23%</span>
+                                        <img src="~/assets/images/index/shop/shop5.jpg" alt="">
+                                    </div>
+                                    <div class="product-caption">
+                                        <h3><a href="">Walnut Cutting Board</a></h3>
+                                        <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
+                                              class="old-price">$300.00</span>
+                                        <span class="price">$230.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="" style=" margin-top: 45px;">
+                                <div class="productcart">
+                                    <div class="product-image">
+                                        <img src="~/assets/images/index/shop/shop1.jpg" alt="">
+                                    </div>
+                                    <div class="product-caption">
+                                        <h3><a href="">10″ Lido Bamboo Plate</a></h3>
+                                        <span class="price">$12.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="" style=" margin-top: 45px;">
+                                <div class="productcart">
+                                    <div class="product-image">
+                                        <img src="~/assets/images/index/shop/shop3.jpg" alt="">
+                                    </div>
+                                    <div class="product-caption">
+                                        <h3><a href="">11 oz Ceramic Mug in Black</a></h3>
+                                        <span class="price">$24.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

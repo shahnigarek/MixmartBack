@@ -1,13 +1,226 @@
-﻿<!DOCTYPE html>
+﻿
+@inject ILayoutServices layoutservices
 
-<html>
+@{
+    Dictionary<string, string> settings = await layoutservices.GetSettingsAsync();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixmart - Handmade Shop WordPress WooCommerce Theme Preview - ThemeForest</title>
+    <link rel="stylesheet" href="~/assets/slick/slick.css">
+    <link rel="stylesheet" href="~/assets/slick/slick-theme.css">
+    <link rel="icon" style="width:max-content" type="image/x-icon" href="~/assets/images/favicon/logo.svg">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/css/style.css">
 </head>
+
 <body>
-    <div>
-        @RenderBody()
-    </div>
+
+    <header class="top">
+
+        <div class="header2">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="header2-left">
+                        <a href=""><img style="width: 190px;" src="~/assets/images/favicon/@settings.First(s => s.Key == "Logo").Value"></a>
+                        <div class="sidenavigation">
+                            <div id="mySidenav" class="sidenav">
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                <a href="#">About</a>
+                                <a href="#">Services</a>
+                                <a href="#">Clients</a>
+                                <a href="#">Contact</a>
+                            </div>
+
+                            <span onclick="openNav()"><i class="fa-solid fa-bars-staggered"></i></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 header2-middle">
+                    <nav class="nav-bar">
+                        <ul class="site-nav">
+                            <li class="site-nav__item">
+                                <a href="index.html" class="site-nav__link">Home</a>
+                            </li>
+                            <li class="site-nav__item site-nav__item-normal  site-nav--active">
+                                <a href="shop.html" class="site-nav__link dropdown-toggle">Shop</a>
+                                <div class="site-nav__dropdown meganav">
+                                    <ul class="meganav__nav">
+                                        <div class="meganav__list">
+                                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                            <a href="shippingmethod.html" class="meganav__link ">Shipping Method</a>
+                                        </li>
+                                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                            <a href="paymentmethod.html" class="meganav__link ">Payment Method</a>
+                                        </li>
+                                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                            <a href="cart.html" class="meganav__link ">Cart</a>
+                                        </li>
+                                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                            <a href="myaccount.html" class="meganav__link ">My account</a>
+                                        </li>
+                                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                            <a href="ordertracking.html" class="meganav__link ">Order Tracking</a>
+                                        </li>
+                                </div>
+                        </ul>
+                </div>
+                </li>
+                <li class="site-nav__item">
+                    <a href="product.html" class="site-nav__link">Product</a>
+                </li>
+                <li class="site-nav__item site-nav__item-normal  site-nav--active">
+                    <a href="" class="site-nav__link dropdown-toggle">Page</a>
+                    <div class="site-nav__dropdown1 meganav">
+                        <ul class="meganav__nav">
+                            <div class="meganav__list">
+                            <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                <a href="about.html" class="meganav__link ">About Us</a>
+                            </li>
+                            <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                <a href="404.html" class="meganav__link ">404</a>
+                            </li>
+                            <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                <a href="supportpage.html" class="meganav__link ">Support Page</a>
+                            </li>
+                            <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                <a href="warrantyandservices.html" class="meganav__link ">
+                                    Warranty and
+                                    Services
+                                </a>
+                            </li>
+                            <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                <a href="term&conditions.html" class="meganav__link ">
+                                    Term &
+                                    Conditions
+                                </a>
+                            </li>
+                    </div>
+                    </ul>
+            </div>
+            </li>
+            <li class="site-nav__item">
+                <a href="blog.html" class="site-nav__link">Blog</a>
+            </li>
+            <li class="site-nav__item">
+                <a href="contact.html" class="site-nav__link">Contact Us</a>
+            </li>
+            </ul>
+            </nav>
+        </div>
+        <div class="col-lg-2">
+            <div class="header2-right">
+                <div style="padding: 10px;" class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div style="padding: 10px;" class="account">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div style="padding: 10px;" class="wishlist">
+                    <a href=""><i class="fa-regular fa-heart"></i></a>
+                </div>
+                <div style="padding: 10px;" class="cart"><i class="fa-solid fa-cart-shopping"></i></div>
+            </div>
+        </div>
+        </div>
+
+        </div>
+    </header>
+    @RenderBody()
+    <footer class="footer">
+        <div class="footer1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="footer-logo">
+                            <img style="width:190px" src="~/assets/images/favicon/@settings.First(s => s.Key == "Logo1").Value" alt="">
+                        </div>
+                        <div class="settings">
+                            <p>T :@settings.First(s => s.Key == "PhoneNumber").Value</p>
+                            <p>E :@settings.First(s => s.Key == "Email").Value</p>
+                            <p>A :@settings.First(s => s.Key == "Address").Value</p>
+                        </div>
+                    </div>
+                    <div class="footer-menu col-lg-3  col-md " style="margin-top: 100px;">
+                        <ul class="menu-list">
+                            <li class="menu-item" ><a href="">Shop</a></li>
+                            <li class="menu-item"><a href="">Out Work</a></li>
+                            <li class="menu-item"><a href="">History</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-menu col-lg-3  col-md" style="margin-top: 100px;">
+                        <ul class="menu-list">
+                            <li class="menu-item"><a href="">About Us</a></li>
+                            <li class="menu-item"><a href="">Privacy Policy</a></li>
+                            <li class="menu-item"><a href="">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-newsletter col-lg-3 col-md-3  col-12 " style="margin-top: 100px; ">
+                        <div class="newsletter-form">
+                            <form method="post" action="" class="contact-form">
+                                <input type="hidden" name="form_type"
+                                       value="customer" /><input type="hidden" name="utf8" value="✓" />
+                                <label for="NewsletterEmail-1567467787738" class="footer-label">
+                                    <p style="color: #fff; font-weight: 400;">Newsletter</p>
+                                </label>
+                                <div class="input-group">
+                                    <input style="padding: 15px 0px;" type="email" value="" placeholder="Your email"
+                                           name="contact[email]" id="NewsletterEmail-1567467787738" class="form-control"
+                                           autocorrect="off" autocapitalize="off">
+                                    <div class="input-group-append">
+                                        <button style="color:#fff ;" type="submit" value="submit">
+                                            <span>SEND</span>
+                                            <span class="d-lg-none d-inline-block">
+                                                <i class="opal-icon-arrow-right"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <p>
+                            2022 MIXMART THEMES
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 footer-copyright-right" style="text-align:right;">
+
+                        <a href="@settings.First(s => s.Key == "FacebookUrl").Value"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="@settings.First(s => s.Key == "TwitterUrl").Value"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="@settings.First(s => s.Key == "InstagramUrl").Value"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="~/assets/slick/slick.min.js"></script>
+<script src="~/assets/js/main.js"></script>
+<script src="~/assets/js/bootstrap.js"></script>
+
 </html>

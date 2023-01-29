@@ -1,0 +1,171 @@
+﻿@model BlogVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="title-bar"
+     style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 90px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="title-bar-text" style="text-align: center;">
+                <div class="title-bar-breadcrumb">
+                    <span style="color: #777777;font-size: 15px;">Home</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Blog</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Uncategorized</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">
+                        Who Is Kanye West’s Super Stylish
+                        Companion?
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="article">
+        <div class="articleinner">
+            <img src="~/assets/images/index/blog/@Model.Blog.Image" alt="">
+            <div class="articletexttitle">
+                <div class="articletitle">
+                    <div class="categories">
+                        @foreach (BlogCategory blogCategory in Model.Blog.BlogCategories)
+                        {
+                            <a href="">@blogCategory.Category.Name</a>
+
+                        }
+                    </div>
+                    <h2>@Model.Blog.Title</h2>
+                    <div class="admindate">
+                        <p style="color: #3a3d46;">@Model.Blog.Author</p>
+                        <span style="padding: 0 5px;">-</span>
+                        <p style="color: #777777;">@Model.Blog.Date.ToString("MMMM dd,yyyy")</p>
+                    </div>
+                </div>
+                <div class="articlecontext">
+                    <p>
+                        @Model.Blog.Description1
+                    </p>
+
+                    <p class="span">
+                        @Model.Blog.Description2
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="shareon">
+                <div class="shareicons">
+                    <span>Share on:</span>
+                    <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href=""><i class="fa-brands fa-tumblr"></i></a>
+                    <a href=""><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href=""><i class="fa-brands fa-pinterest"></i></a>
+                    <a href=""><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="previousnav">
+                <div class="navcontent">
+                    <div class="navimage">
+                        <img src="~/assets/images/index/blog/post4.jpg" alt="">
+                    </div>
+                    <div class="navlink">
+                        <div class="title">
+                            Previous Post
+                        </div>
+                        <a href="">Ready or Not, the Return of <br> the Hobo Bag Is Nigh</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nextnav">
+                <div class="navcontent">
+                    <div class="navlink">
+                        <div class="title">
+                            Next Post
+                        </div>
+                        <a href="">Meet the Top 14 Models of Fall <br> 2019</a>
+                    </div>
+                    <div class="navimage" style="padding-left: 10px;">
+                        <img src="~/assets/images/index/blog/post2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comments">
+            <h2>3 Comments </h2>
+            <div class="comment">
+                <div class="commentorimage">
+                    <img src="~/assets/images/index/blog/author.png" alt="">
+                </div>
+                <div class="commentorcomment">
+                    <p style="color: #3a3d46;font-weight: 600;">
+                        Joe Doe <span style="color: #777777;font-size: 12px;font-weight: 100;margin-left: 15px;">
+                            October 14,
+                            2019 at 2:43 am
+                        </span>
+                    </p>
+                    <p class="pppp" style="color: #777777;">
+                        This is exactly what i was looking for, thank you so much for these
+                        tutorials
+                    </p>
+                </div>
+                <div class="reply">
+                    <p><i class="fa-regular fa-comment"></i>REPLY</p>
+                </div>
+            </div>
+            <div class="commentt" style="margin-left: 64px;">
+                <div class="commentorimage">
+                    <img src="~/assets/images/index/blog/author.png" alt="">
+                </div>
+                <div class="commentorcomment">
+                    <p style="color: #3a3d46;font-weight: 600;">
+                        Mike <span style="color: #777777;font-size: 12px;font-weight: 100;margin-left: 15px;">
+                            October 14,
+                            2019 at 2:43 am
+                        </span>
+                    </p>
+                    <p style="color: #777777;">It would be great to try this theme for my businesses</p>
+                </div>
+                <div class="reply">
+                    <p><i class="fa-regular fa-comment"></i>REPLY</p>
+                </div>
+            </div>
+            <div class="comment" style="border-bottom: 1px solid #eee;">
+                <div class="commentorimage">
+                    <img src="~/assets/images/index/blog/author.png" alt="">
+                </div>
+                <div class="commentorcomment">
+                    <p style="color: #3a3d46;font-weight: 600;">
+                        Elicia <span style="color: #777777;font-size: 12px;font-weight: 100;margin-left: 15px;">
+                            October 14,
+                            2019 at 2:43 am
+                        </span>
+                    </p>
+                    <p style="color: #777777;">What a nice article. It keeps me reading more and more!</p>
+                </div>
+                <div class="reply">
+                    <p><i class="fa-regular fa-comment"></i>REPLY</p>
+                </div>
+            </div>
+        </div>
+        <div class="leavereply">
+            <h3>Leave a Reply</h3>
+            <p style="color: #777777;">
+                Your email address will not be published. Required fields are marked <span style="color: red;">*</span>
+            </p>
+            <textarea name="" id="" cols="45" rows="6" placeholder="Your comment"></textarea>
+            <div class="authorcomment" style="display: flex;padding-top: 40px;">
+                <input style="margin-right: 45px;" type="text" name="" id="" placeholder="Name">
+                <input type="email" name="" id="" placeholder="Email">
+            </div>
+            <button>Post Comment</button>
+        </div>
+    </div>
+</main>
+

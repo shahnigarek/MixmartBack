@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MixmartBackEnd.DAL;
+using MixmartBackEnd.Interfaces;
+using MixmartBackEnd.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,9 @@ namespace MixmartBackEnd
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddScoped<ILayoutServices, LayoutServices>();
+            services.AddHttpContextAccessor();
+
 
         }
 
@@ -47,6 +52,11 @@ namespace MixmartBackEnd
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                       name: "areas",
+                       pattern: "{area:exists}/{controller=dashboard}/{action=index}/{id?}"
+                   );
+
                 endpoints.MapControllerRoute(
                     name:"default",
                     pattern:"{controller=home}/{action=index}/{id?}"

@@ -1,0 +1,54 @@
+﻿@model BlogVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="title-bar"
+     style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 45px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="title-bar-text" style="text-align: center;">
+                <div class="title-bar-header" style="margin-bottom: 20px;">
+                    <h1 style="color:#3a3d46;font-family: rufina;font-size: 52px;">Blog</h1>
+                </div>
+                <div class="title-bar-breadcrumb">
+                    <span style="color: #777777;font-size: 15px;">Home</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Blog</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="blogmain">
+    <div class="row">
+        @foreach (Blog blog in Model.Blogs)
+        {
+
+            <div class="col-lg-4">
+                <div class="col-lg-4">
+                    <div class="post-content">
+                        <div class="post-image">
+                            <a asp-action="detail" asp-controller="blog" asp-route-id="@blog.Id"><img src="~/assets/images/index/blog/@blog.Image" alt=""></a>
+                        </div>
+                        <div class="post-text">
+                            <div class="categories">
+                                @foreach (BlogCategory blogCategory in Model.Blog.BlogCategories) {
+                                
+                                <a href="">@blogCategory.Category.Name</a>
+                                }
+
+                            </div>
+                            <h3>@blog.Title</h3>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </div>
+</main>
+

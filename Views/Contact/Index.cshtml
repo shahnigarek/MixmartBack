@@ -1,0 +1,84 @@
+﻿
+@inject ILayoutServices layoutservices
+
+@{
+    Dictionary<string, string> settings = await layoutservices.GetSettingsAsync();
+
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="title-bar"
+     style="background-image: url(assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 45px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="title-bar-text" style="text-align: center;">
+                <div class="title-bar-header" style="margin-bottom: 20px;">
+                    <h1 style="color:#3a3d46;font-family: rufina;font-size: 52px;">Contact Us</h1>
+                </div>
+                <div class="title-bar-breadcrumb">
+                    <span style="color: #777777;font-size: 15px;">Home</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="contactcontent">
+        <div class="container">
+            <div class="row">
+                <div class="contactinformation">
+                    <div class="heading">
+                        <p>Contact</p>
+                        <h4>INFORMATION</h4>
+                    </div>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th class="th" style="padding-top: 20px;" scope="row">Add:</th>
+                                <td class="td">
+                                    @settings.First(s => s.Key == "Address2").Value
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th" scope="row">Phone: </th>
+                                <td class="td"> @settings.First(s => s.Key == "Phone").Value</td>
+                            </tr>
+                            <tr>
+                                <th class="th" scope="row">Mail: </th>
+                                <td class="td"> @settings.First(s => s.Key == "Mail").Value</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="contactdrop">
+                    <div class="heading">
+                        <p>Contact</p>
+                        <h4>DROP US A LINE</h4>
+                    </div>
+                    <div class="row">
+                        <div class="dropform">
+                            <label style="padding-left: 0;" for="">Your Name</label>
+                            <input type="text" name="" id="" placeholder="Ex: John Doe">
+                            <label style="padding-top: 55px;padding-left: 0;" for="">E-mail *</label>
+                            <input type="email" name="" id="" placeholder="Ex: John_Doe@domain.com">
+                            <label style="padding-top: 55px;padding-left: 0;" for="">Message</label>
+                            <textarea style="outline: none;" name="" id="" cols="40" rows="5" placeholder="Enter text here..."></textarea>
+                            <p><input style="margin-right: 10px;top: 2px; position: relative;" type="checkbox" name="" id="">Also subscribe us</p>
+                            <button>Send Message</button>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.540605041515!2d-0.1217423843643428!3d51.503297279634424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900d26973%3A0x4291f3172409ea92!2z0JvQvtC90LTQvtC90YHQutC40Lkg0JPQu9Cw0Lc!5e0!3m2!1sru!2s!4v1673183764212!5m2!1sru!2s" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
