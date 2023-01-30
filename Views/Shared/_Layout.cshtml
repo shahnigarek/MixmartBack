@@ -51,18 +51,18 @@
                     <nav class="nav-bar">
                         <ul class="site-nav">
                             <li class="site-nav__item">
-                                <a href="index.html" class="site-nav__link">Home</a>
+                                <a asp-action="index" asp-controller="home" class="site-nav__link">Home</a>
                             </li>
                             <li class="site-nav__item site-nav__item-normal  site-nav--active">
-                                <a href="shop.html" class="site-nav__link dropdown-toggle">Shop</a>
+                                <a asp-action="index" asp-controller="shop" class="site-nav__link dropdown-toggle">Shop</a>
                                 <div class="site-nav__dropdown meganav">
                                     <ul class="meganav__nav">
                                         <div class="meganav__list">
                                         <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                            <a href="shippingmethod.html" class="meganav__link ">Shipping Method</a>
+                                            <a asp-action="index" asp-controller="shippingmethod" class="meganav__link ">Shipping Method</a>
                                         </li>
                                         <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                            <a href="paymentmethod.html" class="meganav__link ">Payment Method</a>
+                                            <a asp-action="index" asp-controller="paymentmethod" class="meganav__link ">Payment Method</a>
                                         </li>
                                         <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
                                             <a href="cart.html" class="meganav__link ">Cart</a>
@@ -78,7 +78,7 @@
                 </div>
                 </li>
                 <li class="site-nav__item">
-                    <a href="product.html" class="site-nav__link">Product</a>
+                    <a asp-action="detail" asp-controller="shop" class="site-nav__link">Product</a>
                 </li>
                 <li class="site-nav__item site-nav__item-normal  site-nav--active">
                     <a href="" class="site-nav__link dropdown-toggle">Page</a>
@@ -86,22 +86,22 @@
                         <ul class="meganav__nav">
                             <div class="meganav__list">
                             <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                <a href="about.html" class="meganav__link ">About Us</a>
+                                <a asp-action="index" asp-controller="about" class="meganav__link ">About Us</a>
                             </li>
                             <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
                                 <a href="404.html" class="meganav__link ">404</a>
                             </li>
                             <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                <a href="supportpage.html" class="meganav__link ">Support Page</a>
+                                <a asp-action="index" asp-controller="supportpage" class="meganav__link ">Support Page</a>
                             </li>
                             <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                <a href="warrantyandservices.html" class="meganav__link ">
+                                <a asp-action="index" asp-controller="warrantyandservice" class="meganav__link ">
                                     Warranty and
                                     Services
                                 </a>
                             </li>
                             <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                <a href="term&conditions.html" class="meganav__link ">
+                                <a asp-action="index" asp-controller="termandcondition" class="meganav__link ">
                                     Term &
                                     Conditions
                                 </a>
@@ -111,10 +111,10 @@
             </div>
             </li>
             <li class="site-nav__item">
-                <a href="blog.html" class="site-nav__link">Blog</a>
+                <a asp-action="index" asp-controller="blog" class="site-nav__link">Blog</a>
             </li>
             <li class="site-nav__item">
-                <a href="contact.html" class="site-nav__link">Contact Us</a>
+                <a asp-action="index" asp-controller="contact" class="site-nav__link">Contact Us</a>
             </li>
             </ul>
             </nav>

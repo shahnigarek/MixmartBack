@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PaymentMethod>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="title-bar"
+     style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 45px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="title-bar-text" style="text-align: center;">
+                <div class="title-bar-header" style="margin-bottom: 20px;">
+                    <h1 style="color:#3a3d46;font-family: rufina;font-size: 52px;">Payment Method</h1>
+                </div>
+                <div class="title-bar-breadcrumb">
+                    <span style="color: #777777;font-size: 15px;">Home</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Payment Method</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="pm" style="padding: 115px 185px;">
+
+    @foreach (PaymentMethod paymentMethod in Model)
+    {
+        <div class="paymentmethods" style="display: flex;" data-aos="fade-up">
+            <div class="col-lg-6 col-md-6">
+                <div class="firstquestion">
+
+                    <div class="question" style="display: flex;">
+                        <div class="icon"><i class="fa-regular fa-circle-question"></i></div>
+                        <div class="text">@paymentMethod.Question1</div>
+                    </div>
+                    <p class="p">@paymentMethod.Description1</p>
+                    <p class="ulli">@paymentMethod.PaymentOptions</p>
+                    <p class="pp">
+                        @paymentMethod.Description2
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <img src="~/assets/images/index/@paymentMethod.Image" alt="">
+            </div>
+        </div>
+        <div class="paymentquestion" data-aos="fade-up">
+            <div class="col-lg-6 col-md-6">
+                <div class="question" style="display: flex;">
+                    <div class="icon"><i class="fa-regular fa-circle-question"></i></div>
+                    <div class="text">@paymentMethod.Question2</div>
+                </div>
+                <p class="p">
+                    @paymentMethod.Description3
+                </p>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <p class="pp">
+                    @paymentMethod.Description4
+                </p>
+            </div>
+        </div>
+        <div class="curriencies" data-aos="fade-up">
+            <div class="col-lg-6">
+                <div class="question" style="display: flex;">
+                    <div class="icon"><i class="fa-regular fa-circle-question"></i></div>
+                    <div class="text">@paymentMethod.Question3</div>
+                </div>
+                <p class="ppp">
+                    @paymentMethod.Description5
+                </p>
+            </div>
+
+        </div>
+    }
+</main>
+@await Component.InvokeAsync("NeedSupport");

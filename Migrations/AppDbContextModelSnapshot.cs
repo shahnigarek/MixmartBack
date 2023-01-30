@@ -401,18 +401,10 @@ namespace MixmartBackEnd.Migrations
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(2500)")
-                        .HasMaxLength(2500);
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Question")
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 

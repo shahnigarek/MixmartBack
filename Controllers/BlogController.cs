@@ -22,8 +22,7 @@ namespace MixmartBackEnd.Controllers
             BlogVM blogVM = new BlogVM()
             {
                 Blogs = await _context.Blogs.Where(b => b.IsDeleted == false).ToListAsync(),
-                Blog = await _context.Blogs.Where(b => b.IsDeleted == false).Include(b => b.BlogCategories).ThenInclude(b => b.Category).FirstOrDefaultAsync(),
-                
+                Blog = await _context.Blogs.Where(b => b.IsDeleted == false).Include(b => b.BlogCategories).ThenInclude(b => b.Category).FirstOrDefaultAsync()
                 
             };
 
@@ -35,7 +34,7 @@ namespace MixmartBackEnd.Controllers
             BlogVM blogVM = new BlogVM()
             {
                 Blogs = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id== id).ToListAsync(),
-                Blog = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id==id).Include(b => b.BlogCategories).ThenInclude(b => b.Category).FirstOrDefaultAsync(),
+                Blog = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id==id).Include(b => b.BlogCategories).ThenInclude(b => b.Category).FirstOrDefaultAsync()
 
 
             };

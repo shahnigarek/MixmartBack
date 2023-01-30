@@ -10,7 +10,8 @@ namespace MixmartBackEnd.ViewModels.Shop
     {
         public IEnumerable<Product> Products { get; set; }
         public Product Product { get; set; }
-
+        
+        public IEnumerable<ProductCategory> ProductCategories { get; set; }
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<Tag> Tags { get; set; }
     }

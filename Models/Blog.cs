@@ -43,7 +43,7 @@ namespace MixmartBackEnd.Models
         [StringLength(255)]
 
         public string EnvelopeUrl { get; set; }
-
         public IEnumerable<BlogCategory> BlogCategories { get; set; }
+
     }
 }

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<NeedSupport>
+@{
+    ViewData["Title"] = "NeedSupport";
+}
+
+<div class="needsupport" data-aos="fade-up">
+    <h2>Need a Support?</h2>
+    <div class="support" data-aos="fade-up">
+        @foreach (NeedSupport needSupport in Model)
+        {
+            <div class="col-lg-3 col-md-6">
+                <div class="supportcontent">
+                    <div class="icon">@Html.Raw(needSupport.Icon)</div>
+                    <div class="text">
+                        <h3>@needSupport.Title</h3>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+
+

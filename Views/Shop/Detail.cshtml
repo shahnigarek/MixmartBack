@@ -76,10 +76,10 @@
                     </div>
                     <div class="categoryproduct">
                         <span style="display: block;color: #333;line-height: 2;">
-                            Category:@foreach (Category category in Model.Categories)
+                            Category:@foreach (ProductCategory productCategory in Model.Product.ProductCategories)
                             {
                                 <a style="color: #777777;"
-                                   href="">@category.Name</a>
+                                   href="">@productCategory.Category.Name,</a>
 
                             }
                         </span>

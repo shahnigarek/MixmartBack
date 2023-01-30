@@ -10,11 +10,7 @@ namespace MixmartBackEnd.Models
     {
         [StringLength(255)]
         public string Question { get; set; }
-        [StringLength(255)]
-        public string Title { get; set; }
-
-        [StringLength(2500)]
-        public string Description { get; set; }
+  
         [StringLength(2500)]
         public string Answer { get; set; }
     }

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WarrantyandService>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="title-bar"
+     style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 45px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="title-bar-text" style="text-align: center;">
+                <div class="title-bar-header" style="margin-bottom: 20px;">
+                    <h1 style="color:#3a3d46;font-family: rufina;font-size: 52px;">Warranty and Services</h1>
+                </div>
+                <div class="title-bar-breadcrumb">
+                    <span style="color: #777777;font-size: 15px;">Home</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Warranty and Services</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="warrantyservices">
+    <div class="row">
+        @foreach (WarrantyandService warrantyandService in Model)
+        {
+            <div class="txt">
+                <h2>@warrantyandService.Title</h2>
+                <p>
+                    @warrantyandService.Description
+                </p>
+            </div>
+
+        }
+
+    </div>
+</main>
+@await Component.InvokeAsync("NeedSupport");

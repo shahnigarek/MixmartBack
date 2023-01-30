@@ -22,8 +22,8 @@ namespace MixmartBackEnd.Controllers
             {
 
                 Tags = await _context.Tags.Where(s => s.IsDeleted == false).ToListAsync(),
-                Categories = await _context.Categories.Where(b => b.IsDeleted == false).ToListAsync(),
-                Products = await _context.Products.Where(m => m.IsDeleted == false).ToListAsync()
+                Products = await _context.Products.Where(m => m.IsDeleted == false).Include(m=>m.ProductCategories).ThenInclude(m=>m.Category).ToListAsync(),
+                Categories=await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync()
 
 
             };
@@ -34,11 +34,10 @@ namespace MixmartBackEnd.Controllers
         {
             ShopVM shopVM = new ShopVM
             {
-
-                Categories = await _context.Categories.Where(c => c.IsDeleted == false).ToListAsync(),
-                Products = await _context.Products.Where(p => p.IsDeleted == false && p.Id == id).ToListAsync(),
-                Product=await _context.Products.Where(p => p.IsDeleted == false && p.Id == id).FirstOrDefaultAsync()
-
+                Products = await _context.Products.Where(m => m.IsDeleted == false && m.Id == id).Include(m => m.ProductCategories).ThenInclude(m => m.Category).ToListAsync(),
+                Product=await _context.Products.Where(p => p.IsDeleted == false && p.Id == id).FirstOrDefaultAsync(),
+                Categories=await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync()
+               
 
             };
             return View(shopVM);
