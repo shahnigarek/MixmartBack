@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EduHome.Extention
+namespace MixmartBackEnd.Extention
 {
     public static class FileManager
     {

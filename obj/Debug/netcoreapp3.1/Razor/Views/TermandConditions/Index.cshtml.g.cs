@@ -68,8 +68,15 @@ using MixmartBackEnd.ViewModels.SupportPage;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.BlogDetailVM;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5fc5a49cc73087c61ba11f4971d1536672d4ca66", @"/Views/TermandConditions/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb6b5ec77c8568db78825c70cc7362dd0f087bb5", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6841c9b49a9e1d630d777955923bd30da2dffd4c", @"/Views/_ViewImports.cshtml")]
     public class Views_TermandConditions_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<TermandCondition>>
     {
         #pragma warning disable 1998

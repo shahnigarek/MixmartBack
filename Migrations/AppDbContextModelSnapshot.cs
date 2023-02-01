@@ -60,6 +60,43 @@ namespace MixmartBackEnd.Migrations
                     b.ToTable("Abouts");
                 });
 
+            modelBuilder.Entity("MixmartBackEnd.Models.BCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BCategories");
+                });
+
             modelBuilder.Entity("MixmartBackEnd.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -151,10 +188,10 @@ namespace MixmartBackEnd.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlogId")
+                    b.Property<int>("BCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("BlogId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("CreatedAt")
@@ -180,9 +217,9 @@ namespace MixmartBackEnd.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BlogId");
+                    b.HasIndex("BCategoryId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("BlogId");
 
                     b.ToTable("BlogCategory");
                 });
@@ -1258,15 +1295,15 @@ namespace MixmartBackEnd.Migrations
 
             modelBuilder.Entity("MixmartBackEnd.Models.BlogCategory", b =>
                 {
-                    b.HasOne("MixmartBackEnd.Models.Blog", "Blog")
+                    b.HasOne("MixmartBackEnd.Models.BCategory", "BCategory")
                         .WithMany("BlogCategories")
-                        .HasForeignKey("BlogId")
+                        .HasForeignKey("BCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MixmartBackEnd.Models.Category", "Category")
+                    b.HasOne("MixmartBackEnd.Models.Blog", "Blog")
                         .WithMany("BlogCategories")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

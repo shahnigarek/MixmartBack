@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MixmartBackEnd.DAL;
+using MixmartBackEnd.ViewModels.BlogDetailVM;
 using MixmartBackEnd.ViewModels.BlogVM;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,7 @@ namespace MixmartBackEnd.Controllers
         {
             BlogVM blogVM = new BlogVM()
             {
-                Blogs = await _context.Blogs.Where(b => b.IsDeleted == false).ToListAsync(),
-                Blog = await _context.Blogs.Where(b => b.IsDeleted == false).Include(b => b.BlogCategories).ThenInclude(b => b.Category).FirstOrDefaultAsync()
-                
+                Blogs = await _context.Blogs.Where(b => b.IsDeleted == false).Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).ToListAsync(),      
             };
 
 
@@ -31,16 +30,15 @@ namespace MixmartBackEnd.Controllers
         }
         public async Task<IActionResult> Detail(int? id)
         {
-            BlogVM blogVM = new BlogVM()
+            BlogDetailVM blogdetailVM = new BlogDetailVM()
             {
-                Blogs = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id== id).ToListAsync(),
-                Blog = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id==id).Include(b => b.BlogCategories).ThenInclude(b => b.Category).FirstOrDefaultAsync()
+                Blog = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id==id).Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).FirstOrDefaultAsync()
 
 
             };
 
 
-            return View(blogVM);
+            return View(blogdetailVM);
         }
     }
 }

@@ -13,11 +13,8 @@
     <Compile Remove="Migrations\20230126202123_CreatedPaymentMethodTable.Designer.cs" />
     <Compile Remove="Migrations\20230126203651_CreatedPositionTable.cs" />
     <Compile Remove="Migrations\20230126203651_CreatedPositionTable.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Manage\Controllers\" />
-    <Folder Include="Areas\Manage\Views\" />
+    <Compile Remove="Migrations\20230201155142_UpdatedBlogCategoryTable.cs" />
+    <Compile Remove="Migrations\20230201155142_UpdatedBlogCategoryTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

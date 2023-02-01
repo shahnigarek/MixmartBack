@@ -22,8 +22,8 @@ namespace MixmartBackEnd.Controllers
             {
 
                 Tags = await _context.Tags.Where(s => s.IsDeleted == false).ToListAsync(),
-                Products = await _context.Products.Where(m => m.IsDeleted == false).Include(m=>m.ProductCategories).ThenInclude(m=>m.Category).ToListAsync(),
-                Categories=await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync()
+                Products = await _context.Products.Where(p => p.IsDeleted == false ).Include(p=>p.ProductCategories).ThenInclude(p=>p.Category).ToListAsync(),
+                Categories=await _context.Categories.Where(c=>c.IsDeleted == false ).Include(m => m.ProductCategories).ToListAsync()
 
 
             };

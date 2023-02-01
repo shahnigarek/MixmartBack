@@ -8,11 +8,9 @@ namespace MixmartBackEnd.ViewModels.BlogVM
 {
     public class BlogVM
     {
-        public Blog Blog { get; set; }
+       
         public IEnumerable<Blog> Blogs { get; set; }
         public IEnumerable<BlogCategory> BlogCategories { get; set; }
-
-
 
 
     }

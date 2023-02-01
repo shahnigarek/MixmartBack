@@ -9,8 +9,9 @@ namespace MixmartBackEnd.Models
     {
         public int BlogId { get; set; }
         public Blog Blog { get; set; }
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public int BCategoryId { get; set; }
+        public BCategory BCategory { get; set; }
+     
 
     }
 }

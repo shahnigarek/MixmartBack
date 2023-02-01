@@ -28,9 +28,9 @@
                 <ul>
                     @foreach (Category category in Model.Categories)
                     {
-                        <li>
-                            <a href="">@category.Name </a>
-                            <span>(9)</span>
+                        <li >
+                            <a  >@category.Name  </a>
+                            <span>(@category.ProductCategories.Count())</span>
                         </li>
 
                     }
@@ -44,7 +44,7 @@
                     @foreach (Tag tag in Model.Tags)
                     {
 
-                        <a href="">@tag.Name</a>
+                        <a asp-action="index" asp-controller="shop" asp-route-id="@tag.Id">@tag.Name</a>
                     }
 
                 </div>

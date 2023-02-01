@@ -1,0 +1,26 @@
+﻿@model TermandCondition
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<main class="main-content position-relative " style="padding-top:40px">
+    <div>
+        <h4>TermandCondition Detail</h4>
+        <hr />
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+
+
+    </div>
+    <div>
+        <a asp-action="update" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</main>

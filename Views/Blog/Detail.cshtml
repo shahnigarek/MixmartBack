@@ -1,4 +1,4 @@
-﻿@model BlogVM
+﻿@model BlogDetailVM
 @{
     ViewData["Title"] = "Detail";
 }
@@ -33,7 +33,7 @@
                     <div class="categories">
                         @foreach (BlogCategory blogCategory in Model.Blog.BlogCategories)
                         {
-                            <a href="">@blogCategory.Category.Name</a>
+                            <a href="">@blogCategory.BCategory.Name</a>
 
                         }
                     </div>

@@ -21,7 +21,7 @@ namespace MixmartBackEnd.Migrations
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     DeletedBy = table.Column<string>(nullable: true),
                     BlogId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false)
+                    BCategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,9 +33,9 @@ namespace MixmartBackEnd.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BlogCategory_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        name: "FK_BlogCategory_BCategories_BCategoryId",
+                        column: x => x.BCategoryId,
+                        principalTable: "BCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -46,9 +46,9 @@ namespace MixmartBackEnd.Migrations
                 column: "BlogId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogCategory_CategoryId",
+                name: "IX_BlogCategory_BCategoryId",
                 table: "BlogCategory",
-                column: "CategoryId");
+                column: "BCategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

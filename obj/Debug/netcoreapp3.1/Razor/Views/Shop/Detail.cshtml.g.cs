@@ -68,8 +68,15 @@ using MixmartBackEnd.ViewModels.SupportPage;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.BlogDetailVM;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f8158f9a21ad4d1d7762ad5fcf63e37102e939f6", @"/Views/Shop/Detail.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb6b5ec77c8568db78825c70cc7362dd0f087bb5", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6841c9b49a9e1d630d777955923bd30da2dffd4c", @"/Views/_ViewImports.cshtml")]
     public class Views_Shop_Detail : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ShopVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("style", new global::Microsoft.AspNetCore.Html.HtmlString("width: 810px; height: 810px;"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -126,7 +133,7 @@ using MixmartBackEnd.ViewModels.SupportPage;
                     <i style=""color: #777777;font-size: 8px;padding: 0 10px;"" class=""fa-solid fa-chevron-right""></i>
                     <span style=""color: #3a3d46;font-size: 15px;");
             WriteLiteral("\">Peach Wood Chopsticks</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<main>\r\n    <div class=\"productcontent\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-7\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f68323", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f68533", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -246,7 +253,7 @@ AddHtmlAttributeValue("", 1388, Model.Product.Image, 1388, 20, false);
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f614308", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f614518", async() => {
                 WriteLiteral(@"
                         <div class=""buttons"">
                             <input type=""number"" value=""1"" id=""quantity"" name=""quantity"" min=""1"" max=""90"">
@@ -343,7 +350,7 @@ AddHtmlAttributeValue("", 1388, Model.Product.Image, 1388, 20, false);
                                     <div class=""product-image"" style=""position: relative;"">
                                         <span class=""onsale"">-23%</span>
                                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f620106", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f620316", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -373,7 +380,7 @@ AddHtmlAttributeValue("", 1388, Model.Product.Image, 1388, 20, false);
             BeginWriteAttribute("class", " class=\"", 6498, "\"", 6506, 0);
             EndWriteAttribute();
             WriteLiteral(" style=\" margin-top: 45px;\">\r\n                                <div class=\"productcart\">\r\n                                    <div class=\"product-image\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f622427", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f622637", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -402,7 +409,7 @@ AddHtmlAttributeValue("", 1388, Model.Product.Image, 1388, 20, false);
             BeginWriteAttribute("class", " class=\"", 7274, "\"", 7282, 0);
             EndWriteAttribute();
             WriteLiteral(" style=\" margin-top: 45px;\">\r\n                                <div class=\"productcart\">\r\n                                    <div class=\"product-image\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f624549", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f8158f9a21ad4d1d7762ad5fcf63e37102e939f624759", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

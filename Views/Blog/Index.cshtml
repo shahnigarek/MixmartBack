@@ -34,9 +34,9 @@
                         </div>
                         <div class="post-text">
                             <div class="categories">
-                                @foreach (BlogCategory blogCategory in Model.Blog.BlogCategories) {
+                                @foreach (BlogCategory blogCategory in blog.BlogCategories) {
                                 
-                                <a href="">@blogCategory.Category.Name</a>
+                                <a href="">@blogCategory.BCategory.Name</a>
                                 }
 
                             </div>
