@@ -32,15 +32,18 @@ namespace MixmartBackEnd.Controllers
 
         public async Task<IActionResult> Detail(int? id)
         {
-            ShopVM shopVM = new ShopVM
+            ShopDetailVM shopdetailVM = new ShopDetailVM
             {
-                Products = await _context.Products.Where(m => m.IsDeleted == false && m.Id == id).Include(m => m.ProductCategories).ThenInclude(m => m.Category).ToListAsync(),
-                Product=await _context.Products.Where(p => p.IsDeleted == false && p.Id == id).FirstOrDefaultAsync(),
-                Categories=await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync()
-               
+                Product=await _context.Products.Where(p => p.IsDeleted == false && p.Id == id).Include(p => p.ProductCategories).ThenInclude(p => p.Category).FirstOrDefaultAsync(),
+                Category=await _context.Categories.Where(c => c.IsDeleted == false && c.Id == id).FirstOrDefaultAsync(),
+                ProductCategory=await _context.ProductCategories.Where(pc => pc.IsDeleted == false && pc.Id == id).FirstOrDefaultAsync(),
+                Categories=await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync(),
+                Products = await _context.Products.Where(p => p.IsDeleted == false ).Include(p=>p.ProductCategories).ThenInclude(p=>p.Category).ToListAsync(),
+
+
 
             };
-            return View(shopVM);
+            return View(shopdetailVM);
 
         }
     }

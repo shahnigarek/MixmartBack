@@ -1,4 +1,4 @@
-﻿@model ShopVM
+﻿@model ShopDetailVM
 @{
     ViewData["Title"] = "Detail";
 }
@@ -86,7 +86,7 @@
                     </div>
                     <div class="socialshare">
                         <span>Share on:</span>
-                       
+
                         <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                         <a href=""><i class="fa-brands fa-twitter"></i></a>
                         <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
@@ -103,51 +103,42 @@
                 <h2>Related products</h2>
                 <div class="relatedproductss">
                     <div class="row">
-                      
-                        <div class="col-lg-4 col-md-4">
-                            <div class="" style=" margin-top: 45px;">
-                                <div class="productcart">
-                                    <div class="product-image" style="position: relative;">
-                                        <span class="onsale">-23%</span>
-                                        <img src="~/assets/images/index/shop/shop5.jpg" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <h3><a href="">Walnut Cutting Board</a></h3>
-                                        <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
-                                              class="old-price">$300.00</span>
-                                        <span class="price">$230.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="" style=" margin-top: 45px;">
-                                <div class="productcart">
-                                    <div class="product-image">
-                                        <img src="~/assets/images/index/shop/shop1.jpg" alt="">
-                                    </div>
-                                    <div class="product-caption">
-                                        <h3><a href="">10″ Lido Bamboo Plate</a></h3>
-                                        <span class="price">$12.00</span>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="" style=" margin-top: 45px;">
-                                <div class="productcart">
-                                    <div class="product-image">
-                                        <img src="~/assets/images/index/shop/shop3.jpg" alt="">
+                        @foreach (Product product in Model.Products.Take(3))
+                        {
+
+                            <div class="col-lg-4 col-md-4">
+                                <div class="" style=" margin-top: 45px;">
+                                    <div class="productcart">
+                                        <div style="position:relative" class="product-image">
+                                            @if (product.DiscountedPrice > 0)
+                                            {
+                                                <span class="onsale">-@((((product.Price * 100) / product.DiscountedPrice) - 100).ToString("0.##"))%</span>
+
+                                            }
+                                            <img src="~/assets/images/index/shop/@product.Image" alt="">
+                                        </div>
+                                        <div class="product-caption">
+                                            <h3><a asp-action="detail" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h3>
+                                            @if (product.DiscountedPrice > 0)
+                                            {
+                                                <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
+                                                      class="old-price">$@product.Price</span>
+                                                    <span class="price">$@product.DiscountedPrice</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="price">$@product.Price</span>
+                                                }
+
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
-                                        <h3><a href="">11 oz Ceramic Mug in Black</a></h3>
-                                        <span class="price">$24.00</span>
-                                    </div>
+
                                 </div>
                             </div>
+                        }
 
-                        </div>
+
 
                     </div>
                 </div>

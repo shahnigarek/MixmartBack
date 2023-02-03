@@ -77,8 +77,8 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
                         ModelState.AddModelError("File", "Select image jpeg type file ! ");
                         return View();
                     }
-                    FileHelper.DeleteFile(_env, setting.Value, "assets", "img", "Logo");
-                    existedsettings.Value = setting.File.CreateImage(_env, "assets", "img", "Logo");
+                    FileHelper.DeleteFile(_env, setting.Value, "assets", "images","index", "favicon");
+                    existedsettings.Value = setting.File.CreateImage(_env, "images", "index", "favicon");
                 }
             }
 
@@ -96,8 +96,8 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
                         ModelState.AddModelError("File", "Select image jpeg type file ! ");
                         return View();
                     }
-                    FileHelper.DeleteFile(_env, setting.Value, "assets", "img", "footer-logo");
-                    existedsettings.Value = setting.File.CreateImage(_env, "assets", "img", "footer-logo");
+                    FileHelper.DeleteFile(_env, setting.Value, "assets", "images", "index", "favicon");
+                    existedsettings.Value = setting.File.CreateImage(_env, "assets", "images", "index", "favicon");
                 }
             }
 

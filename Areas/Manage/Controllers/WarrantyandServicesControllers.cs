@@ -14,7 +14,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
     public class WarrantyandServicesController : Controller
     {
         private readonly AppDbContext _context;
-        public WarrantyandServicesController (AppDbContext context)
+        public WarrantyandServicesController(AppDbContext context)
         {
             _context = context;
         }
@@ -38,6 +38,16 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
 
             if (!ModelState.IsValid)
             {
+                return View(warrantyandService);
+            }
+            if (warrantyandService.Title == null)
+            {
+                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
+                return View(warrantyandService);
+            }
+            if (warrantyandService.Description == null)
+            {
+                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
                 return View(warrantyandService);
             }
             if (await _context.WarrantyandServices.AnyAsync(ws => ws.IsDeleted == false && ws.Title.ToLower() == warrantyandService.Title.ToLower().Trim()))
@@ -97,19 +107,29 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             {
                 return BadRequest("Id must be equal");
             }
-            if (await _context. WarrantyandServices.AnyAsync(ws => ws.IsDeleted == false && ws.Title.ToLower() == warrantyandService.Title.ToLower().Trim() && ws.Id != id))
+            if (warrantyandService.Title == null)
+            {
+                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
+                return View(warrantyandService);
+            }
+            if (warrantyandService.Description == null)
+            {
+                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
+                return View(warrantyandService);
+            }
+            if (await _context.WarrantyandServices.AnyAsync(ws => ws.IsDeleted == false && ws.Title.ToLower() == warrantyandService.Title.ToLower().Trim()))
             {
                 ModelState.AddModelError("Title", $"This title = {warrantyandService.Title} already exists ");
                 return View(warrantyandService);
             }
 
-
-                WarrantyandService existewarranty = await _context.WarrantyandServices.FirstOrDefaultAsync(ws => ws.IsDeleted == false && ws.Id == id);
+            WarrantyandService existewarranty = await _context.WarrantyandServices.FirstOrDefaultAsync(ws => ws.IsDeleted == false && ws.Id == id);
 
             if (existewarranty == null)
             {
                 return NotFound("Id is wrong");
             }
+         
 
 
             existewarranty.Title = warrantyandService.Title.Trim();

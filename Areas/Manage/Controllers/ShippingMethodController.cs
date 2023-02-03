@@ -39,12 +39,21 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             {
                 return View(shippingMethod);
             }
+            if (shippingMethod.Title == null)
+            {
+                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
+                return View(shippingMethod);
+            }
+            if (shippingMethod.Description == null)
+            {
+                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
+                return View(shippingMethod);
+            }
             if (await _context.ShippingMethods.AnyAsync(sm => sm.IsDeleted == false && sm.Title.ToLower() == shippingMethod.Title.ToLower().Trim()))
             {
                 ModelState.AddModelError("Title", $"This title = {shippingMethod.Title} already exists ");
                 return View(shippingMethod);
             }
-
 
 
             shippingMethod.Title = shippingMethod.Title.Trim();
@@ -96,7 +105,8 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             {
                 return BadRequest("Id must be equal");
             }
-            if (await _context.ShippingMethods.AnyAsync(sm => sm.IsDeleted == false && sm.Title.ToLower() == shippingMethod.Title.ToLower().Trim() && sm.Id != id))
+
+            if (await _context.ShippingMethods.AnyAsync(sm => sm.IsDeleted == false && sm.Title.ToLower() == shippingMethod.Title.ToLower().Trim()))
             {
                 ModelState.AddModelError("Title", $"This title = {shippingMethod.Title} already exists ");
                 return View(shippingMethod);

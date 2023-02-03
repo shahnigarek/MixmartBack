@@ -17,7 +17,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task< IActionResult > Index()
+        public async Task<IActionResult> Index()
         {
             IEnumerable<TermandCondition> termandConditions = await _context.TermandConditions.Where(tc => tc.IsDeleted == false).ToListAsync();
             return View(termandConditions);
@@ -34,9 +34,19 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
 
         public async Task<IActionResult> Create(TermandCondition termandCondition)
         {
-        
+
             if (!ModelState.IsValid)
             {
+                return View(termandCondition);
+            }
+            if (termandCondition.Title == null)
+            {
+                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
+                return View(termandCondition);
+            }
+            if (termandCondition.Description == null)
+            {
+                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
                 return View(termandCondition);
             }
             if (await _context.TermandConditions.AnyAsync(tc => tc.IsDeleted == false && tc.Title.ToLower() == termandCondition.Title.ToLower().Trim()))
@@ -44,7 +54,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
                 ModelState.AddModelError("Title", $"This title = {termandCondition.Title} already exists ");
                 return View(termandCondition);
             }
-          
+
 
 
             termandCondition.Title = termandCondition.Title.Trim();
@@ -96,11 +106,22 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             {
                 return BadRequest("Id must be equal");
             }
-            if (await _context.TermandConditions.AnyAsync(b => b.IsDeleted == false && b.Title.ToLower() == termandCondition.Title.ToLower().Trim() && b.Id != id))
+            if (termandCondition.Title == null)
+            {
+                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
+                return View(termandCondition);
+            }
+            if (termandCondition.Description == null)
+            {
+                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
+                return View(termandCondition);
+            }
+            if (await _context.TermandConditions.AnyAsync(tc => tc.IsDeleted == false && tc.Title.ToLower() == termandCondition.Title.ToLower().Trim()))
             {
                 ModelState.AddModelError("Title", $"This title = {termandCondition.Title} already exists ");
                 return View(termandCondition);
             }
+
 
 
             TermandCondition existedterm = await _context.TermandConditions.FirstOrDefaultAsync(tc => tc.IsDeleted == false && tc.Id == id);
@@ -109,8 +130,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             {
                 return NotFound("Id is wrong");
             }
-         
-
+      
             existedterm.Title = termandCondition.Title.Trim();
             existedterm.Description = termandCondition.Description.Trim();
             existedterm.UpdatedAt = DateTime.UtcNow.AddHours(4);

@@ -1,0 +1,48 @@
+﻿@model Team
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  " style="padding-top:40px">
+    <div>
+        <h4>Team Detail</h4>
+        <hr />
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FacebookUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FacebookUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GooglePlusUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GooglePlusUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YoutubeUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YoutubeUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TwitterUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TwitterUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Position.Name)
+        </dd>
+
+    </div>
+    <div>
+        <a asp-action="update" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</main>
