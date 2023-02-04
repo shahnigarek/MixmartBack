@@ -94,6 +94,11 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             {
                 return BadRequest("Id can't be null");
             }
+            if (tag.Name == null)
+            {
+                ModelState.AddModelError("Name", $"name can't be null ");
+                return View(tag);
+            }
 
             if (tag.Id != id)
             {

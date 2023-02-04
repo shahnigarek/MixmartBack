@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Crafted>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  " style="padding-top:40px">
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductCount2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductCount3)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductCount2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductCount3)
+                    </td>
+
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

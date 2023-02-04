@@ -38,6 +38,7 @@ namespace MixmartBackEnd.DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<BCategory> BCategories { get; set; }
 
 

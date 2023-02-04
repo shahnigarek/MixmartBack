@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PaymentMethod>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  " style="padding-top:40px">
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description4)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description5)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Question1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Question2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Question3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentOptions)
+                </th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description4)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description5)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Question1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Question2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Question3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentOptions)
+                    </td>
+
+
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

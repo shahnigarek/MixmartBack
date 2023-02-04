@@ -221,7 +221,7 @@ namespace MixmartBackEnd.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("BlogCategory");
+                    b.ToTable("BlogCategories");
                 });
 
             modelBuilder.Entity("MixmartBackEnd.Models.Brand", b =>

@@ -1,0 +1,128 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  " style="padding-top:40px">
+    <div>
+        <h4>Product Details</h4>
+        <hr />
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiscountedPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DiscountedPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TagIds)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (ProductTag producttag in Model.ProductTags)
+            {
+
+
+            <dd>@producttag.Tag.Name</dd>
+
+
+        }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CategoryIds)
+            </dt>
+            <dd class="col-sm-10">
+                @foreach (ProductCategory productcategory in Model.ProductCategories)
+                {
+
+
+                <dd>@productcategory.Category.Name</dd>
+
+
+            }
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsNewArrival)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsNewArrival)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsBestSeller)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsBestSeller)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FacebookUrl)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FacebookUrl)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.TwitterUrl)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TwitterUrl)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.LinkedinUrl)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.LinkedinUrl)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.TumblrUrl)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TumblrUrl)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.GooglePlusUrl)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.GooglePlusUrl)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.PinterestUrl)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.PinterestUrl)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EnvelopeUrl)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EnvelopeUrl)
+                </dd>
+
+            </div>
+            <div>
+                <a asp-action="update" asp-route-id="@Model.Id">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </main>
+

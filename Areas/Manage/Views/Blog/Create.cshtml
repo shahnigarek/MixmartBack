@@ -1,0 +1,97 @@
+﻿@model Blog
+
+@{
+    ViewData["Title"] = "Create";
+    IEnumerable<BCategory> bcategories = ViewBag.BCategories;
+    SelectList selectBCategoriesListItems = new SelectList(bcategories, nameof(BCategory.Id), nameof(BCategory.Name));
+}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  " style="padding-top:40px">
+    <h4>Create Blog</h4>
+    <hr />
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description1" class="control-label"></label>
+                <input asp-for="Description1" class="form-control" />
+                <span asp-validation-for="Description1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description2" class="control-label"></label>
+                <input asp-for="Description2" class="form-control" />
+                <span asp-validation-for="Description2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>BCategory</label>
+                <select asp-for="BCategoryIds" class="form-control" asp-items=" selectBCategoriesListItems">
+                    <span asp-validation-for="BCategoryIds" class="text text-danger"></span>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FacebookUrl" class="control-label"></label>
+                <input asp-for="FacebookUrl" class="form-control" />
+                <span asp-validation-for="FacebookUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TwitterUrl" class="control-label"></label>
+                <input asp-for="TwitterUrl" class="form-control" />
+                <span asp-validation-for="TwitterUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkedinUrl" class="control-label"></label>
+                <input asp-for="LinkedinUrl" class="form-control" />
+                <span asp-validation-for="LinkedinUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TumblrUrl" class="control-label"></label>
+                <input asp-for="TumblrUrl" class="form-control" />
+                <span asp-validation-for="TumblrUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GooglePlusUrl" class="control-label"></label>
+                <input asp-for="GooglePlusUrl" class="form-control" />
+                <span asp-validation-for="GooglePlusUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PinterestUrl" class="control-label"></label>
+                <input asp-for="PinterestUrl" class="form-control" />
+                <span asp-validation-for="PinterestUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnvelopeUrl" class="control-label"></label>
+                <input asp-for="EnvelopeUrl" class="form-control" />
+                <span asp-validation-for="EnvelopeUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</main>
+

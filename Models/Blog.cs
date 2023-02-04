@@ -49,5 +49,8 @@ namespace MixmartBackEnd.Models
 
         [NotMapped]
         public IFormFile File { get; set; }
+        [NotMapped]
+        [MaxLength(2)]
+        public IEnumerable<int> BCategoryIds { get; set; }
     }
 }
