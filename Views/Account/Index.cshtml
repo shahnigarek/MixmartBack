@@ -1,0 +1,239 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="title-bar"
+     style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 45px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="title-bar-text" style="text-align: center;">
+                <div class="title-bar-header" style="margin-bottom: 20px;">
+                    <h1 style="color:#3a3d46;font-family: rufina;font-size: 52px;">My Account</h1>
+                </div>
+                <div class="title-bar-breadcrumb">
+                    <span style="color: #777777;font-size: 15px;">Home</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">My Account</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dashboard-area">
+    <div class="container">
+        <div class="dashboard-warp">
+            <div class="author">
+                <div class="media">
+                    <div class="thumbnail">
+                        <img src="assets/images/index/author1.png">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="title mb-0">Hello Nigar</h5>
+                        <span class="joining-date">Mixmart Member Since Sep 2023</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4">
+                    <aside class="dashboard-aside">
+                        <nav class="dashboard-nav">
+                            <div class="nav nav-tabs">
+                                <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-dashboard"
+                                   aria-selected="true"><i class="fas fa-th-large"></i>Dashboard</a>
+                                <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-orders"
+                                   aria-selected="false"><i class="fas fa-shopping-basket"></i>Orders</a>
+                                <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-downloads"
+                                   aria-selected="false"><i class="fas fa-file-download"></i>Downloads</a>
+                                <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-address"
+                                   aria-selected="false"><i class="fas fa-home"></i>Addresses</a>
+                                <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-account"
+                                   aria-selected="false"><i class="fas fa-user"></i>Account Details</a>
+                                <a class="nav-item nav-link" href="login.html">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout
+                                </a>
+                            </div>
+                        </nav>
+                    </aside>
+                </div>
+                <div class="col-lg-9 col-md-8">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="nav-dashboard">
+                            <div class="dashboard-overview">
+                                <div class="welcome-text">
+                                    Hello Nigar (not <span>Nigar?</span> <a href="login.html">Log Out</a>)
+                                </div>
+                                <p>
+                                    From your account dashboard you can view your recent orders, manage your shipping
+                                    and billing addresses, and edit your password and account details.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-orders">
+                            <div class="dashboard-order">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Order</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">#6523</th>
+                                                <td>September 10, 2020</td>
+                                                <td>Processing</td>
+                                                <td>$326.63 for 3 items</td>
+                                                <td><a href="#" class="btn view-btn">View</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#6523</th>
+                                                <td>September 10, 2020</td>
+                                                <td>On Hold</td>
+                                                <td>$326.63 for 3 items</td>
+                                                <td><a href="#" class="btn view-btn">View</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#6523</th>
+                                                <td>September 10, 2020</td>
+                                                <td>Processing</td>
+                                                <td>$326.63 for 3 items</td>
+                                                <td><a href="#" class="btn view-btn">View</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#6523</th>
+                                                <td>September 10, 2020</td>
+                                                <td>Processing</td>
+                                                <td>$326.63 for 3 items</td>
+                                                <td><a href="#" class="btn view-btn">View</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">#6523</th>
+                                                <td>September 10, 2020</td>
+                                                <td>Processing</td>
+                                                <td>$326.63 for 3 items</td>
+                                                <td><a href="#" class="btn view-btn">View</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-downloads">
+                            <div class="dashboard-order">
+                                <p>You don't have any download</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-address">
+                            <div class="dashboard-address">
+                                <p class="notice-text">
+                                    The following addresses will be used on the checkout page by
+                                    default.
+                                </p>
+                                <div class="row ">
+                                    <div class="col-lg-6">
+                                        <div class="address-info" style="margin-bottom: 40px;">
+                                            <div class="addrss-header d-flex align-items-center justify-content-between">
+                                                <h4 style="margin-bottom: 0px;" class="title ">Shipping Address</h4>
+                                                <a href="#" class="address-edit"><i class="far fa-edit"></i></a>
+                                            </div>
+                                            <ul class="address-details">
+                                                <li>Name: Nigar Kazimli</li>
+                                                <li>Email: shahnigarek@code.edu.az</li>
+                                                <li>Phone: 1234 567890</li>
+                                                <li style="margin-top: 30px;">
+                                                    7398 Smoke Ranch Road <br>
+                                                    Las Vegas, Nevada 89128
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="address-info">
+                                            <div class="addrss-header d-flex align-items-center justify-content-between">
+                                                <h4 class="title" style="margin-bottom: 0px;">Billing Address</h4>
+                                                <a href="#" class="address-edit"><i class="far fa-edit"></i></a>
+                                            </div>
+                                            <ul class="address-details">
+                                                <li>Name: Nigar Kazimli</li>
+                                                <li>Email: shahnigarek@code.edu.az</li>
+                                                <li>Phone: 1234 567890</li>
+                                                <li style="margin-top: 30px;">
+                                                    7398 Smoke Ranch Road <br>
+                                                    Las Vegas, Nevada 89128
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-account">
+                            <div class="col-lg-9">
+                                <div class="dashboard-account">
+                                    <form class="account-details-form">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>First Name</label>
+                                                    <input type="text" class="form-control" value="Nigar">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Last Name</label>
+                                                    <input type="text" class="form-control" value="Kazimli">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group" style="margin-bottom: 40px;">
+                                                    <label>Country/ Region</label>
+                                                    <select class="select2">
+                                                        <option value="1">United Kindom (UK)</option>
+                                                        <option value="1">United States (USA)</option>
+                                                        <option value="1">United Arab Emirates (UAE)</option>
+                                                        <option value="1">Australia</option>
+                                                    </select>
+                                                    <p class="b3" style="margin-top: 10px;">
+                                                        This will be how your
+                                                        name will be
+                                                        displayed in the account section and in reviews
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <h5 class="title">Password Change</h5>
+                                                <div class="form-group">
+                                                    <label>Password</label>
+                                                    <input type="password" class="form-control"
+                                                           value="123456789101112131415">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>New Password</label>
+                                                    <input type="password" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Confirm New Password</label>
+                                                    <input type="password" class="form-control">
+                                                </div>
+                                                <div class="form-group" style="margin-bottom: 0px;">
+                                                    <input type="submit" class="btn" value="Save Changes">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

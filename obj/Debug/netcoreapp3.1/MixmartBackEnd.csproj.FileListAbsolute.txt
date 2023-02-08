@@ -231,3 +231,4 @@ C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Create.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Update.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Details.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
