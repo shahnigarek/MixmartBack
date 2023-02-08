@@ -21,11 +21,8 @@ namespace MixmartBackEnd.Migrations
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     DeletedBy = table.Column<string>(nullable: true),
                     FullName = table.Column<string>(maxLength: 255, nullable: true),
-                    Image = table.Column<string>(maxLength: 255, nullable: true),
-                    FacebookUrl = table.Column<string>(maxLength: 255, nullable: true),
-                    GooglePlusUrl = table.Column<string>(maxLength: 255, nullable: true),
-                    YoutubeUrl = table.Column<string>(maxLength: 255, nullable: true),
-                    TwitterUrl = table.Column<string>(maxLength: 255, nullable: true)
+                    Image = table.Column<string>(maxLength: 255, nullable: true)
+                   
                 },
                 constraints: table =>
                 {

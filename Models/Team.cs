@@ -17,18 +17,6 @@ namespace MixmartBackEnd.Models
 
         public string Image { get; set; }
      
-        [StringLength(255)]
-
-        public string FacebookUrl { get; set; }
-        [StringLength(255)]
-
-        public string GooglePlusUrl { get; set; }
-        [StringLength(255)]
-
-        public string YoutubeUrl { get; set; }
-        [StringLength(255)]
-
-        public string TwitterUrl { get; set; }
 
         public int PositionId { get; set; }
         public Position Position { get; set; }

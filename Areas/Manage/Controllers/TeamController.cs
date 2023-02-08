@@ -152,10 +152,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
 
 
             existedteam.FullName = team.FullName.Trim();
-            existedteam.FacebookUrl =   team.FacebookUrl.Trim();
-            existedteam.GooglePlusUrl = team.GooglePlusUrl.Trim();
-            existedteam.TwitterUrl = team.TwitterUrl.Trim();
-            existedteam.YoutubeUrl = team.YoutubeUrl.Trim();
+       
             existedteam.PositionId = team.PositionId;
             existedteam.Image = team.File.CreateImage(_env, "assets", "images", "index","team");
             existedteam.UpdatedAt = DateTime.UtcNow.AddHours(4);

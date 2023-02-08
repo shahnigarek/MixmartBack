@@ -76,8 +76,8 @@
                     @foreach (Product product in Model.Products)
                     {
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="col-lg-3 col-md-6" style=" margin-top: 45px;">
+                        
+                            <div class="col-lg-4 col-md-6" style=" margin-top: 45px;">
                                 <div class="productcart">
                                     <div style="position:relative" class="product-image">
                                         @if (product.DiscountedPrice > 0)
@@ -86,6 +86,11 @@
 
                                         }
                                         <img src="~/assets/images/index/shop/@product.Image" alt="">
+                                    </div>
+                                    <div class="action">
+                                        <a href=""><i class="fa-regular fa-heart"></i></a>
+                                        <a href=""><i class="fa-brands fa-opencart"></i></a>
+
                                     </div>
                                     <div class="product-caption">
                                         <h3><a asp-action="detail" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h3>
@@ -106,7 +111,7 @@
                             </div>
 
 
-                        </div>
+                       
                     }
 
 
