@@ -49,6 +49,20 @@ namespace MixmartBackEnd.Controllers
 
             return View(product);
         }
+        public IActionResult CategoryProduct(int Id)
+        {
+            IEnumerable<Product> products = _context.Products.Include(p => p.ProductCategories).ThenInclude(p=>p.Category).Include(p => p.ProductTags).ThenInclude(pt => pt.Tag).Where(p => p.ProductCategories.Any(pt => pt.CategoryId == Id)).ToList();
+            ViewBag.Categories = _context.Categories.Include(c => c.ProductCategories).ThenInclude(pt=>pt.Product).ToList();
+            ViewBag.Tags = _context.Tags.Include(t => t.ProductTags).ThenInclude(bt => bt.Product).ToList();
+            return View(products);
+        }
+        public IActionResult TagProduct(int id)
+        {
+            IEnumerable<Product> products = _context.Products.Include(p => p.ProductCategories).ThenInclude(pt=>pt.Category).Include(p => p.ProductTags).ThenInclude(pt => pt.Tag).Where(c => c.ProductTags.Any(pt => pt.TagId == id)).ToList();
+            ViewBag.Categories = _context.Categories.Include(c => c.ProductCategories).ThenInclude(pt => pt.Product).ToList();
+            ViewBag.Tags = _context.Tags.Include(t => t.ProductTags).ThenInclude(bt => bt.Product).ToList();
+            return View(products);
+        }
     }
 }
 

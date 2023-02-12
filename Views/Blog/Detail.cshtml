@@ -98,73 +98,65 @@
             </div>
         </div>
         <div class="comments">
-            <h2>3 Comments </h2>
-            <div class="comment">
-                <div class="commentorimage">
-                    <img src="~/assets/images/index/blog/author.png" alt="">
-                </div>
-                <div class="commentorcomment">
-                    <p style="color: #3a3d46;font-weight: 600;">
-                        Joe Doe <span style="color: #777777;font-size: 12px;font-weight: 100;margin-left: 15px;">
-                            October 14,
-                            2019 at 2:43 am
-                        </span>
-                    </p>
-                    <p class="pppp" style="color: #777777;">
-                        This is exactly what i was looking for, thank you so much for these
-                        tutorials
-                    </p>
-                </div>
-                <div class="reply">
-                    <p><i class="fa-regular fa-comment"></i>REPLY</p>
-                </div>
-            </div>
-            <div class="commentt" style="margin-left: 64px;">
-                <div class="commentorimage">
-                    <img src="~/assets/images/index/blog/author.png" alt="">
-                </div>
-                <div class="commentorcomment">
-                    <p style="color: #3a3d46;font-weight: 600;">
-                        Mike <span style="color: #777777;font-size: 12px;font-weight: 100;margin-left: 15px;">
-                            October 14,
-                            2019 at 2:43 am
-                        </span>
-                    </p>
-                    <p style="color: #777777;">It would be great to try this theme for my businesses</p>
-                </div>
-                <div class="reply">
-                    <p><i class="fa-regular fa-comment"></i>REPLY</p>
-                </div>
-            </div>
-            <div class="comment" style="border-bottom: 1px solid #eee;">
-                <div class="commentorimage">
-                    <img src="~/assets/images/index/blog/author.png" alt="">
-                </div>
-                <div class="commentorcomment">
-                    <p style="color: #3a3d46;font-weight: 600;">
-                        Elicia <span style="color: #777777;font-size: 12px;font-weight: 100;margin-left: 15px;">
-                            October 14,
-                            2019 at 2:43 am
-                        </span>
-                    </p>
-                    <p style="color: #777777;">What a nice article. It keeps me reading more and more!</p>
-                </div>
-                <div class="reply">
-                    <p><i class="fa-regular fa-comment"></i>REPLY</p>
-                </div>
-            </div>
+            @foreach (var comment in Model.Comments.Where(f => f.IsAccess == true).OrderBy(f => f.Date))
+            {
+                if (comment.AppUser.UserName == User.Identity.Name)
+                {
+                    <div class="comment">
+                        <div class="commentorimage">
+                            <img src="~/assets/images/index/blog/author.png" alt="">
+                        </div>
+                        <div class="commentorcomment">
+                            <p style="color: #3a3d46;font-weight: 600;">
+                                @comment.AppUser.Name @comment.AppUser.Surname
+                                <span style="color: #777777;font-size: 12px;font-weight: 100;margin-left: 15px;">
+                                    @comment.Date.ToString("dd MMMM yyyy HH:mm")
+                                </span>
+                            </p>
+                            <p class="pppp" style="color: #777777;">
+                                @comment.Message
+                            </p>
+                            <a asp-action="DeleteComment" asp-route-id="@comment.Id" class="text-danger">Delete</a>
+                        </div>
+
+                    </div>
+
+                }
+                else
+                {
+                    <div class="comment">
+                        <div class="commentorimage">
+                            <img src="~/assets/images/index/blog/author.png" alt="">
+                        </div>
+                        <div class="commentorcomment">
+                            <p style="color: #3a3d46;font-weight: 600;">
+                                @comment.AppUser.Name @comment.AppUser.Surname
+                                <span style="color: #777777;font-size: 12px;font-weight: 100;margin-left: 15px;">
+                                    @comment.Date.ToString("dd MMMM yyyy HH:mm")
+                                </span>
+                            </p>
+                            <p class="pppp" style="color: #777777;">
+                                @comment.Message
+                            </p>
+                        </div>
+
+                    </div>
+
+                }
+            }
+
         </div>
         <div class="leavereply">
             <h3>Leave a Reply</h3>
             <p style="color: #777777;">
                 Your email address will not be published. Required fields are marked <span style="color: red;">*</span>
             </p>
+            <form asp-action="addcomment" asp-controller="comment" method="post">
             <textarea name="" id="" cols="45" rows="6" placeholder="Your comment"></textarea>
-            <div class="authorcomment" style="display: flex;padding-top: 40px;">
-                <input style="margin-right: 45px;" type="text" name="" id="" placeholder="Name">
-                <input type="email" name="" id="" placeholder="Email">
-            </div>
-            <button>Post Comment</button>
+          
+            <button type="submit">Post Comment</button>
+
+            </form>
         </div>
     </div>
 </main>

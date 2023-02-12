@@ -17,6 +17,8 @@
     <Compile Remove="Migrations\20230201155142_UpdatedBlogCategoryTable.Designer.cs" />
     <Compile Remove="Migrations\20230211155920_UpdatedUserTable.cs" />
     <Compile Remove="Migrations\20230211155920_UpdatedUserTable.Designer.cs" />
+    <Compile Remove="Migrations\20230212122501_AddCommentTable.cs" />
+    <Compile Remove="Migrations\20230212122501_AddCommentTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

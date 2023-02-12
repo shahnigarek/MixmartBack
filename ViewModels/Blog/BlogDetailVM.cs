@@ -10,5 +10,7 @@ namespace MixmartBackEnd.ViewModels.BlogDetailVM
     {
         public Blog Blog { get; set; }
         public IEnumerable<BlogCategory> BlogCategories { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
+
     }
 }

@@ -1,8 +1,9 @@
-﻿@model LoginVM
+﻿
+@model LoginVM
 @inject ILayoutServices layoutservices
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Profile";
     AppUser appUser = await layoutservices.GetUserAsync();
 }
 
@@ -44,10 +45,7 @@
                             <div class="nav nav-tabs">
                                 <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-dashboard"
                                    aria-selected="true"><i class="fas fa-th-large"></i>Dashboard</a>
-                                <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-orders"
-                                   aria-selected="false"><i class="fas fa-shopping-basket"></i>Orders</a>
-                                <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-downloads"
-                                   aria-selected="false"><i class="fas fa-file-download"></i>Downloads</a>
+                              
                                 <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-address"
                                    aria-selected="false"><i class="fas fa-home"></i>Addresses</a>
                                 <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-account"
@@ -70,65 +68,6 @@
                                     From your account dashboard you can view your recent orders, manage your shipping
                                     and billing addresses, and edit your password and account details.
                                 </p>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-orders">
-                            <div class="dashboard-order">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Order</th>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">#6523</th>
-                                                <td>September 10, 2020</td>
-                                                <td>Processing</td>
-                                                <td>$326.63 for 3 items</td>
-                                                <td><a href="#" class="btn view-btn">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#6523</th>
-                                                <td>September 10, 2020</td>
-                                                <td>On Hold</td>
-                                                <td>$326.63 for 3 items</td>
-                                                <td><a href="#" class="btn view-btn">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#6523</th>
-                                                <td>September 10, 2020</td>
-                                                <td>Processing</td>
-                                                <td>$326.63 for 3 items</td>
-                                                <td><a href="#" class="btn view-btn">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#6523</th>
-                                                <td>September 10, 2020</td>
-                                                <td>Processing</td>
-                                                <td>$326.63 for 3 items</td>
-                                                <td><a href="#" class="btn view-btn">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">#6523</th>
-                                                <td>September 10, 2020</td>
-                                                <td>Processing</td>
-                                                <td>$326.63 for 3 items</td>
-                                                <td><a href="#" class="btn view-btn">View</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-downloads">
-                            <div class="dashboard-order">
-                                <p>You don't have any download</p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-address">
@@ -212,7 +151,7 @@
                                                 <h5 class="title">Password Change</h5>
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input  class="form-control"
+                                                    <input class="form-control"
                                                            value="123456789101112131415">
                                                 </div>
                                                 <div class="form-group">
