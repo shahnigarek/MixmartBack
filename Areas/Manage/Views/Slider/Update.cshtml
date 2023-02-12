@@ -8,7 +8,7 @@
     <h4>Update Slider</h4>
     <hr />
     <div class="col-md-4">
-        <form asp-action="Update"  method="post" enctype="multipart/form-data">
+        <form asp-action="Update" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="MainTitle" class="control-label"></label>
@@ -36,3 +36,6 @@
     </div>
 </main>
 
+@section script{
+    @await Html.PartialAsync("_ValidationPartial")
+}

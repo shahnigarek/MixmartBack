@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MixmartBackEnd.DAL;
 using MixmartBackEnd.Models;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 namespace MixmartBackEnd.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin")]
+
     public class CeramicController : Controller
     {
         private readonly AppDbContext _context;

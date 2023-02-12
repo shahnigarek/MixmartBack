@@ -1,6 +1,9 @@
-﻿
+﻿@model LoginVM
+@inject ILayoutServices layoutservices
+
 @{
     ViewData["Title"] = "Index";
+    AppUser appUser = await layoutservices.GetUserAsync();
 }
 
 
@@ -30,8 +33,7 @@
                         <img src="assets/images/index/author1.png">
                     </div>
                     <div class="media-body">
-                        <h5 class="title mb-0">Hello Nigar</h5>
-                        <span class="joining-date">Mixmart Member Since Sep 2023</span>
+                        <h5 class="title mb-0">Hello @appUser.Name</h5>
                     </div>
                 </div>
             </div>
@@ -62,7 +64,7 @@
                         <div class="tab-pane fade show active" id="nav-dashboard">
                             <div class="dashboard-overview">
                                 <div class="welcome-text">
-                                    Hello Nigar (not <span>Nigar?</span> <a href="login.html">Log Out</a>)
+                                    Hello @appUser.Name (not <span>@appUser.Name?</span> <a asp-action="logout" asp-controller="account">Log Out</a>)
                                 </div>
                                 <p>
                                     From your account dashboard you can view your recent orders, manage your shipping
@@ -143,8 +145,8 @@
                                                 <a href="#" class="address-edit"><i class="far fa-edit"></i></a>
                                             </div>
                                             <ul class="address-details">
-                                                <li>Name: Nigar Kazimli</li>
-                                                <li>Email: shahnigarek@code.edu.az</li>
+                                                <li>Name: @appUser.Name @appUser.Surname</li>
+                                                <li>Email: @appUser.Email</li>
                                                 <li>Phone: 1234 567890</li>
                                                 <li style="margin-top: 30px;">
                                                     7398 Smoke Ranch Road <br>
@@ -160,8 +162,8 @@
                                                 <a href="#" class="address-edit"><i class="far fa-edit"></i></a>
                                             </div>
                                             <ul class="address-details">
-                                                <li>Name: Nigar Kazimli</li>
-                                                <li>Email: shahnigarek@code.edu.az</li>
+                                                <li>Name: @appUser.Name @appUser.Surname</li>
+                                                <li>Email: @appUser.Email</li>
                                                 <li>Phone: 1234 567890</li>
                                                 <li style="margin-top: 30px;">
                                                     7398 Smoke Ranch Road <br>
@@ -176,18 +178,18 @@
                         <div class="tab-pane fade" id="nav-account">
                             <div class="col-lg-9">
                                 <div class="dashboard-account">
-                                    <form class="account-details-form">
+                                    <form class="account-details-form" method="post">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <label>First Name</label>
-                                                    <input type="text" class="form-control" value="Nigar">
+                                                    <label for="Name">First Name</label>
+                                                    <input asp-for="@appUser.Name" class="form-control" value="Nigar">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Last Name</label>
-                                                    <input type="text" class="form-control" value="Kazimli">
+                                                    <input asp-for="@appUser.Surname" class="form-control" value="Kazimli">
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -210,7 +212,7 @@
                                                 <h5 class="title">Password Change</h5>
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="password" class="form-control"
+                                                    <input  class="form-control"
                                                            value="123456789101112131415">
                                                 </div>
                                                 <div class="form-group">

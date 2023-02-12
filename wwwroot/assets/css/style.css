@@ -1126,6 +1126,28 @@ a {
 .header2-right .account:hover .user {
     display: block;
 }
+.header2-right .user1 {
+    position: absolute;
+    background: #fff;
+    right: 120px;
+    width: 100%;
+    height: 60px;
+    display: none;
+    margin-top: 10px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgb(0 0 0 / 10%);
+    border-radius: 0;
+}
+
+.header2-right .account:hover .user1 {
+    display: block;
+}
+
+.header2-right .text1 {
+    font-size: 18px;
+}
+
+
 
 .header2-right .text {
     display: flex;

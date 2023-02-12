@@ -15,9 +15,13 @@
     <Compile Remove="Migrations\20230126203651_CreatedPositionTable.Designer.cs" />
     <Compile Remove="Migrations\20230201155142_UpdatedBlogCategoryTable.cs" />
     <Compile Remove="Migrations\20230201155142_UpdatedBlogCategoryTable.Designer.cs" />
+    <Compile Remove="Migrations\20230211155920_UpdatedUserTable.cs" />
+    <Compile Remove="Migrations\20230211155920_UpdatedUserTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.31" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.31" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.31" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.31" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.31">
@@ -25,6 +29,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>

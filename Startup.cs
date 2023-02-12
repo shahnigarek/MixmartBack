@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MixmartBackEnd.DAL;
 using MixmartBackEnd.Interfaces;
+using MixmartBackEnd.Models;
 using MixmartBackEnd.Services;
 using System;
 using System.Collections.Generic;
@@ -33,9 +35,23 @@ namespace MixmartBackEnd
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddScoped<ILayoutServices, LayoutServices>();
+
+
             services.AddHttpContextAccessor();
 
-
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 9;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequireUppercase = true;
+                options.User.RequireUniqueEmail = true;
+                options.Lockout.MaxFailedAccessAttempts = 2;
+                options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+                
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,9 +62,16 @@ namespace MixmartBackEnd
                 app.UseDeveloperExceptionPage();
 
             }
+            //app.UseSession();
 
             app.UseRouting();
+
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseStaticFiles();
+
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MixmartBackEnd.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,5 +10,6 @@ namespace MixmartBackEnd.Interfaces
     {
         Task<Dictionary<string, string>> GetSettingsAsync();
 
+        Task<AppUser> GetUserAsync();
     }
 }

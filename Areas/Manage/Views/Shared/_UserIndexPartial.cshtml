@@ -1,0 +1,21 @@
+﻿@model List<AppUser>
+@{
+    int no = 0;
+}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  " style="padding-top:40px">
+    @foreach (AppUser appUser in Model)
+    {
+        no++;
+        <tr>
+            <td>@no</td>
+            <td>@appUser.Name</td>
+            <td>@appUser.Surname</td>
+            <td>@appUser.Role</td>
+            <td class="text @(appUser.IsDeActive ? "text-danger":"text-success")">@(appUser.IsDeActive ? "DeActive":"Active")</td>
+            <td>
+                <a class="btn @(appUser.IsDeActive ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="user" asp-action="@(appUser.IsDeActive ? "Activate":"DeActive")" asp-route-id="@appUser.Id" asp-route-status="@ViewBag.Status">@(appUser.IsDeActive ? "Activate":"DeActive")</a>
+                <a class="btn btn-warning" asp-area="manage" asp-controller="user" asp-action="ResetPassword" asp-route-id="@appUser.Id">Reset Password</a>
+            </td>
+        </tr>
+    }
+</main>

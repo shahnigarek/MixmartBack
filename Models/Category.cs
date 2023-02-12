@@ -11,7 +11,6 @@ namespace MixmartBackEnd.Models
         [StringLength(255)]
         public string Name { get; set; }
         public IEnumerable<ProductCategory> ProductCategories { get; set; }
-        //public IEnumerable<BlogCategory> BlogCategories { get; set; }
 
     }
 }

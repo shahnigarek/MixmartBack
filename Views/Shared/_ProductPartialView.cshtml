@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Product>
+
+@foreach (Product product in Model)
+{
+    <div class="col-lg-4 col-md-4">
+        <div class="" style=" margin-top: 45px;">
+            <div class="productcart">
+                <div style="position:relative" class="product-image">
+                    @if (product.DiscountedPrice > 0)
+                    {
+                        <span class="onsale">-@((((product.Price * 100) / product.DiscountedPrice) - 100).ToString("0.##"))%</span>
+
+                    }
+                    <img src="~/assets/images/index/shop/@product.Image" alt="">
+                </div>
+                <div class="product-caption">
+                    <h3><a asp-action="detail" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h3>
+                    @if (product.DiscountedPrice > 0)
+                    {
+                        <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
+                              class="old-price">$@product.Price</span>
+                            <span class="price">$@product.DiscountedPrice</span>
+                        }
+                        else
+                        {
+                            <span class="price">$@product.Price</span>
+                        }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

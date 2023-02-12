@@ -3,6 +3,7 @@
 
 @{
     Dictionary<string, string> settings = await layoutservices.GetSettingsAsync();
+    AppUser appUser = await layoutservices.GetUserAsync();
 }
 
 <!DOCTYPE html>
@@ -33,17 +34,52 @@
                     <div class="header2-left">
                         <a href=""><img style="width: 190px;" src="~/assets/images/favicon/@settings.First(s => s.Key == "Logo").Value"></a>
                         <div class="sidenavigation">
-                            <div id="mySidenav" class="sidenav">
-                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                <a href="#">About</a>
-                                <a href="#">Services</a>
-                                <a href="#">Clients</a>
-                                <a href="#">Contact</a>
+                            <button style="outline: none;border:none;" class="btn" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasWithBackdrop">
+                                <i class="fa-solid fa-bars-staggered"></i>
+                            </button>
+                            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop"
+                                 aria-labelledby="offcanvasWithBackdropLabel">
+                                <div class="offcanvas-header">
+
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+
+                                    <nav>
+                                        <ul>
+                                            <li><a href="index.html">Home</a></li>
+                                            <li>
+                                                <a href="shop.html">Shop</a>
+                                                <ul>
+                                                    <li><a href="shippingmethod.html">Shipping Merhod</a></li>
+                                                    <li><a href="paymentmethod.html">Payment Method</a></li>
+                                                    <li><a href="myaccount.html">My Account</a></li>
+                                                    <li><a href="cart">Cart</a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li><a href="product.html">Product</a></li>
+                                            <li>
+                                                <a href="">Pages</a>
+                                                <ul>
+                                                    <li><a href="about.html">About</a></li>
+                                                    <li><a href="404.html">404</a></li>
+                                                    <li><a href="supportpage.html">Support Page</a></li>
+                                                    <li>
+                                                        <a href="warrantyandservices.html">Warranty and Services</a>
+                                                    </li>
+                                                    <li><a href="term&conditions.html">Term and Conditions</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
                             </div>
-
-                            <span onclick="openNav()"><i class="fa-solid fa-bars-staggered"></i></span>
-
-
                         </div>
                     </div>
                 </div>
@@ -68,7 +104,7 @@
                                             <a href="cart.html" class="meganav__link ">Cart</a>
                                         </li>
                                         <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                            <a asp-action="index"  asp-controller="account" class="meganav__link ">My account</a>
+                                            <a asp-action="index" asp-controller="account" class="meganav__link ">My account</a>
                                         </li>
                                         <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
                                             <a href="ordertracking.html" class="meganav__link ">Order Tracking</a>
@@ -123,14 +159,45 @@
             <div class="header2-right">
                 <div style="padding: 10px;" class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="glass">
+                        <div class="searchinput">
+                            <input type="search" placeholder="Search...">
+                        </div>
+                    </div>
                 </div>
                 <div style="padding: 10px;" class="account">
-                    <i class="fa-regular fa-user"></i>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-action="index" asp-controller="account">  <i class="fa-regular fa-user"></i></a>
+                        <div class="user1">
+                            <div class="text1">
+                                <p><i style="margin-right:10px" class="fa-regular fa-user"></i> @appUser.Name @appUser.Surname</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <a asp-action="login" asp-controller="account">  <i class="fa-regular fa-user"></i></a>
+                     
+                    }
                 </div>
                 <div style="padding: 10px;" class="wishlist">
-                    <a href=""><i class="fa-regular fa-heart"></i></a>
+                    <a href="wishlist.html">
+                        <i class="fa-regular fa-heart"></i>
+                    </a>
                 </div>
-                <div style="padding: 10px;" class="cart"><i class="fa-solid fa-cart-shopping"></i></div>
+                <div style="padding: 10px;" class="cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart2">
+                        <div class="content">
+
+                            <i class="fa-solid fa-xmark"></i>
+                            <div class="textt">
+                                <p>No products in the cart.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         </div>
@@ -154,7 +221,7 @@
                     </div>
                     <div class="footer-menu col-lg-3  col-md " style="margin-top: 100px;">
                         <ul class="menu-list">
-                            <li class="menu-item" ><a href="">Shop</a></li>
+                            <li class="menu-item"><a href="">Shop</a></li>
                             <li class="menu-item"><a href="">Out Work</a></li>
                             <li class="menu-item"><a href="">History</a></li>
                         </ul>
@@ -220,7 +287,9 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="~/assets/slick/slick.min.js"></script>
-<script src="~/assets/js/main.js"></script>
+<script src="~/assets/js/main.js" asp-append-version="true"></script>
 <script src="~/assets/js/bootstrap.js"></script>
+@RenderSection("script", false)
+
 
 </html>

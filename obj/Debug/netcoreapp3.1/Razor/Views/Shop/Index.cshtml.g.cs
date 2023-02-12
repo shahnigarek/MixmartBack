@@ -75,8 +75,15 @@ using MixmartBackEnd.ViewModels.BlogDetailVM;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f6b56808936bc5bf0778647383c6a779678b289c", @"/Views/Shop/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6841c9b49a9e1d630d777955923bd30da2dffd4c", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"496e9608e734626c453c76d7cca0ec3df734ff69", @"/Views/_ViewImports.cshtml")]
     public class Views_Shop_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ShopVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -213,7 +220,7 @@ using MixmartBackEnd.ViewModels.BlogDetailVM;
                 <div class=""col-lg-6"">
                     <select name=""sort"" required>
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c11246", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c11451", async() => {
                 WriteLiteral("Default sorting");
             }
             );
@@ -238,7 +245,7 @@ using MixmartBackEnd.ViewModels.BlogDetailVM;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c13370", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c13575", async() => {
                 WriteLiteral("Sort by popularity");
             }
             );
@@ -254,7 +261,7 @@ using MixmartBackEnd.ViewModels.BlogDetailVM;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c14566", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c14771", async() => {
                 WriteLiteral("Sort by average rating");
             }
             );
@@ -270,7 +277,7 @@ using MixmartBackEnd.ViewModels.BlogDetailVM;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c15766", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c15971", async() => {
                 WriteLiteral("Sort by latest");
             }
             );
@@ -286,7 +293,7 @@ using MixmartBackEnd.ViewModels.BlogDetailVM;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c16958", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c17163", async() => {
                 WriteLiteral("Sort by price: low to high");
             }
             );
@@ -302,7 +309,7 @@ using MixmartBackEnd.ViewModels.BlogDetailVM;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c18162", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c18367", async() => {
                 WriteLiteral("Sort by price: high to low");
             }
             );
@@ -369,7 +376,7 @@ using MixmartBackEnd.ViewModels.BlogDetailVM;
 #line hidden
 #nullable disable
             WriteLiteral("                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f6b56808936bc5bf0778647383c6a779678b289c21380", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f6b56808936bc5bf0778647383c6a779678b289c21585", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -399,7 +406,7 @@ AddHtmlAttributeValue("", 3713, product.Image, 3713, 14, false);
             BeginWriteAttribute("href", " href=\"", 3974, "\"", 3981, 0);
             EndWriteAttribute();
             WriteLiteral("><i class=\"fa-brands fa-opencart\"></i></a>\r\n\r\n                                    </div>\r\n                                    <div class=\"product-caption\">\r\n                                        <h3>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c23697", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6b56808936bc5bf0778647383c6a779678b289c23902", async() => {
 #nullable restore
 #line 96 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\Shop\Index.cshtml"
                                                                                                                Write(product.Title);

@@ -23,7 +23,7 @@
                 <input asp-for="File" class="form-control" />
                 <span asp-validation-for="File" class="text-danger"></span>
             </div>
-          
+
             <div class="form-group">
                 <select asp-for="PositionId" class="form-select">
                     <option value="null">Select position</option>
@@ -47,3 +47,6 @@
     </div>
 </main>
 
+@section script{
+    @await Html.PartialAsync("_ValidationPartial")
+}

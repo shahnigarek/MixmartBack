@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MixmartBackEnd.DAL;
+using MixmartBackEnd.Models;
 using MixmartBackEnd.ViewModels.Shop;
 using System;
 using System.Collections.Generic;
@@ -22,29 +23,35 @@ namespace MixmartBackEnd.Controllers
             {
 
                 Tags = await _context.Tags.Where(s => s.IsDeleted == false).ToListAsync(),
-                Products = await _context.Products.Where(p => p.IsDeleted == false ).Include(p=>p.ProductCategories).ThenInclude(p=>p.Category).ToListAsync(),
-                Categories=await _context.Categories.Where(c=>c.IsDeleted == false ).Include(m => m.ProductCategories).ToListAsync()
+                Products = await _context.Products.Where(p => p.IsDeleted == false).Include(p => p.ProductCategories).ThenInclude(p => p.Category).ToListAsync(),
+                Categories = await _context.Categories.Where(c => c.IsDeleted == false).Include(m => m.ProductCategories).ToListAsync()
 
 
             };
             return View(shopVM);
         }
 
-        public async Task<IActionResult> Detail(int? id)
+        public async Task<IActionResult> Detail(int? id, int categoryId)
         {
-            ShopDetailVM shopdetailVM = new ShopDetailVM
-            {
-                Product=await _context.Products.Where(p => p.IsDeleted == false && p.Id == id).Include(p => p.ProductCategories).ThenInclude(p => p.Category).FirstOrDefaultAsync(),
-                Category=await _context.Categories.Where(c => c.IsDeleted == false && c.Id == id).FirstOrDefaultAsync(),
-                ProductCategory=await _context.ProductCategories.Where(pc => pc.IsDeleted == false && pc.Id == id).FirstOrDefaultAsync(),
-                Categories=await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync(),
-                Products = await _context.Products.Where(p => p.IsDeleted == false ).Include(p=>p.ProductCategories).ThenInclude(p=>p.Category).ToListAsync(),
+            //ShopDetailVM shopdetailVM = new ShopDetailVM
+            //{
+            //    Product = await _context.Products.Where(p => p.IsDeleted == false && p.Id == id).Include(p => p.ProductCategories).ThenInclude(p => p.Category).FirstOrDefaultAsync(),
+            //    Category = await _context.Categories.Where(c => c.IsDeleted == false && c.Id == id).FirstOrDefaultAsync(),
+            //    ProductCategory = await _context.ProductCategories.Where(pc => pc.IsDeleted == false && pc.Id == id).FirstOrDefaultAsync(),
+            //    Categories = await _context.Categories.Where(c => c.IsDeleted == false).ToListAsync(),
+            //    Products = await _context.Products.Where(p => p.IsDeleted == false).Include(p => p.ProductCategories).ThenInclude(p => p.Category).ToListAsync(),
 
+            //};
+            //return View(shopdetailVM);
 
+            Product product = await _context.Products.Include(p => p.ProductCategories).ThenInclude(pc => pc.Category).FirstOrDefaultAsync(p => p.Id == id);
+            ViewBag.Related = await  _context.Products.Where(p => p.ProductCategories.FirstOrDefault(pc => pc.CategoryId == categoryId).CategoryId == categoryId && p.Id != product.Id).Include(p => p.ProductCategories).ThenInclude(pc => pc.Category).ToListAsync();
 
-            };
-            return View(shopdetailVM);
-
+            return View(product);
         }
     }
 }
+
+
+
+

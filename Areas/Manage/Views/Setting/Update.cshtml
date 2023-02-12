@@ -6,27 +6,27 @@
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  " style="padding-top:40px">
     <h4>Update Setting</h4>
     <hr />
-   
-        <div class="col-md-4">
-            <form asp-action="Update">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Id" />
-                <div class="form-group">
-                    <label asp-for="Key" class="control-label"></label>
-                    <input asp-for="Key" class="form-control" />
-                    <span asp-validation-for="Key" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Value" class="control-label"></label>
-                    <input asp-for="Value" class="form-control" />
-                    <span asp-validation-for="Value" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
-  
+
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Key" class="control-label"></label>
+                <input asp-for="Key" class="form-control" />
+                <span asp-validation-for="Key" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Value" class="control-label"></label>
+                <input asp-for="Value" class="form-control" />
+                <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
 
     <div>
         <a asp-action="Index">Back to List</a>
@@ -34,5 +34,7 @@
 </main>
 
 
-
+@section script{
+    @await Html.PartialAsync("_ValidationPartial")
+}
 

@@ -1,0 +1,55 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="title-bar"
+     style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 45px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="title-bar-text" style="text-align: center;">
+                <div class="title-bar-header" style="margin-bottom: 20px;">
+                    <h1 style="color:#3a3d46;font-family: rufina;font-size: 52px;">Register</h1>
+                </div>
+                <div class="title-bar-breadcrumb">
+                    <span style="color: #777777;font-size: 15px;">Home</span>
+                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
+                    <span style="color: #3a3d46;font-size: 15px;">Register</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="create-account">
+        <h1>Create Account</h1>
+        <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
+        <form method="post">
+            <div class="inputs">
+                <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Name"></span>
+                <input asp-for="Name" name="" id="FirstName" placeholder="FirstName">
+                <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Surname"></span>
+                <input asp-for="Surname" name="" id="LastName" placeholder="LastName">
+                <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Age"></span>
+                <input asp-for="Age" name="" id="Age" placeholder="Age">
+                <span  style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="UserName"></span>
+                <input asp-for="UserName" name="" id="UserName" placeholder="UserName">
+                <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Email"></span>
+                <input asp-for="Email" name="" id="Email" placeholder="Email">
+                <span  style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Password"></span>
+                <input asp-for="Password" name="" id="Password" placeholder="Password">
+                <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="ConfirmPassword"></span>
+                <input asp-for="ConfirmPassword" name="" id="ConfirmPassword" placeholder="ConfirmPassword">
+
+                <button type="submit">Create</button>
+            </div>
+
+        </form>
+        <p>Already have an acccount?<a asp-action="login" asp-controller="account" style="margin-left:10px;">(Log in instead)</a></p>
+    </div>
+</main>
+
+@*@section script{
+    <partial name="_ValidationPartial">
+}*@
