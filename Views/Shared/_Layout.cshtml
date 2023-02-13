@@ -159,25 +159,29 @@
                 <div style="padding: 10px;" class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div class="glass">
-                        <div class="searchinput">
-                            <input type="search" placeholder="Search...">
-                        </div>
+                        <form class="search-form" method="post">
+                            <div class="searchinput">
+                                <input type="search" class="typeahead " id="keyword" placeholder="Search...">
+                            </div>
+
+                        </form>
                     </div>
                 </div>
                 <div style="padding: 10px;" class="account">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated )
                     {
-                        <a asp-action="index" asp-controller="account">  <i class="fa-regular fa-user"></i></a>
+                        <a asp-action="profile" asp-controller="account">  <i class="fa-regular fa-user"></i></a>
                         <div class="user1">
                             <div class="text1">
-                                <p><i style="margin-right:10px" class="fa-regular fa-user"></i> @appUser.Name @appUser.Surname</p>
+                                <p>@appUser.Name @appUser.Surname</p>
+                                <a asp-action="logout" asp-controller="account">Logout</a>
                             </div>
                         </div>
                     }
                     else
                     {
                         <a asp-action="login" asp-controller="account">  <i class="fa-regular fa-user"></i></a>
-                     
+
                     }
                 </div>
                 <div style="padding: 10px;" class="wishlist">
@@ -283,6 +287,11 @@
             </div>
         </div>
     </footer>
+    @RenderSection("Scripts", required: false)
+    <!-- custom js file link  -->
+    <script src="~/Assets/js/script.js"></script>
+
+   
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="~/assets/slick/slick.min.js"></script>

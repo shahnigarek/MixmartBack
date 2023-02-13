@@ -37,7 +37,9 @@ namespace MixmartBackEnd.Controllers
         {
             BlogDetailVM blogdetailVM = new BlogDetailVM()
             {
-                Blog = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id == id).Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).FirstOrDefaultAsync(),
+                Blog = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id == id)
+                .Include(b=>b.Comments).ThenInclude(b=>b.AppUser)
+                .Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).FirstOrDefaultAsync(),
                 Comments = await _context.Comments.Include(c => c.Blog).Include(c => c.AppUser).Where(c => c.BlogId == id).ToListAsync()
             };
 
@@ -55,7 +57,6 @@ namespace MixmartBackEnd.Controllers
             Comment cmnt = new Comment
             {
                 Message = comment.Message,
-
                 BlogId = comment.BlogId,
                 Date = DateTime.Now,
                 AppUserId = user.Id,

@@ -52,6 +52,7 @@ namespace MixmartBackEnd.Models
         public string EnvelopeUrl { get; set; }
         public IEnumerable<ProductTag> ProductTags { get; set; }
         public IEnumerable<ProductCategory> ProductCategories { get; set; }
+        public IEnumerable<Basket> Baskets { get; set; }
 
         [NotMapped]
         public IFormFile File { get; set; }

@@ -253,3 +253,5 @@ C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shop\CategoryProduct.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shop\TagProduct.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BasketPartial.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BasketIndexPartial.cshtml.g.cs

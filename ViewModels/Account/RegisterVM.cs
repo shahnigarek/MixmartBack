@@ -14,7 +14,6 @@ namespace MixmartBackEnd.ViewModels.Account
         [Required]
         [StringLength(maximumLength: 255)]
         public string Surname { get; set; }  
-      
         [Required]
         public byte Age { get; set; }
         [Required]

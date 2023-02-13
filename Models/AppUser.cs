@@ -22,5 +22,6 @@ namespace MixmartBackEnd.Models
         public bool IsDeActive { get; set; }
         [NotMapped]
         public string Role { get; set; }
+        public List<Basket> Baskets { get; set; }
     }
 }

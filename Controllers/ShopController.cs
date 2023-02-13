@@ -31,7 +31,7 @@ namespace MixmartBackEnd.Controllers
             return View(shopVM);
         }
 
-        public async Task<IActionResult> Detail(int? id, int categoryId)
+        public async Task<IActionResult> Detail(int? id)
         {
             //ShopDetailVM shopdetailVM = new ShopDetailVM
             //{
@@ -45,8 +45,8 @@ namespace MixmartBackEnd.Controllers
             //return View(shopdetailVM);
 
             Product product = await _context.Products.Include(p => p.ProductCategories).ThenInclude(pc => pc.Category).FirstOrDefaultAsync(p => p.Id == id);
-            ViewBag.Related = await  _context.Products.Where(p => p.ProductCategories.FirstOrDefault(pc => pc.CategoryId == categoryId).CategoryId == categoryId && p.Id != product.Id).Include(p => p.ProductCategories).ThenInclude(pc => pc.Category).ToListAsync();
-
+            var categoryIds = _context.ProductCategories.Where(pc => pc.ProductId == product.Id).Select(pc => pc.Id);
+            ViewBag.Related = _context.Products.Where(p => categoryIds.Contains(p.Id));
             return View(product);
         }
         public IActionResult CategoryProduct(int Id)

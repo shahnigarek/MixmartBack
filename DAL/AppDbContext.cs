@@ -43,6 +43,7 @@ namespace MixmartBackEnd.DAL
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<BCategory> BCategories { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
 
 
 

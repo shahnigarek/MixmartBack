@@ -1109,7 +1109,17 @@ a {
     width: 100%;
     border-bottom: 1px solid #fff;
 }
-
+.header2-right .account i:hover .user1 {
+    display: block;
+}
+.header2-right .account .user1 {
+    margin-top: 2px;
+    background: #eee;
+    left: -90px;
+    padding: 0px 10px;
+    position: absolute;
+    width: 88%;
+}
 .header2-right .user {
     position: absolute;
     background: #fff;

@@ -4,8 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using MixmartBackEnd.DAL;
 using MixmartBackEnd.Interfaces;
 using MixmartBackEnd.Models;
+using MixmartBackEnd.ViewModels.Basket;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MixmartBackEnd.Services
@@ -21,6 +24,58 @@ namespace MixmartBackEnd.Services
             _context = context;
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
+        }
+        public async Task<List<BasketVM>> GetBasketAsync()
+        {
+            string basket = _httpContextAccessor.HttpContext.Request.Cookies["basket"];
+
+            List<BasketVM> basketVMs = null;
+
+            if (!string.IsNullOrWhiteSpace(basket))
+            {
+                basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            }
+            else
+            {
+                basketVMs = new List<BasketVM>();
+            }
+
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.UserName == _httpContextAccessor.HttpContext.User.Identity.Name);
+
+                if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
+                {
+                    foreach (var item in appUser.Baskets)
+                    {
+                        if (!basketVMs.Any(b => b.ProductId == item.ProductId))
+                        {
+                            BasketVM basketVM = new BasketVM
+                            {
+                                ProductId = item.ProductId,
+                                Count = item.Count
+                            };
+
+                            basketVMs.Add(basketVM);
+                        }
+                    }
+
+                    basket = JsonConvert.SerializeObject(basketVMs);
+
+                    _httpContextAccessor.HttpContext.Response.Cookies.Append("basket", basket);
+                }
+            }
+
+            foreach (BasketVM basketVM in basketVMs)
+            {
+                Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == basketVM.ProductId);
+
+                basketVM.Title = product.Title;
+                basketVM.Price = product.DiscountedPrice > 0 ? product.DiscountedPrice : product.Price;
+                basketVM.Image = product.Image;
+            }
+
+            return basketVMs;
         }
 
 

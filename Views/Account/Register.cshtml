@@ -24,13 +24,13 @@
 <main>
     <div class="create-account">
         <h1>Create Account</h1>
-        <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
         <form method="post">
             <div class="inputs">
+        <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Name"></span>
-                <input asp-for="Name" name="" id="FirstName" placeholder="FirstName">
+                <input asp-for="Name" name="" id="Name" placeholder="Name">
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Surname"></span>
-                <input asp-for="Surname" name="" id="LastName" placeholder="LastName">
+                <input asp-for="Surname" name="" id="Surname" placeholder="Surname">
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Age"></span>
                 <input asp-for="Age" name="" id="Age" placeholder="Age">
                 <span  style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="UserName"></span>
