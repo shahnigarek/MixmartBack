@@ -25,19 +25,19 @@
     <div class="create-account">
         <h1>Login</h1>
         <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
-        <form  method="post">
+        <form method="post">
             <div class="inputs">
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Email"></span>
-                <input asp-for="Email" name="" id="Email" placeholder="Email">
+                <input asp-for="Email" placeholder="Email">
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Password"></span>
-                <input asp-for="Password" name="" id="Password" placeholder="Password">
+                <input asp-for="Password" placeholder="Password">
                 <div style="display:flex">
-                <input asp-for="RemindMe">
-                <label for="RemindMe"></label>
-                <p style="padding-bottom:6px;margin-left:5px">Remember Me :)</p>
+                    <input asp-for="RemindMe">
+                    <label for="RemindMe"></label>
+                    <p style="padding-bottom:6px;margin-left:5px">Remember Me :)</p>
 
                 </div>
-                <button >Sign In</button>
+                <button>Sign In</button>
                 <a href="">Forgot your password?</a>
                 <a asp-action="register" asp-controller="account">Create Account</a>
             </div>
@@ -45,3 +45,6 @@
     </div>
 </main>
 
+@section script{
+    <partial name="_ValidationPartial">
+}

@@ -1,5 +1,5 @@
 ﻿
-@model LoginVM
+@model ProfileVM
 @inject ILayoutServices layoutservices
 
 @{
@@ -30,9 +30,7 @@
         <div class="dashboard-warp">
             <div class="author">
                 <div class="media">
-                    <div class="thumbnail">
-                        <img src="assets/images/index/author1.png">
-                    </div>
+
                     <div class="media-body">
                         <h5 class="title mb-0">Hello @appUser.Name</h5>
                     </div>
@@ -45,12 +43,12 @@
                             <div class="nav nav-tabs">
                                 <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-dashboard"
                                    aria-selected="true"><i class="fas fa-th-large"></i>Dashboard</a>
-                              
+
                                 <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-address"
                                    aria-selected="false"><i class="fas fa-home"></i>Addresses</a>
                                 <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-account"
                                    aria-selected="false"><i class="fas fa-user"></i>Account Details</a>
-                                <a class="nav-item nav-link" href="login.html">
+                                <a class="nav-item nav-link" asp-action="logout" asp-controller="account">
                                     <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout
                                 </a>
                             </div>
@@ -122,13 +120,13 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="Name">First Name</label>
-                                                    <input asp-for="@appUser.Name" class="form-control" value="Nigar">
+                                                    <input asp-for="@appUser.Name" class="form-control" value="@appUser.Name">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Last Name</label>
-                                                    <input asp-for="@appUser.Surname" class="form-control" value="Kazimli">
+                                                    <input asp-for="@appUser.Surname" value="@appUser.Surname" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -151,8 +149,7 @@
                                                 <h5 class="title">Password Change</h5>
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input class="form-control"
-                                                           value="123456789101112131415">
+                                                    <input class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>New Password</label>
@@ -178,3 +175,6 @@
     </div>
 </div>
 
+@section script{
+    <partial name="_ValidationPartial">
+}

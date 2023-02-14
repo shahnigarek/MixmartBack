@@ -28,19 +28,19 @@
             <div class="inputs">
         <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Name"></span>
-                <input asp-for="Name" name="" id="Name" placeholder="Name">
+                <input asp-for="Name" placeholder="Name">
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Surname"></span>
-                <input asp-for="Surname" name="" id="Surname" placeholder="Surname">
+                <input asp-for="Surname" placeholder="Surname">
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Age"></span>
-                <input asp-for="Age" name="" id="Age" placeholder="Age">
+                <input asp-for="Age" placeholder="Age">
                 <span  style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="UserName"></span>
-                <input asp-for="UserName" name="" id="UserName" placeholder="UserName">
+                <input asp-for="UserName" placeholder="UserName">
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Email"></span>
-                <input asp-for="Email" name="" id="Email" placeholder="Email">
+                <input asp-for="Email" placeholder="Email">
                 <span  style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="Password"></span>
-                <input asp-for="Password" name="" id="Password" placeholder="Password">
+                <input asp-for="Password" placeholder="Password">
                 <span style="margin-right:auto;margin-top:-10px;" class="text text-danger" asp-validation-for="ConfirmPassword"></span>
-                <input asp-for="ConfirmPassword" name="" id="ConfirmPassword" placeholder="ConfirmPassword">
+                <input asp-for="ConfirmPassword" placeholder="ConfirmPassword">
 
                 <button type="submit">Create</button>
             </div>
@@ -50,6 +50,6 @@
     </div>
 </main>
 
-@*@section script{
+@section script{
     <partial name="_ValidationPartial">
-}*@
+}

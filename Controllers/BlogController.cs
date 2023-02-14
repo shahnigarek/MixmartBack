@@ -33,7 +33,7 @@ namespace MixmartBackEnd.Controllers
 
             return View(blogVM);
         }
-        public async Task<IActionResult> Detail(int? id)
+        public async Task<IActionResult> Detail(int id)
         {
             BlogDetailVM blogdetailVM = new BlogDetailVM()
             {
@@ -49,22 +49,22 @@ namespace MixmartBackEnd.Controllers
         [Authorize]
         [AutoValidateAntiforgeryToken]
         [HttpPost]
-        public async Task<IActionResult> AddComment(Comment comment)
+        public async Task<IActionResult> AddComment(Comment comment,int id)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (!ModelState.IsValid) return RedirectToAction("Details", "Blog", new { id = comment.BlogId });
-            if (!_context.Blogs.Any(f => f.Id == comment.BlogId)) return NotFound();
+            if (!ModelState.IsValid) return RedirectToAction("detail", "Blog");
+            if (!_context.Blogs.Any(f => f.Id != id)) return NotFound();
             Comment cmnt = new Comment
             {
                 Message = comment.Message,
-                BlogId = comment.BlogId,
+                BlogId = id,
                 Date = DateTime.Now,
                 AppUserId = user.Id,
                 IsAccess = true,
             };
             _context.Comments.Add(cmnt);
             _context.SaveChanges();
-            return RedirectToAction("Details", "Blog", new { id = comment.BlogId });
+            return RedirectToAction("detail", "Blog",new { id=id});
         }
         [Authorize]
         public async Task<IActionResult> DeleteComment(int id)
@@ -75,7 +75,7 @@ namespace MixmartBackEnd.Controllers
             Comment comment = _context.Comments.FirstOrDefault(c => c.Id == id && c.AppUserId == user.Id);
             _context.Comments.Remove(comment);
             _context.SaveChanges();
-            return RedirectToAction("Details", "Blog", new { id = comment.BlogId });
+            return RedirectToAction("detail", "Blog",new { id = comment.BlogId });
         }
     }
 }

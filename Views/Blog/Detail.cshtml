@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Detail";
 }
-
 <div class="title-bar"
      style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 90px 0px;">
     <div class="container">
@@ -103,9 +102,7 @@
                 if (comment.AppUser.UserName == User.Identity.Name)
                 {
                     <div class="comment">
-                        <div class="commentorimage">
-                            <img src="~/assets/images/index/blog/author.png" alt="">
-                        </div>
+                      
                         <div class="commentorcomment">
                             <p style="color: #3a3d46;font-weight: 600;">
                                 @comment.AppUser.Name @comment.AppUser.Surname
@@ -125,9 +122,7 @@
                 else
                 {
                     <div class="comment">
-                        <div class="commentorimage">
-                            <img src="~/assets/images/index/blog/author.png" alt="">
-                        </div>
+                      
                         <div class="commentorcomment">
                             <p style="color: #3a3d46;font-weight: 600;">
                                 @comment.AppUser.Name @comment.AppUser.Surname
@@ -151,13 +146,18 @@
             <p style="color: #777777;">
                 Your email address will not be published. Required fields are marked <span style="color: red;">*</span>
             </p>
-            <form asp-action="addcomment" asp-controller="blog" method="post">
-            <textarea name="" id="" cols="45" rows="6" placeholder="Your comment"></textarea>
-          
-            <button type="submit">Post Comment</button>
+            <form asp-action="addcomment" asp-controller="blog" asp-route-id="@Model.Blog.Id" method="post">
+                <input style="width:100%;border:1px solid #eee;padding:40px 20px;outline:none;" asp-for="@Model.Comment.Message" placeholder="Your comment"></input>
+
+                <button type="submit">Post Comment</button>
 
             </form>
         </div>
     </div>
 </main>
 
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <partial name="_ValidationPartial">
+
+}

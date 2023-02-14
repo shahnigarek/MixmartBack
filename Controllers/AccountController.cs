@@ -66,7 +66,6 @@ namespace MixmartBackEnd.Controllers
         {
             return View();
         }
-        [Authorize(Roles = "Member")]
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM loginVM)
@@ -101,7 +100,6 @@ namespace MixmartBackEnd.Controllers
 
         }
 
-        [Authorize(Roles = "Member")]
         public async Task<IActionResult> Profile()
         {
             AppUser appUser = await _userManager.Users
