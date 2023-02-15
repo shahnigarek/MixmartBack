@@ -39,7 +39,7 @@ namespace MixmartBackEnd.Controllers
                 basketVMs = new List<BasketVM>();
             }
 
-            return View(await _getBasketItemAsync(basketVMs));
+            return View(await getBasketItemAsync(basketVMs));
         }
 
         public async Task<IActionResult> AddToBasket(int? id)
@@ -124,7 +124,7 @@ namespace MixmartBackEnd.Controllers
 
             HttpContext.Response.Cookies.Append("basket", basket);
 
-            return PartialView("_BasketPartial", await _getBasketItemAsync(basketVMs));
+            return PartialView("_BasketPartial", await getBasketItemAsync(basketVMs));
         }
 
         public async Task<IActionResult> GetBasket()
@@ -168,7 +168,7 @@ namespace MixmartBackEnd.Controllers
                 }
             }
 
-            return PartialView("_BasketPartial", await _getBasketItemAsync(basketVMs));
+            return PartialView("_BasketPartial", await getBasketItemAsync(basketVMs));
         }
 
         public async Task<IActionResult> DeleteFromBasket(int? id)
@@ -192,7 +192,7 @@ namespace MixmartBackEnd.Controllers
             basket = JsonConvert.SerializeObject(basketVMs);
             HttpContext.Response.Cookies.Append("basket", basket);
 
-            return PartialView("_BasketPartial", await _getBasketItemAsync(basketVMs));
+            return PartialView("_BasketPartial", await getBasketItemAsync(basketVMs));
         }
 
         public async Task<IActionResult> UpdateCount(int? id, int count)
@@ -224,7 +224,7 @@ namespace MixmartBackEnd.Controllers
                 return BadRequest();
             }
 
-            return PartialView("_BasketIndexPartial", await _getBasketItemAsync(basketVMs));
+            return PartialView("_BasketIndexPartial", await getBasketItemAsync(basketVMs));
         }
         public async Task<IActionResult> DeleteFromCart(int? id)
         {
@@ -247,9 +247,9 @@ namespace MixmartBackEnd.Controllers
             basket = JsonConvert.SerializeObject(basketVMs);
             HttpContext.Response.Cookies.Append("basket", basket);
 
-            return PartialView("_BasketIndexPartial", await _getBasketItemAsync(basketVMs));
+            return PartialView("_BasketIndexPartial", await getBasketItemAsync(basketVMs));
         }
-        private async Task<List<BasketVM>> _getBasketItemAsync(List<BasketVM> basketVMs)
+        private async Task<List<BasketVM>> getBasketItemAsync(List<BasketVM> basketVMs)
         {
             if (User.Identity.IsAuthenticated)
             {

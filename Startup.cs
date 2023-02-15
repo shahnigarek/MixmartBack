@@ -34,10 +34,8 @@ namespace MixmartBackEnd
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddScoped<ILayoutServices, LayoutServices>();
 
 
-            services.AddHttpContextAccessor();
 
             services.AddIdentity<AppUser, IdentityRole>(options =>
             {
@@ -51,7 +49,16 @@ namespace MixmartBackEnd
                 options.Lockout.AllowedForNewUsers = true;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
-                
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+            });
+
+
+            services.AddScoped<ILayoutServices, LayoutServices>();
+
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,15 +69,15 @@ namespace MixmartBackEnd
                 app.UseDeveloperExceptionPage();
 
             }
-            //app.UseSession();
+            app.UseSession();
 
             app.UseRouting();
 
+            app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseStaticFiles();
 
 
             app.UseEndpoints(endpoints =>

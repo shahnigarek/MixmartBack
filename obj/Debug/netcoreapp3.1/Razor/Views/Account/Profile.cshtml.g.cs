@@ -82,8 +82,29 @@ using MixmartBackEnd.ViewModels.Account;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.Basket;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.Header;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.Wishlist;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2beb9acfe7d0b30dcff6d76f41430692724e25d0", @"/Views/Account/Profile.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"496e9608e734626c453c76d7cca0ec3df734ff69", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b7bb37e57da426a18608b63611c1fff388924c8e", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_Profile : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ProfileVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("nav-item nav-link"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -182,7 +203,7 @@ using MixmartBackEnd.ViewModels.Account;
                                 <a class=""nav-item nav-link"" data-bs-toggle=""tab"" href=""#nav-account""
                                    aria-selected=""false""><i class=""fas fa-user""></i>Account Details</a>
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d010878", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d011492", async() => {
                 WriteLiteral("\r\n                                    <i class=\"fa-solid fa-arrow-right-from-bracket\"></i>Logout\r\n                                ");
             }
             );
@@ -227,7 +248,7 @@ using MixmartBackEnd.ViewModels.Account;
 #line hidden
 #nullable disable
             WriteLiteral("?</span> ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d013488", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d014102", async() => {
                 WriteLiteral("Log Out");
             }
             );
@@ -346,14 +367,14 @@ using MixmartBackEnd.ViewModels.Account;
                             <div class=""col-lg-9"">
                                 <div class=""dashboard-account"">
                                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d020349", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d020963", async() => {
                 WriteLiteral(@"
                                         <div class=""row"">
                                             <div class=""col-lg-6"">
                                                 <div class=""form-group"">
                                                     <label for=""Name"">First Name</label>
                                                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2beb9acfe7d0b30dcff6d76f41430692724e25d020958", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2beb9acfe7d0b30dcff6d76f41430692724e25d021572", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -392,7 +413,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                                                 <div class=""form-group"">
                                                     <label>Last Name</label>
                                                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2beb9acfe7d0b30dcff6d76f41430692724e25d023670", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2beb9acfe7d0b30dcff6d76f41430692724e25d024284", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -432,7 +453,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                                                     <label>Country/ Region</label>
                                                     <select class=""select2"">
                                                         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d026489", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d027103", async() => {
                     WriteLiteral("United Kindom (UK)");
                 }
                 );
@@ -448,7 +469,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d027781", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d028395", async() => {
                     WriteLiteral("United States (USA)");
                 }
                 );
@@ -464,7 +485,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d029074", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d029688", async() => {
                     WriteLiteral("United Arab Emirates (UAE)");
                 }
                 );
@@ -480,7 +501,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d030374", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2beb9acfe7d0b30dcff6d76f41430692724e25d030988", async() => {
                     WriteLiteral("Australia");
                 }
                 );
@@ -545,7 +566,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             WriteLiteral("\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n");
             DefineSection("script", async() => {
                 WriteLiteral("\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2beb9acfe7d0b30dcff6d76f41430692724e25d035344", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2beb9acfe7d0b30dcff6d76f41430692724e25d035958", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

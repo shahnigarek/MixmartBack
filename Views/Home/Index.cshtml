@@ -29,151 +29,8 @@
 </head>
 
 <body>
-
-    <header class="top">
-        <div class="header-top">
-            <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-top-left">
-                        <a href="">Store Location</a>
-                        <a style="padding-left: 10px;" href="">Order Status</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-top-middle">
-                        <p>Summer sale discount 50% off. </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-top-right">
-                        <a href="@settings.First(s => s.Key == "FacebookUrl").Value"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="@settings.First(s => s.Key == "TwitterUrl").Value"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="@settings.First(s => s.Key == "InstagramUrl").Value"><i class="fa-brands fa-instagram"></i></a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-middle">
-            <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-middle-left">
-                        <div style="margin-right:8px;" class="phone-icon">
-                            <i class="fa-solid fa-phone-volume"></i>
-                        </div>
-                        <span class="phone-box">
-                            <p style="margin: 0;" class="title">CALL US</p>
-                            <p style="margin: 0;" class="number"> @settings.First(s => s.Key == "CallUs").Value</p>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-middle-middle ">
-                        <a href=""><img style="width: 190px;" src="~/assets/images/favicon/@settings.First(s => s.Key == "Logo").Value"></a>
-                        <div class="sidenavigation">
-                            <div id="mySidenav" class="sidenav">
-                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                <a href="#">About</a>
-                                <a href="#">Services</a>
-                                <a href="#">Clients</a>
-                                <a href="#">Contact</a>
-                            </div>
-
-                            <span onclick="openNav()"><i class="fa-solid fa-bars-staggered"></i></span>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-middle-right">
-                        <div style="padding: 10px;" class="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </div>
-                        <div style="padding: 10px;" class="account">
-                            <i class="fa-regular fa-user"></i>
-                        </div>
-                        <div style="padding: 10px;" class="wishlist">
-                            <a href=""><i class="fa-regular fa-heart"></i></a>
-                        </div>
-                        <div style="padding: 10px;" class="cart"><i class="fa-solid fa-cart-shopping"></i></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="header-bottom text-center">
-            <div class="container-fluid">
-                <nav class="nav-bar ">
-                    <ul class="site-nav">
-                        <li class="site-nav__item">
-                            <a asp-action="index" asp-controller="home" class="site-nav__link">Home</a>
-                        </li>
-                        <li class="site-nav__item site-nav__item-normal  site-nav--active">
-                            <a asp-action="index" asp-controller="shop" class="site-nav__link dropdown-toggle">Shop</a>
-                            <div class="site-nav__dropdown meganav">
-                                <ul class="meganav__nav">
-                                    <div class="meganav__list">
-                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                        <a asp-action="index" asp-controller="shippingmethod" class="meganav__link ">Shipping Method</a>
-                                    </li>
-                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                        <a asp-action="index" asp-controller="paymentmethod" class="meganav__link ">Payment Method</a>
-                                    </li>
-                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                        <a asp-action="index" asp-controller="basket" class="meganav__link ">Cart</a>
-                                    </li>
-                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                        <a asp-action="index" asp-controller="account" class="meganav__link ">My account</a>
-                                    </li>
-                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                        <a asp-action="index" asp-controller="ordertracking" class="meganav__link ">Order Tracking</a>
-                                    </li>
-                            </div>
-                    </ul>
-            </div>
-            </li>
-            <li class="site-nav__item">
-                <a asp-action="" asp-controller="" class="site-nav__link">Product</a>
-            </li>
-            <li class="site-nav__item site-nav__item-normal  site-nav--active">
-                <a href="" class="site-nav__link dropdown-toggle">Page</a>
-                <div class="site-nav__dropdown meganav">
-                    <ul class="meganav__nav">
-                        <div class="meganav__list">
-                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                            <a asp-action="index" asp-controller="about" class="meganav__link ">About Us</a>
-                        </li>
-                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                            <a href="404.html" class="meganav__link ">404</a>
-                        </li>
-                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                            <a asp-action="index" asp-controller="supportpage" class="meganav__link ">Support Page</a>
-                        </li>
-                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                            <a asp-action="index" asp-controller="warrantyandservice" class="meganav__link ">
-                                Warranty and
-                                Services
-                            </a>
-                        </li>
-                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                            <a asp-action="index" asp-controller="termandconditions" class="meganav__link ">Term & Conditions</a>
-                        </li>
-                </div>
-                </ul>
-        </div>
-        </li>
-        <li class="site-nav__item">
-            <a asp-action="index" asp-controller="blog" class="site-nav__link">Blog</a>
-        </li>
-        <li class="site-nav__item">
-            <a asp-action="index" asp-controller="contact" class="site-nav__link">Contact Us</a>
-        </li>
-        </ul>
-        </nav>
-        </div>
-        </div>
-    </header>
+    @await Component.InvokeAsync("HeaderIndex", settings)
+  
 
     <main>
         <div class="slider">
@@ -381,37 +238,37 @@
                 <div class="row">
                     @foreach (Product bestseller in Model.IsBestSeller)
                     {
-                            <div class="col-lg-3 mt-5">
-                                <div class="productcart">
-                                    <div style="position:relative" class="product-image">
-                                        @if (bestseller.DiscountedPrice > 0)
-                                        {
-                                            <span class="onsale">-@((((bestseller.Price * 100) / bestseller.DiscountedPrice) - 100).ToString("0.##"))%</span>
+                        <div class="col-lg-3 mt-5 col-sm-6">
+                            <div class="productcart">
+                                <div style="position:relative" class="product-image">
+                                    @if (bestseller.DiscountedPrice > 0)
+                                    {
+                                        <span class="onsale">-@((((bestseller.Price * 100) / bestseller.DiscountedPrice) - 100).ToString("0.##"))%</span>
 
+                                    }
+                                    <img src="~/assets/images/index/shop/@bestseller.Image" alt="">
+                                </div>
+                                <div class="action">
+                                    <a href=""><i class="fa-regular fa-heart"></i></a>
+                                    <a href=""><i class="fa-brands fa-opencart"></i></a>
+
+                                </div>
+                                <div class="product-caption">
+                                    <h3><a href="">@bestseller.Title</a></h3>
+                                    @if (bestseller.DiscountedPrice > 0)
+                                    {
+                                        <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
+                                              class="old-price">$@bestseller.Price</span>
+                                            <span class="price">$@bestseller.DiscountedPrice</span>
                                         }
-                                        <img src="~/assets/images/index/shop/@bestseller.Image" alt="">
-                                    </div>
-                                    <div class="action">
-                                        <a href=""><i class="fa-regular fa-heart"></i></a>
-                                        <a href=""><i class="fa-brands fa-opencart"></i></a>
-
-                                    </div>
-                                    <div class="product-caption">
-                                        <h3><a href="">@bestseller.Title</a></h3>
-                                        @if (bestseller.DiscountedPrice > 0)
+                                        else
                                         {
-                                            <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
-                                                  class="old-price">$@bestseller.Price</span>
-                                                <span class="price">$@bestseller.DiscountedPrice</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="price">$@bestseller.Price</span>
-                                            }
+                                            <span class="price">$@bestseller.Price</span>
+                                        }
 
-                                    </div>
                                 </div>
                             </div>
+                        </div>
 
 
 
@@ -471,7 +328,7 @@
                                     </div>
                                     <div class="post-text">
                                         <div class="categories">
-                                            @foreach (BlogCategory blogCategory in  blog.BlogCategories)
+                                            @foreach (BlogCategory blogCategory in blog.BlogCategories)
                                             {
 
                                                 <a href="">@blogCategory.BCategory.Name</a>
@@ -479,7 +336,7 @@
                                             }
 
                                         </div>
-                                        <h3 >@blog.Title</h3>
+                                        <h3>@blog.Title</h3>
                                     </div>
 
                                 </div>
@@ -600,11 +457,12 @@
             </div>
         </div>
     </footer>
-</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="~/assets/slick/slick.min.js"></script>
 <script src="~/assets/js/main.js"></script>
+<script src="~/assets/js/custom.js"></script>
 <script src="~/assets/js/bootstrap.js"></script>
+</body>
 
 </html>

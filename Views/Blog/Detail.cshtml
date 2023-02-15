@@ -102,7 +102,7 @@
                 if (comment.AppUser.UserName == User.Identity.Name)
                 {
                     <div class="comment">
-                      
+
                         <div class="commentorcomment">
                             <p style="color: #3a3d46;font-weight: 600;">
                                 @comment.AppUser.Name @comment.AppUser.Surname
@@ -122,7 +122,7 @@
                 else
                 {
                     <div class="comment">
-                      
+
                         <div class="commentorcomment">
                             <p style="color: #3a3d46;font-weight: 600;">
                                 @comment.AppUser.Name @comment.AppUser.Surname
@@ -156,8 +156,4 @@
     </div>
 </main>
 
-@section Scripts{
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <partial name="_ValidationPartial">
-
-}
+@await Html.PartialAsync("_ValidationPartial")

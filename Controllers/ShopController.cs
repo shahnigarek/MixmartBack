@@ -54,6 +54,15 @@ namespace MixmartBackEnd.Controllers
             ViewBag.Tags = _context.Tags.Include(t => t.ProductTags).ThenInclude(bt => bt.Product).ToList();
             return View(products);
         }
+        public async Task<IActionResult> Search(string search)
+        {
+            List<Product> products = await _context.Products
+                .Where(p => p.Title.ToLower().Contains(search.ToLower()) ||
+                p.ProductTags.Any(pt => pt.Tag.Name.ToLower().Contains(search.ToLower()))).ToListAsync();
+
+            return PartialView("_SearchPartial", products);
+        }
+
     }
 }
 

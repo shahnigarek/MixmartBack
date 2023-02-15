@@ -1,1 +1,79 @@
-﻿
+﻿@model List<BasketVM>
+
+<div class="shopping-cart">
+
+    <div class="shopping-cart-table table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="image">Image</th>
+                    <th class="productt">Product</th>
+                    <th class="price">Price</th>
+                    <th class="quantity">Quantity</th>
+                    <th class="total">Total</th>
+                    <th class="delete">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (BasketVM basketVM in Model)
+                {
+
+                    <tr>
+                        <td>
+                            <div class="product-image ">
+                                <img style="width:100px" src="~/assets/images/index/shop/@basketVM.Image" alt="cart">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-title">
+                                <h4 class="title"><a href="single-product.html">@basketVM.Title</a></h4>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-price">
+                                <span class="price">€@basketVM.Price.ToString("F2")</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-quantity">
+                                <div class="quantity mt-15 d-flex">
+                                    <a class="subCount btn" asp-controller="basket" asp-action="UpdateCount"
+                                       asp-route-id="@basketVM.ProductId"><i class="fa-solid fa-minus"></i></a>
+                                    <input type="text" value="@basketVM.Count" />
+                                    <a class="addCount btn" asp-controller="basket" asp-action="UpdateCount"
+                                       asp-route-id="@basketVM.ProductId"><i class="fal fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-total">
+                                <span class="total-amount">€@(basketVM.Count * basketVM.Price)</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-delete">
+                                <a class="deletebasket" asp-controller="basket" asp-action="DeleteFromCart"
+                                   asp-route-id="@basketVM.ProductId"><i class="fa-regular fa-trash-can"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-6">
+    <div class="cart-total">
+        <div class="sub-total">
+            <div class="single-total">
+                <span class="cart-value">Subtotal:</span>
+                <span class="cart-amount">€@(Model.Sum(b=>b.Count * b.Price))</span>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+@await Html.PartialAsync("_ValidationPartial")

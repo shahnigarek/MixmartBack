@@ -1,0 +1,167 @@
+﻿@model HeaderVM
+
+<header class="top">
+
+    <div class="header2">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="header2-left">
+                    <a href=""><img style="width: 190px;" src="~/assets/images/favicon/@Model.Settings.First(s => s.Key == "Logo").Value"></a>
+                    <div class="sidenavigation">
+                        <button style="outline: none;border:none;" class="btn" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasWithBackdrop">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                        </button>
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop"
+                             aria-labelledby="offcanvasWithBackdropLabel">
+                            <div class="offcanvas-header">
+
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+
+                                <nav>
+                                    <ul>
+                                        <li><a asp-action="index" asp-controller="home">Home</a></li>
+                                        <li>
+                                            <a asp-action="index" asp-controller="shop">Shop</a>
+                                            <ul>
+                                                <li><a asp-action="index" asp-controller="shippingmethod">Shipping Merhod</a></li>
+                                                <li><a asp-action="index" asp-controller="paymentmethod">Payment Method</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a asp-action="index" asp-controller="shop">Product</a></li>
+                                        <li>
+                                            <a href="">Pages</a>
+                                            <ul>
+                                                <li><a asp-action="index" asp-controller="about">About</a></li>
+                                                <li><a asp-action="index" asp-controller="supportpage">Support Page</a></li>
+                                                <li>
+                                                    <a asp-action="index" asp-controller="warrantyandservice">Warranty and Services</a>
+                                                </li>
+                                                <li><a asp-action="index" asp-controller="termandconditions">Term and Conditions</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a asp-action="index" asp-controller="blog">Blog</a></li>
+                                        <li><a asp-action="index" asp-controller="contact">Contact</a></li>
+                                    </ul>
+                                </nav>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 header2-middle">
+                <nav class="nav-bar">
+                    <ul class="site-nav">
+                        <li class="site-nav__item">
+                            <a asp-action="index" asp-controller="home" class="site-nav__link">Home</a>
+                        </li>
+                        <li class="site-nav__item site-nav__item-normal  site-nav--active">
+                            <a asp-action="index" asp-controller="shop" class="site-nav__link dropdown-toggle">Shop</a>
+                            <div class="site-nav__dropdown meganav">
+                                <ul class="meganav__nav">
+                                    <div class="meganav__list">
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                        <a asp-action="index" asp-controller="shippingmethod" class="meganav__link ">Shipping Method</a>
+                                    </li>
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                        <a asp-action="index" asp-controller="paymentmethod" class="meganav__link ">Payment Method</a>
+                                    </li>
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                        <a asp-action="index" asp-controller="basket" class="meganav__link ">Cart</a>
+                                    </li>
+
+                                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                                        <a href="ordertracking.html" class="meganav__link ">Order Tracking</a>
+                                    </li>
+                            </div>
+                    </ul>
+            </div>
+            </li>
+            <li class="site-nav__item">
+                <a asp-action="detail" asp-controller="shop" class="site-nav__link">Product</a>
+            </li>
+            <li class="site-nav__item site-nav__item-normal  site-nav--active">
+                <a href="" class="site-nav__link dropdown-toggle">Page</a>
+                <div class="site-nav__dropdown1 meganav">
+                    <ul class="meganav__nav">
+                        <div class="meganav__list">
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a asp-action="index" asp-controller="about" class="meganav__link ">About Us</a>
+                        </li>
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a href="404.html" class="meganav__link ">404</a>
+                        </li>
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a asp-action="index" asp-controller="supportpage" class="meganav__link ">Support Page</a>
+                        </li>
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a asp-action="index" asp-controller="warrantyandservice" class="meganav__link ">
+                                Warranty and
+                                Services
+                            </a>
+                        </li>
+                        <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
+                            <a asp-action="index" asp-controller="termandcondition" class="meganav__link ">
+                                Term &
+                                Conditions
+                            </a>
+                        </li>
+                </div>
+                </ul>
+        </div>
+        </li>
+        <li class="site-nav__item">
+            <a asp-action="index" asp-controller="blog" class="site-nav__link">Blog</a>
+        </li>
+        <li class="site-nav__item">
+            <a asp-action="index" asp-controller="contact" class="site-nav__link">Contact Us</a>
+        </li>
+        </ul>
+        </nav>
+    </div>
+    <div class="col-lg-3">
+        <div class="header2-right">
+            <div style="padding: 10px;" class="search">
+                <input type="search" class="searchinput" placeholder="Search...">
+                <div class="search-body" style="position:absolute; z-index:999;background-color:white; width:100%">
+                    <ul class="list-group">
+                    </ul>
+                </div>
+            </div>
+            <div style="padding: 10px;" class="account">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-action="profile" asp-controller="account">  <i class="fa-regular fa-user"></i></a>
+                    <div class="user1">
+                        <div class="text1">
+                            <p>@User.Identity.Name </p>
+                            <a asp-action="logout" asp-controller="account">Logout</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a asp-action="login" asp-controller="account">  <i class="fa-regular fa-user"></i></a>
+
+                }
+            </div>
+            <div style="padding: 10px;" class="wishlist">
+                <a asp-action="addtowishlist" asp-controller="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </a>
+            </div>
+            <div style="padding: 10px;" class="cart">
+                @await Html.PartialAsync("_BasketPartial", Model.BasketVMs)
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    </div>
+</header>
+@await Html.PartialAsync("_ValidationPartial")

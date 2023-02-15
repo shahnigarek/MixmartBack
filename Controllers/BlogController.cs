@@ -52,7 +52,7 @@ namespace MixmartBackEnd.Controllers
         public async Task<IActionResult> AddComment(Comment comment,int id)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (!ModelState.IsValid) return RedirectToAction("detail", "Blog");
+            if (!ModelState.IsValid) return RedirectToAction("detail", "Blog",new { id = id });
             if (!_context.Blogs.Any(f => f.Id != id)) return NotFound();
             Comment cmnt = new Comment
             {

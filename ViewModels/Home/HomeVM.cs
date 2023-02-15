@@ -1,4 +1,5 @@
 ﻿using MixmartBackEnd.Models;
+using MixmartBackEnd.ViewModels.Basket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace MixmartBackEnd.ViewModels.Home
 
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<BlogCategory> BlogCategories { get; set; }
-
+        public List<BasketVM> BasketVMs { get; set; }
 
         public IEnumerable<Blog> Blogs  { get; set; }
         public Blog Blog { get; set; }

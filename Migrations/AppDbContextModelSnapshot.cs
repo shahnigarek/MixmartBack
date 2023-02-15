@@ -312,6 +312,31 @@ namespace MixmartBackEnd.Migrations
                     b.ToTable("BCategories");
                 });
 
+            modelBuilder.Entity("MixmartBackEnd.Models.Basket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Baskets");
+                });
+
             modelBuilder.Entity("MixmartBackEnd.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -580,7 +605,7 @@ namespace MixmartBackEnd.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsAccess")
+                    b.Property<bool?>("IsAccess")
                         .HasColumnType("bit");
 
                     b.Property<string>("Message")
@@ -1576,6 +1601,19 @@ namespace MixmartBackEnd.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MixmartBackEnd.Models.Basket", b =>
+                {
+                    b.HasOne("MixmartBackEnd.Models.AppUser", "AppUser")
+                        .WithMany("Baskets")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("MixmartBackEnd.Models.Product", "Product")
+                        .WithMany("Baskets")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MixmartBackEnd.Models.BlogCategory", b =>
                 {
                     b.HasOne("MixmartBackEnd.Models.BCategory", "BCategory")
@@ -1598,7 +1636,7 @@ namespace MixmartBackEnd.Migrations
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("MixmartBackEnd.Models.Blog", "Blog")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("BlogId");
                 });
 

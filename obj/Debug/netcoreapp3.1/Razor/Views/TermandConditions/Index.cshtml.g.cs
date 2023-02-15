@@ -82,8 +82,29 @@ using MixmartBackEnd.ViewModels.Account;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.Basket;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.Header;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\Views\_ViewImports.cshtml"
+using MixmartBackEnd.ViewModels.Wishlist;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5fc5a49cc73087c61ba11f4971d1536672d4ca66", @"/Views/TermandConditions/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"496e9608e734626c453c76d7cca0ec3df734ff69", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b7bb37e57da426a18608b63611c1fff388924c8e", @"/Views/_ViewImports.cshtml")]
     public class Views_TermandConditions_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<TermandCondition>>
     {
         #pragma warning disable 1998
