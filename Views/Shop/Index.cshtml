@@ -69,7 +69,7 @@
                                         <img src="~/assets/images/index/shop/@product.Image" alt="">
                                     </div>
                                     <div class="action">
-                                        <a href=""><i class="fa-regular fa-heart"></i></a>
+                                        <a asp-controller="wishlist" asp-action="AddToWishlist" asp-route-id="@product.Id" class="addtowishlist"><i class="fa-regular fa-heart"></i></a>
                                         <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@product.Id" class="addbasket"><i class="fa-brands fa-opencart"></i></a>
 
                                     </div>

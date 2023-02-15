@@ -59,6 +59,18 @@ $(document).on('click', '.addbasket', function (e) {
 })
 
 
+$(document).on('click', '.addtowishlist', function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr('href');
+
+    fetch(url)
+        .then(res => res.text())
+        .then(data => {
+            $('.wishlist').html(data);
+        });
+})
+
 $(document).on('click', '.deletebasket', function (e) {
     e.preventDefault();
 
@@ -66,6 +78,14 @@ $(document).on('click', '.deletebasket', function (e) {
     fetch($(this).attr('href'))
         .then(res => res.text())
         .then(data => { $('.basket').html(data) });
+})
+
+$(document).on('click', '.deletewishlist', function (e) {
+    e.preventDefault();
+
+    fetch($(this).attr('href'))
+        .then(res => res.text())
+        .then(data => { $('.wishlist').html(data) });
 })
 $(document).on('click', '.product-close', function (e) {
     e.preventDefault();

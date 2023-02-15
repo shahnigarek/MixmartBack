@@ -5,6 +5,7 @@ using MixmartBackEnd.DAL;
 using MixmartBackEnd.Interfaces;
 using MixmartBackEnd.Models;
 using MixmartBackEnd.ViewModels.Basket;
+using MixmartBackEnd.ViewModels.Wishlist;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -79,6 +80,32 @@ namespace MixmartBackEnd.Services
         }
 
 
+        public async Task<List<WishlistVM>> GetWishlistAsync()
+        {
+            string coockie = _httpContextAccessor.HttpContext.Request.Cookies["wishlist"];
+
+            List<WishlistVM> wishlistVMs = null;
+
+            if (!string.IsNullOrWhiteSpace(coockie))
+            {
+                wishlistVMs = JsonConvert.DeserializeObject<List<WishlistVM>>(coockie);
+            }
+            else
+            {
+                wishlistVMs = new List< WishlistVM>();
+            }
+
+            foreach (WishlistVM wishlistVM in wishlistVMs)
+            {
+                Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == wishlistVM.Id);
+
+                wishlistVM.Image = product.Image;
+                wishlistVM.Price = product.DiscountedPrice > 0 ? product.DiscountedPrice : product.Price;
+                wishlistVM.Title = product.Title;
+            }
+
+            return wishlistVMs;
+        }
         public async Task<Dictionary<string, string>> GetSettingsAsync()
         {
             return await _context.Settings.ToDictionaryAsync(s => s.Key, s => s.Value);

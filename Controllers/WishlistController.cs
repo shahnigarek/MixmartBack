@@ -20,70 +20,139 @@ namespace MixmartBackEnd.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task< IActionResult> Index()
         {
-            return View();
+
+            string wishlist = Request.Cookies["wishlist"];
+
+            List<WishlistVM> wishlistVMs = null;
+
+            if (!string.IsNullOrWhiteSpace(wishlist))
+            {
+                wishlistVMs = JsonConvert.DeserializeObject<List<WishlistVM>>(wishlist);
+            }
+            else
+            {
+                wishlistVMs = new List<WishlistVM>();
+            }
+
+            return View(await _getWishlistAsync(wishlist));
+        }
+        public async Task<IActionResult> GetWishlist()
+        {
+            string wishlist = Request.Cookies["wishlist"];
+
+            if (string.IsNullOrWhiteSpace(wishlist))
+            {
+                return BadRequest();
+            }
+
+            return PartialView("_WishlistIndexPartial", await _getWishlistAsync(wishlist));
         }
 
         public async Task<IActionResult> AddToWishlist(int? id)
         {
-            if (id == null)
+            if (id == null) return BadRequest();
+
+            Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null) return NotFound();
+
+            List<WishlistVM> wishlistVMs = null;
+
+            string coockie = HttpContext.Request.Cookies["wishlist"];
+
+            if (!string.IsNullOrWhiteSpace(coockie))
             {
-                return BadRequest("Id can't be null");
-            }
+                wishlistVMs = JsonConvert.DeserializeObject<List<WishlistVM>>(coockie);
 
-
-            if (!await _context.Products.AnyAsync(p => p.IsDeleted == false && p.Id == id))
-            {
-                return NotFound("Id is wrong");
-            }
-
-            string wishlist = HttpContext.Request.Cookies["wishlist"];
-            List<WishlistVM> products = null;
-
-            if (!string.IsNullOrWhiteSpace(wishlist))
-            {
-                products = JsonConvert.DeserializeObject<List<WishlistVM>>(wishlist);
-                WishlistVM wishlistVM = products.Find(p => p.Id == id);
-                if (wishlistVM != null)
+                if (wishlistVMs.Exists(b => b.Id == id))
                 {
-                    wishlistVM.Count += 1;
+                    wishlistVMs.Find(b => b.Id == id).Count++;
                 }
                 else
                 {
-                    wishlistVM = new WishlistVM
+                    WishlistVM wishlistVM = new WishlistVM
                     {
                         Id = (int)id,
                         Count = 1
                     };
 
-                    products.Add(wishlistVM);
+                    wishlistVMs.Add(wishlistVM);
                 }
             }
             else
             {
-                products = new List<WishlistVM>();
+                wishlistVMs = new List<WishlistVM>();
+
                 WishlistVM wishlistVM = new WishlistVM
                 {
                     Id = (int)id,
                     Count = 1
                 };
-                products.Add(wishlistVM);
+
+                wishlistVMs.Add(wishlistVM);
             }
 
-            wishlist = JsonConvert.SerializeObject(products);
-            HttpContext.Response.Cookies.Append("wishlist", wishlist);
+            string item = JsonConvert.SerializeObject(wishlistVMs);
 
-            foreach (WishlistVM wishlistVM in products)
+            HttpContext.Response.Cookies.Append("wishlist", item);
+
+            return PartialView("_WishlistIndexPartial", await _getWishlistAsync(item));
+        }
+        public async Task<IActionResult> DeleteFromWishlist(int? id)
+        {
+            if (id == null) return BadRequest();
+
+            if (!await _context.Products.AnyAsync(p => p.Id == id)) return NotFound();
+
+            string coockie = HttpContext.Request.Cookies["wishlist"];
+
+            if (!string.IsNullOrWhiteSpace(coockie))
             {
-                Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == wishlistVM.Id && p.IsDeleted == false);
+                List<WishlistVM> wishlistVMs = JsonConvert.DeserializeObject<List<WishlistVM>>(coockie);
 
-                wishlistVM.Title = product.Title;
+                WishlistVM   wishlistVM = wishlistVMs.FirstOrDefault(b => b.Id == id);
+
+                if (wishlistVM == null) return NotFound();
+
+                wishlistVMs.Remove(wishlistVM);
+
+                coockie = JsonConvert.SerializeObject(wishlistVMs);
+
+                HttpContext.Response.Cookies.Append("wishlist", coockie);
+
+                return PartialView("_WishlistIndexPartial", await _getWishlistAsync(coockie));
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        private async Task<List<WishlistVM>> _getWishlistAsync(string coockie)
+        {
+            List<WishlistVM> wishlistVMs = null;
+
+            if (!string.IsNullOrWhiteSpace(coockie))
+            {
+                wishlistVMs = JsonConvert.DeserializeObject<List<WishlistVM>>(coockie);
+            }
+            else
+            {
+                wishlistVMs = new List<WishlistVM>();
+            }
+
+            foreach (WishlistVM wishlistVM in wishlistVMs)
+            {
+                Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == wishlistVM.Id);
+
                 wishlistVM.Image = product.Image;
                 wishlistVM.Price = product.DiscountedPrice > 0 ? product.DiscountedPrice : product.Price;
+                wishlistVM.Title = product.Title;
             }
 
-            return PartialView("_BasketCartPartial", products);
+            return wishlistVMs;
         }
+
     }
 }

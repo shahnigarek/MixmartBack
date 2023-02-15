@@ -22,6 +22,7 @@ namespace MixmartBackEnd.Models
         public string Description2 { get; set; }
         [StringLength(2500)]
         public string Description3 { get; set; }
+        public int Count { get; set; }
 
         public double Price { get; set; }
         public double DiscountedPrice { get; set; }

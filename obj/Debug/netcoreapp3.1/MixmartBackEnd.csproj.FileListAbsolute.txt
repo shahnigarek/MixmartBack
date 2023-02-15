@@ -258,3 +258,5 @@ C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Basket\Index.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Header\Default.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\HeaderIndex\Default.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_WishlistIndexPartial.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Wishlist\Index.cshtml.g.cs

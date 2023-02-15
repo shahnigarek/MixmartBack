@@ -1,5 +1,6 @@
 ﻿using MixmartBackEnd.Models;
 using MixmartBackEnd.ViewModels.Basket;
+using MixmartBackEnd.ViewModels.Wishlist;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace MixmartBackEnd.Interfaces
 
         Task<AppUser> GetUserAsync();
         Task<List<BasketVM>> GetBasketAsync();
+        Task<List<WishlistVM>> GetWishlistAsync();
     }
 }

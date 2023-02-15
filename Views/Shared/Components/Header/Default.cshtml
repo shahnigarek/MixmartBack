@@ -150,9 +150,10 @@
                 }
             </div>
             <div style="padding: 10px;" class="wishlist">
-                <a asp-action="addtowishlist" asp-controller="wishlist">
+                <a asp-action="index" asp-controller="wishlist">
                     <i class="fa-regular fa-heart"></i>
                 </a>
+
             </div>
             <div style="padding: 10px;" class="cart">
                 @await Html.PartialAsync("_BasketPartial", Model.BasketVMs)
