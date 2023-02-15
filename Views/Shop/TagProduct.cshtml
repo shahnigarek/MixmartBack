@@ -36,26 +36,7 @@
             </div>
         </div>
         <div class=" col-lg-9   maincontent">
-            <div class=" sorting">
-                <div class="col-lg-6">
-                    <select name="sort" required>
-                        <option value="" disabled selected hidden>Default sorting</option>
-                        <option value="popularity">Sort by popularity</option>
-                        <option value="rating">Sort by average rating</option>
-                        <option value="latest">Sort by latest</option>
-                        <option value="lowtohigh">Sort by price: low to high</option>
-                        <option value="hightolow">Sort by price: high to low</option>
-                    </select>
-
-                </div>
-                <div class="col-lg-6 result" style="text-align: right;">
-                    <p style="color: #777777;    font-family: eina03,helvetica neue,helvetica,arial,sans-serif;font-weight: 400;">
-                        Showing 1–12 of 35 results
-                    </p>
-                </div>
-
-
-            </div>
+     
             <div class="productss">
                 <div class="row">
                     @await Html.PartialAsync("_ProductPartialView", Model)

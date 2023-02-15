@@ -45,18 +45,6 @@ $(document).on('click', '.addCount', function (e) {
         })
 })
 
-//$(document).on('click', '.deletefromcartbtn', function (e) {
-//    e.preventDefault();
-
-//    fetch($(this).attr('href'))
-//        .then(res => res.text())
-//        .then(data => {
-//            $('.basket').html(data);
-//            fetch('/basket/getbasket')
-//                .then(res => res.text())
-//                .then(data => { $('.cart').html(data) });
-//        })
-//})
 
 $(document).on('click', '.addbasket', function (e) {
     e.preventDefault();
@@ -69,6 +57,7 @@ $(document).on('click', '.addbasket', function (e) {
             $('.cart').html(data);
         });
 })
+
 
 $(document).on('click', '.deletebasket', function (e) {
     e.preventDefault();
