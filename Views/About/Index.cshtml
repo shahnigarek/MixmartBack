@@ -63,7 +63,7 @@
                 <p>
                     @Html.Raw(Model.Story.Description)
                 </p>
-                <a href=""><button>Shop Now</button></a>
+                <a asp-action="index" asp-controller="shop"><button>Shop Now</button></a>
             </div>
             <div class="storyvideo col-lg-3" style="background-image: url(/assets/images/index/error/@Model.Story.Image);">
                 <div class="playicon">

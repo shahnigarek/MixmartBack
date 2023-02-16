@@ -3,6 +3,7 @@
 @inject ILayoutServices layoutservices
 @{
     Dictionary<string, string> settings = await layoutservices.GetSettingsAsync();
+
 }
 
 <header class="top">
@@ -117,8 +118,8 @@
 
                         }
                     </div>
-                    <div style="padding: 10px;" class="wishlist">
-                        <a href="wishlist.html">
+                    <div style="padding: 10px;" class="wishlisttt">
+                        <a asp-action="index" asp-controller="wishlist">
                             <i class="fa-regular fa-heart"></i>
                         </a>
                     </div>
@@ -152,18 +153,13 @@
                                 <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
                                     <a asp-action="index" asp-controller="basket" class="meganav__link ">Cart</a>
                                 </li>
-                                <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                    <a asp-action="index" asp-controller="account" class="meganav__link ">My account</a>
-                                </li>
-                                <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                                    <a asp-action="index" asp-controller="ordertracking" class="meganav__link ">Order Tracking</a>
-                                </li>
+                              
                         </div>
                 </ul>
         </div>
         </li>
         <li class="site-nav__item">
-            <a asp-action="" asp-controller="" class="site-nav__link">Product</a>
+            <a asp-action="index" asp-controller="shop" class="site-nav__link">Product</a>
         </li>
         <li class="site-nav__item site-nav__item-normal  site-nav--active">
             <a href="" class="site-nav__link dropdown-toggle">Page</a>
@@ -173,9 +169,7 @@
                     <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
                         <a asp-action="index" asp-controller="about" class="meganav__link ">About Us</a>
                     </li>
-                    <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
-                        <a href="404.html" class="meganav__link ">404</a>
-                    </li>
+              
                     <li class="site-nav__dropdown-container site-nav__dropdown-container--second-level">
                         <a asp-action="index" asp-controller="supportpage" class="meganav__link ">Support Page</a>
                     </li>

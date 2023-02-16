@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,18 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
     public class DashboardController : Controller
     {
         [Area("manage")]
-
         public IActionResult Index()
         {
+            if (User.IsInRole("Member"))
+            {
+
+                return NotFound();
+
+            }
+            else
+            {
             return View();
+            }
         }
     }
 }

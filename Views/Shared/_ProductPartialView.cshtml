@@ -11,10 +11,10 @@
                         <span class="onsale">-@((((product.Price * 100) / product.DiscountedPrice) - 100).ToString("0.##"))%</span>
 
                     }
-                    <img src="~/assets/images/index/shop/@product.Image" alt="">
+                <a asp-action="detail" asp-controller="shop" asp-route-id="@product.Id"></a><img src="~/assets/images/index/shop/@product.Image" alt="">
                 </div>
                 <div class="action">
-                    <a href=""><i class="fa-regular fa-heart"></i></a>
+                    <a asp-action="AddToWishlist" asp-controller="wishlist" asp-route-id="@product.Id" class="addtowishlist"><i class="fa-regular fa-heart"></i></a>
                     <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@product.Id" class="addbasket"><i class="fa-brands fa-opencart"></i></a>
 
                 </div>

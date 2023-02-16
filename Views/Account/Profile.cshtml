@@ -44,8 +44,7 @@
                                 <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-dashboard"
                                    aria-selected="true"><i class="fas fa-th-large"></i>Dashboard</a>
 
-                                <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-address"
-                                   aria-selected="false"><i class="fas fa-home"></i>Addresses</a>
+                          
                                 <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-account"
                                    aria-selected="false"><i class="fas fa-user"></i>Account Details</a>
                                 <a class="nav-item nav-link" asp-action="logout" asp-controller="account">
@@ -68,103 +67,54 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-address">
-                            <div class="dashboard-address">
-                                <p class="notice-text">
-                                    The following addresses will be used on the checkout page by
-                                    default.
-                                </p>
-                                <div class="row ">
-                                    <div class="col-lg-6">
-                                        <div class="address-info" style="margin-bottom: 40px;">
-                                            <div class="addrss-header d-flex align-items-center justify-content-between">
-                                                <h4 style="margin-bottom: 0px;" class="title ">Shipping Address</h4>
-                                                <a href="#" class="address-edit"><i class="far fa-edit"></i></a>
-                                            </div>
-                                            <ul class="address-details">
-                                                <li>Name: @appUser.Name @appUser.Surname</li>
-                                                <li>Email: @appUser.Email</li>
-                                                <li>Phone: 1234 567890</li>
-                                                <li style="margin-top: 30px;">
-                                                    7398 Smoke Ranch Road <br>
-                                                    Las Vegas, Nevada 89128
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="address-info">
-                                            <div class="addrss-header d-flex align-items-center justify-content-between">
-                                                <h4 class="title" style="margin-bottom: 0px;">Billing Address</h4>
-                                                <a href="#" class="address-edit"><i class="far fa-edit"></i></a>
-                                            </div>
-                                            <ul class="address-details">
-                                                <li>Name: @appUser.Name @appUser.Surname</li>
-                                                <li>Email: @appUser.Email</li>
-                                                <li>Phone: 1234 567890</li>
-                                                <li style="margin-top: 30px;">
-                                                    7398 Smoke Ranch Road <br>
-                                                    Las Vegas, Nevada 89128
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="tab-pane fade" id="nav-account">
                             <div class="col-lg-9">
                                 <div class="dashboard-account">
-                                    <form class="account-details-form" method="post">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label for="Name">First Name</label>
-                                                    <input asp-for="@appUser.Name" class="form-control" value="@appUser.Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label>Last Name</label>
-                                                    <input asp-for="@appUser.Surname" value="@appUser.Surname" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group" style="margin-bottom: 40px;">
-                                                    <label>Country/ Region</label>
-                                                    <select class="select2">
-                                                        <option value="1">United Kindom (UK)</option>
-                                                        <option value="1">United States (USA)</option>
-                                                        <option value="1">United Arab Emirates (UAE)</option>
-                                                        <option value="1">Australia</option>
-                                                    </select>
-                                                    <p class="b3" style="margin-top: 10px;">
-                                                        This will be how your
-                                                        name will be
-                                                        displayed in the account section and in reviews
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <h5 class="title">Password Change</h5>
-                                                <div class="form-group">
-                                                    <label>Password</label>
-                                                    <input class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>New Password</label>
-                                                    <input type="password" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Confirm New Password</label>
-                                                    <input type="password" class="form-control">
-                                                </div>
-                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                    <input type="submit" class="btn" value="Save Changes">
-                                                </div>
-                                            </div>
+                                    <form method="post" asp-action="profile" asp-controller="account">
+                                        <div asp-validation-summary="ModelOnly" class="text text-danger"></div>
+                                        <div class="form-group">
+                                            <label asp-for="Name"></label>
+                                            <input asp-for="Name" class="form-control" placeholder="Name">
+                                            <span asp-validation-for="Name" class="text text-danger"></span>
                                         </div>
+                                        <div class="form-group">
+                                            <label asp-for="Surname"></label>
+                                            <input asp-for="Surname" class="form-control" placeholder="Name">
+                                            <span asp-validation-for="Surname" class="text text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Age"></label>
+                                            <input asp-for="Age" class="form-control" placeholder="Age">
+                                            <span asp-validation-for="Age" class="text text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="UserName"></label>
+                                            <input asp-for="UserName" class="form-control" placeholder="UserName">
+                                            <span asp-validation-for="UserName" class="text text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Email"></label>
+                                            <input asp-for="Email" class="form-control" placeholder="Email">
+                                            <span asp-validation-for="Email" class="text text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="CurrentPassword"></label>
+                                            <input asp-for="CurrentPassword" class="form-control" placeholder="CurrentPassword">
+                                            <span asp-validation-for="CurrentPassword" class="text text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="NewPassword"></label>
+                                            <input asp-for="NewPassword" class="form-control" placeholder="NewPassword">
+                                            <span asp-validation-for="NewPassword" class="text text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="ConfirmPassword"></label>
+                                            <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword">
+                                            <span asp-validation-for="ConfirmPassword" class="text text-danger"></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Create</button>
                                     </form>
+
                                 </div>
                             </div>
                         </div>

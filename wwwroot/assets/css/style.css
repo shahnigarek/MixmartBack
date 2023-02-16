@@ -472,7 +472,7 @@ a {
         margin-left: 13%;
     }
 
-        .product .product-info .cart .addtocartbtn {
+        .product .product-info .cart .addtocartbtnn {
             background-color: #f4c3bc;
             color: #fff;
             border: none;
@@ -1633,7 +1633,9 @@ a {
     background-color: #2d2d2d;
     border-color: #2d2d2d;
     color: #fff;
-    padding: 10px 130px;
+    padding: 14px 85px;
+    margin-top: -10px;
+    width: 100%;
     font-size: 20px;
 }
 
@@ -3363,40 +3365,44 @@ label {
 .basket {
     padding: 35px 70px;
 }
+.wishlist {
+    padding: 35px 70px;
+}
 
-    .basket .shopping-cart-table .table {
+
+    .shopping-cart-table .table {
         width: 100%;
         border: 1px solid #eee;
     }
 
-        .basket .shopping-cart-table .table th {
+        .shopping-cart-table .table th {
             font-weight: 500;
             padding: 10px;
             text-transform: uppercase;
         }
 
-        .basket .shopping-cart-table .table tbody td {
+         .shopping-cart-table .table tbody td {
             padding: 10px;
         }
 
-        .basket .shopping-cart-table .table .product-title .title {
+         .shopping-cart-table .table .product-title .title {
             font-size: 20px;
             font-weight: 400;
         }
 
-        .basket .shopping-cart-table .table .product-quantity a {
+        .product-quantity a {
             outline: none;
             border: 1px solid #eee;
             border-radius: 0px;
         }
 
-        .basket .shopping-cart-table .table .product-quantity input {
+          .product-quantity input {
             outline: none;
             border: 1px solid #eee;
             width: 10%;
             text-align: center;
         }
-
+          
 
 /* BasketEnd */
 
@@ -4001,7 +4007,7 @@ label {
                 padding-left: 60px !important;
             }
 
-                .product .product-info .cart .addtocartbtn {
+                .product .product-info .cart .addtocartbtnn {
                     background-color: #f4c3bc;
                     color: #fff;
                     border: none;
@@ -6463,7 +6469,7 @@ label {
                 padding-left: 0px;
             }
 
-                .product .product-info .cart .addtocartbtn {
+                .product .product-info .cart .addtocartbtnn {
                     background-color: #f4c3bc;
                     color: #fff;
                     border: none;

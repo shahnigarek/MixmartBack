@@ -232,6 +232,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
 
             return RedirectToAction("Index", "Dashboard", new { area = "manage" });
         }
+
     }
 }
 
@@ -250,8 +251,8 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
 //    {
 //        Email = "shahnigarek@code.edu.az",
 //        Name = "Shahnigar",
-//        Surname="Kazimli",
-//        Age=19,
+//        Surname = "Kazimli",
+//        Age = 19,
 //        UserName = "Shahnigarek"
 //    };
 

@@ -13,7 +13,7 @@ $(document).on('click', '.subCount', function (e) {
         fetch(url)
             .then(res => res.text())
             .then(data => {
-                $('.basket').html(data);
+                $('.baskett').html(data);
                 fetch('/basket/getbasket')
                     .then(res => res.text())
                     .then(data => { $('.cart').html(data) });
@@ -38,7 +38,7 @@ $(document).on('click', '.addCount', function (e) {
     fetch(url)
         .then(res => res.text())
         .then(data => {
-            $('.basket').html(data);
+            $('.baskett').html(data);
             fetch('/basket/getbasket')
                 .then(res => res.text())
                 .then(data => { $('.cart').html(data) });
@@ -67,7 +67,7 @@ $(document).on('click', '.addtowishlist', function (e) {
     fetch(url)
         .then(res => res.text())
         .then(data => {
-            $('.wishlist').html(data);
+            $('.wishlistt').html(data);
         });
 })
 
@@ -77,7 +77,7 @@ $(document).on('click', '.deletebasket', function (e) {
 
     fetch($(this).attr('href'))
         .then(res => res.text())
-        .then(data => { $('.basket').html(data) });
+        .then(data => { $('.baskett').html(data) });
 })
 
 $(document).on('click', '.deletewishlist', function (e) {
@@ -85,7 +85,7 @@ $(document).on('click', '.deletewishlist', function (e) {
 
     fetch($(this).attr('href'))
         .then(res => res.text())
-        .then(data => { $('.wishlist').html(data) });
+        .then(data => { $('.wishlistt').html(data) });
 })
 $(document).on('click', '.product-close', function (e) {
     e.preventDefault();

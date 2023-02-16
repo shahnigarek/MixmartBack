@@ -7,8 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MixmartBackEnd.Controllers
+namespace MixmartBackEnd.Areas.Manage.Controllers
 {
+    [Area("manage")]
     public class ContactController : Controller
     {
         private readonly AppDbContext _context;
@@ -20,25 +21,20 @@ namespace MixmartBackEnd.Controllers
         }
         public IActionResult Index()
         {
-
-            return View();
+            IEnumerable<Contact> contact = _context.Contacts.ToList();
+            return View(contact);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Message(Contact msg)
+
+        public IActionResult Delete(int id)
         {
-            if (!ModelState.IsValid) return View();
-            Contact contact = new Contact
-            {
-                Id = msg.Id,
-                Message = msg.Message,
-                Email = msg.Email,
-                Name=msg.Name,
-                Date = DateTime.Now,
-            };
-            _context.Contacts.Add(contact);
+            Contact contact = _context.Contacts.SingleOrDefault(c => c.Id == id);
+            if (contact == null) return Json(new { status = 404 });
+
+            _context.Contacts.Remove(contact);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+
+            return Json(new { status = 200 });
+
         }
     }
 }

@@ -14,9 +14,7 @@
                     <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
                     <span style="color: #3a3d46;font-size: 15px;">Products</span>
                     <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
-                    <span style="color: #3a3d46;font-size: 15px;">Uncategorized</span>
-                    <i style="color: #777777;font-size: 8px;padding: 0 10px;" class="fa-solid fa-chevron-right"></i>
-                    <span style="color: #3a3d46;font-size: 15px;">Peach Wood Chopsticks</span>
+                    <span style="color: #3a3d46;font-size: 15px;">@Model.Title</span>
                 </div>
             </div>
         </div>
@@ -31,16 +29,7 @@
             <div class="col-lg-5">
                 <div class="productinfo">
                     <h1>@Model.Title</h1>
-                    <div class="productrating">
-                        <div class="staricon">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                        <a href="">(5 customer reviews)</a>
-                    </div>
+                  
                     @if (Model.DiscountedPrice > 0)
                     {
                         <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
@@ -65,8 +54,14 @@
                         </ul>
                     </div>
                     <form action="">
-                        <div class="buttons">
-                            <input type="number" value="1" id="quantity" name="quantity" min="1" max="@Model.Count">
+                        <div class="product-quantity" style="width:39%">
+                            <div class="quantity mt-15 d-flex">
+                                <a class="subCount btn" asp-controller="basket" asp-action="UpdateCount"
+                                   asp-route-id="@Model.Id"><i class="fa-solid fa-minus"></i></a>
+                                <input type="text" value="1" />
+                                <a class="addCount btn" asp-controller="basket" asp-action="UpdateCount"
+                                   asp-route-id="@Model.Id"><i class="fal fa-plus"></i></a>
+                            </div>
                         </div>
                         <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@Model.Id" class="addbasket">
                             <button>
@@ -74,10 +69,10 @@
                                 Cart
                             </button>
                         </a>
-                      
+
                     </form>
-                    <div class="addtowishlist">
-                        <a href=""> + Add to Wishlist</a>
+                    <div class="">
+                        <a asp-controller="wishlist" asp-action="AddToWishlist" asp-route-id="@Model.Id" class="addtowishlist"> + Add to Wishlist</a>
                     </div>
                     <div class="categoryproduct">
                         <span style="display: block;color: #333;line-height: 2;">
@@ -92,13 +87,13 @@
                     <div class="socialshare">
                         <span>Share on:</span>
 
-                        <a href=""><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href=""><i class="fa-brands fa-twitter"></i></a>
-                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href=""><i class="fa-brands fa-tumblr"></i></a>
-                        <a href=""><i class="fa-brands fa-google-plus-g"></i></a>
-                        <a href=""><i class="fa-brands fa-pinterest"></i></a>
-                        <a href=""><i class="fa-solid fa-envelope"></i></a>
+                        <a href="@Model.FacebookUrl"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="@Model.TwitterUrl"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="@Model.LinkedinUrl"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="@Model.TumblrUrl"><i class="fa-brands fa-tumblr"></i></a>
+                        <a href="@Model.GooglePlusUrl"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="@Model.PinterestUrl"><i class="fa-brands fa-pinterest"></i></a>
+                        <a href="@Model.EnvelopeUrl"><i class="fa-solid fa-envelope"></i></a>
                     </div>
                 </div>
             </div>

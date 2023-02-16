@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MixmartBackEnd.DAL;
@@ -16,11 +17,13 @@ namespace MixmartBackEnd.ViewComponents
     public class HeaderViewComponent:ViewComponent
     {
         private readonly AppDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<AppUser> _userManager;
 
-        public HeaderViewComponent(AppDbContext context, UserManager<AppUser> userManager)
+        public HeaderViewComponent(AppDbContext context, IHttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
         }
 
@@ -37,7 +40,8 @@ namespace MixmartBackEnd.ViewComponents
 
                 if (User.Identity.IsAuthenticated)
                 {
-                    AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+                    var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+                    AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.UserName == user.UserName);
 
                     if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
                     {

@@ -13,7 +13,7 @@ namespace MixmartBackEnd.Interfaces
         Task<Dictionary<string, string>> GetSettingsAsync();
 
         Task<AppUser> GetUserAsync();
-        Task<List<BasketVM>> GetBasketAsync();
+        Task<List<BasketVM>> GetBasket();
         Task<List<WishlistVM>> GetWishlistAsync();
     }
 }

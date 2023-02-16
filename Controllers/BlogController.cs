@@ -77,5 +77,29 @@ namespace MixmartBackEnd.Controllers
             _context.SaveChanges();
             return RedirectToAction("detail", "Blog",new { id = comment.BlogId });
         }
+        //public IActionResult PreviousPost(int id)
+        //{
+        //    var posts = _context.Blogs.OrderBy(p => p.Date).ToList();
+        //    var index = posts.FindIndex(p => p.Id == id);
+        //    if (index == -1)
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
+        //    var previousPost = index > 0 ? posts[index - 1] : null;
+        //    return previousPost != null ? RedirectToAction("Details", new { id = previousPost.Id }) : RedirectToAction("Index");
+        //}
+
+        //public IActionResult NextPost(int id)
+        //{
+        //    var posts = _context.Blogs.OrderBy(p => p.Date).ToList();
+        //    var index = posts.FindIndex(p => p.Id == id);
+        //    if (index == -1)
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
+        //    var nextPost = index < posts.Count - 1 ? posts[index + 1] : null;
+        //    return nextPost != null ? RedirectToAction("Details", new { id = nextPost.Id }) : RedirectToAction("Index");
+        //}
+
     }
 }

@@ -21,12 +21,12 @@
                     <tr>
                         <td>
                             <div class="product-image ">
-                                <img style="width:100px" src="~/assets/images/index/shop/@basketVM.Image" alt="cart">
+                                <a asp-action="detail" asp-controller="shop" asp-route-id="@basketVM.ProductId"> <img style="width:100px" src="~/assets/images/index/shop/@basketVM.Image" alt="cart"></a>
                             </div>
                         </td>
                         <td>
                             <div class="product-title">
-                                <h4 class="title"><a href="single-product.html">@basketVM.Title</a></h4>
+                                <h4 class="title"><a asp-action="detail" asp-controller="shop" asp-route-id="@basketVM.ProductId" >@basketVM.Title</a></h4>
                             </div>
                         </td>
                         <td>

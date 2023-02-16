@@ -5,6 +5,7 @@
     Dictionary<string, string> settings = await layoutservices.GetSettingsAsync();
     Layout = null;
     ViewData["Title"] = "Index";
+
 }
 
 
@@ -30,7 +31,7 @@
 
 <body>
     @await Component.InvokeAsync("HeaderIndex", settings)
-  
+
 
     <main>
         <div class="slider">
@@ -45,7 +46,7 @@
                                 @slider.MainTitle
                             </h1>
                             <div class="slider-btn">
-                                <a class="" href="">
+                                <a class="" asp-action="index" asp-controller="shop">
                                     <span>Show more</span>
                                 </a>
                             </div>
@@ -89,7 +90,7 @@
                                             <div style="color: #999;margin-top:10px;"> @Model.Crafted.ProductCount products </div>
                                         </div>
                                         <div class="button">
-                                            <a class="cart-button" href=""> + Show all </a>
+                                            <a class="cart-button" asp-action="index" asp-controller="shop"> + Show all </a>
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +111,7 @@
                                             <div style="color: #999;margin-top:10px;"> @Model.Crafted.ProductCount2 products </div>
                                         </div>
                                         <div class="button">
-                                            <a class="cart-button" href=""> + Show all </a>
+                                            <a class="cart-button" asp-action="index" asp-controller="shop"> + Show all </a>
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +131,7 @@
                                             <div style="color: #999;margin-top:10px; "> @Model.Crafted.ProductCount3 products </div>
                                         </div>
                                         <div class="button">
-                                            <a class="cart-button" href=""> + Show all </a>
+                                            <a class="cart-button" asp-action="index" asp-controller="shop"> + Show all </a>
                                         </div>
                                     </div>
                                 </div>
@@ -159,10 +160,10 @@
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="productcart">
                                         <div class="product-image">
-                                            <img src="~/assets/images/index/shop/@newArrival.Image" alt="">
+                                            <a asp-action="detail" asp-controller="shop" asp-route-id="@newArrival.Id" >  <img src="~/assets/images/index/shop/@newArrival.Image" alt=""></a>
                                         </div>
                                         <div class="action">
-                                            <a href=""><i class="fa-regular fa-heart"></i></a>
+                                            <a asp-action="AddToWishlist" asp-controller="wishlist" asp-route-id="@newArrival.Id" class="addtowishlist"><i class="fa-regular fa-heart"></i></a>
                                             <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@newArrival.Id" class="addbasket"><i class="fa-brands fa-opencart"></i></a>
 
                                         </div>
@@ -210,7 +211,7 @@
                                         </div>
                                     </div>
                                     <div class="buton">
-                                        <a class="cart-buton" href=""> +VIEW COLLECTION </a>
+                                        <a class="cart-buton" asp-action="index" asp-controller="shop"> +VIEW COLLECTION </a>
                                     </div>
                                 </div>
                             </div>
@@ -246,10 +247,10 @@
                                         <span class="onsale">-@((((bestseller.Price * 100) / bestseller.DiscountedPrice) - 100).ToString("0.##"))%</span>
 
                                     }
-                                    <img src="~/assets/images/index/shop/@bestseller.Image" alt="">
+                                    <a asp-action="detail" asp-controller="shop" asp-route-id="@bestseller.Id"><img src="~/assets/images/index/shop/@bestseller.Image" alt=""></a>
                                 </div>
                                 <div class="action">
-                                    <a href=""><i class="fa-regular fa-heart"></i></a>
+                                    <a asp-action="addtowishlist" asp-controller="wishlist" asp-route-id="@bestseller.Id" class="addtowishlist"><i class="fa-regular fa-heart"></i></a>
                                     <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@bestseller.Id" class="addbasket"><i class="fa-brands fa-opencart"></i></a>
 
                                 </div>
@@ -275,9 +276,7 @@
                     }
 
 
-                    <div class="buttn" style="text-align: center; margin-top:50px;" data-aos="fade-up">
-                        <button class="button-text">Show More</button>
-                    </div>
+
                 </div>
             </div>
 
@@ -296,8 +295,8 @@
                             <span class="new-price">$@Model.Ceramics.DiscountedPrice</span>
                             <span class="old-price">$@Model.Ceramics.Price.ToString("00.##")</span>
                         </p>
-                        <form class="cart" action="" method="post" enctype="multipart/form-data">
-                            <button type="submit" class="addtocartbtn">Add To Cart</button>
+                        <form class="cart"  method="post" enctype="multipart/form-data">
+                            <button type="submit" class="addtocartbtnn">Add To Cart</button>
                         </form>
 
 
@@ -377,7 +376,6 @@
     </main>
 
 
-
     <footer class="footer">
         <div class="footer1">
             <div class="container">
@@ -387,23 +385,23 @@
                             <img style="width:190px" src="~/assets/images/favicon/@settings.First(s => s.Key == "Logo1").Value" alt="">
                         </div>
                         <div class="settings">
-                            <p>T : @settings.First(s => s.Key == "PhoneNumber").Value</p>
-                            <p>E : @settings.First(s => s.Key == "Email").Value</p>
-                            <p>A : @settings.First(s => s.Key == "Address").Value</p>
+                            <p>T :@settings.First(s => s.Key == "PhoneNumber").Value</p>
+                            <p>E :@settings.First(s => s.Key == "Email").Value</p>
+                            <p>A :@settings.First(s => s.Key == "Address").Value</p>
                         </div>
                     </div>
                     <div class="footer-menu col-lg-3  col-md " style="margin-top: 100px;">
                         <ul class="menu-list">
-                            <li class="menu-item"><a href="">Shop</a></li>
-                            <li class="menu-item"><a href="">Out Work</a></li>
-                            <li class="menu-item"><a href="">History</a></li>
+                            <li class="menu-item"><a asp-action="index" asp-controller="shop">Shop</a></li>
+                            <li class="menu-item"><a asp-action="index" asp-controller="blog">Blog</a></li>
+                            <li class="menu-item"><a asp-action="index" asp-controller="about">History</a></li>
                         </ul>
                     </div>
                     <div class="footer-menu col-lg-3  col-md" style="margin-top: 100px;">
                         <ul class="menu-list">
-                            <li class="menu-item"><a href="">About Us</a></li>
-                            <li class="menu-item"><a href="">Privacy Policy</a></li>
-                            <li class="menu-item"><a href="">Contact</a></li>
+                            <li class="menu-item"><a asp-action="index" asp-controller="about">About Us</a></li>
+                            <li class="menu-item"><a asp-action="index" asp-controller="termandconditions">Privacy Policy</a></li>
+                            <li class="menu-item"><a asp-action="index" asp-controller="contact">Contact</a></li>
                         </ul>
                     </div>
                     <div class="footer-newsletter col-lg-3 col-md-3  col-12 " style="margin-top: 100px; ">
@@ -457,12 +455,12 @@
             </div>
         </div>
     </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="~/assets/slick/slick.min.js"></script>
-<script src="~/assets/js/main.js"></script>
-<script src="~/assets/js/custom.js"></script>
-<script src="~/assets/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/assets/slick/slick.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+    <script src="~/assets/js/bootstrap.js"></script>
 </body>
 
 </html>

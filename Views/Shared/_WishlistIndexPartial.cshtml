@@ -16,37 +16,37 @@
                 @foreach (WishlistVM wishlistVM in Model)
                 {
 
-                <tr>
-                    <td>
-                        <div class="product-image ">
-                            <img style="width:100px" src="~/assets/images/index/shop/@wishlistVM.Image" alt="cart">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-title">
-                            <h4 class="title"><a href="single-product.html">@wishlistVM.Title</a></h4>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-price">
-                            <span class="price">€@wishlistVM.Price.ToString("F2")</span>
-                        </div>
-                    </td>
+                    <tr>
+                        <td>
+                            <div class="product-image ">
+                                <a asp-action="detail" asp-controller="shop" asp-route-id="@wishlistVM.Id"><img style="width:100px" src="~/assets/images/index/shop/@wishlistVM.Image" alt="cart"></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-title">
+                                <h4 class="title"><a asp-action="detail" asp-controller="shop" asp-route-id="@wishlistVM.Id">@wishlistVM.Title</a></h4>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-price">
+                                <span class="price">€@wishlistVM.Price.ToString("F2")</span>
+                            </div>
+                        </td>
 
 
-                    <td>
-                        <div class="product-delete">
-                            <a class="deletewishlist" asp-controller="wishlist" asp-action="DeleteFromWishlist"
-                               asp-route-id="@wishlistVM.Id"><i class="fa-regular fa-trash-can"></i></a>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-delete">
-                            <a class="addbasket" asp-controller="basket" asp-action="AddToBasket"
-                               asp-route-id="@wishlistVM.Id">Add to basket </a>
-                        </div>
-                    </td>
-                </tr>
+                        <td>
+                            <div class="product-delete">
+                                <a class="deletewishlist" asp-controller="wishlist" asp-action="DeleteFromWishlist"
+                                   asp-route-id="@wishlistVM.Id"><i class="fa-regular fa-trash-can"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-delete">
+                                <a class="addbasket" asp-controller="basket" asp-action="AddToBasket"
+                                   asp-route-id="@wishlistVM.Id">Add to basket </a>
+                            </div>
+                        </td>
+                    </tr>
                 }
 
             </tbody>

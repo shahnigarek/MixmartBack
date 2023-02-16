@@ -1,6 +1,6 @@
 ﻿
 @inject ILayoutServices layoutservices
-
+@model Contact
 @{
     Dictionary<string, string> settings = await layoutservices.GetSettingsAsync();
 
@@ -61,20 +61,26 @@
                         <p>Contact</p>
                         <h4>DROP US A LINE</h4>
                     </div>
+                    <form  asp-action="message" asp-controller="contact" method="post"  id="contactForm">
+
                     <div class="row">
                         <div class="dropform">
                             <label style="padding-left: 0;" for="">Your Name</label>
-                            <input type="text" name="" id="" placeholder="Ex: John Doe">
+                            <input type="text"  asp-for="Name"  placeholder="Ex: John Doe">
+                            <span asp-validation-for="Name"></span>
                             <label style="padding-top: 55px;padding-left: 0;" for="">E-mail *</label>
-                            <input type="email" name="" id="" placeholder="Ex: John_Doe@domain.com">
+                            <input type="email"  asp-for="Email" placeholder="Ex: John_Doe@domain.com">
+                            <span asp-validation-for="Email"></span>
                             <label style="padding-top: 55px;padding-left: 0;" for="">Message</label>
-                            <textarea style="outline: none;" name="" id="" cols="40" rows="5" placeholder="Enter text here..."></textarea>
-                            <p><input style="margin-right: 10px;top: 2px; position: relative;" type="checkbox" name="" id="">Also subscribe us</p>
-                            <button>Send Message</button>
+                            <textarea  style="outline: none;" asp-for="Message"  cols="40" rows="5" placeholder="Enter text here..."></textarea>
+                            <span asp-validation-for="Message"></span>
+                            <p><input style="margin-right: 10px;top: 2px; position: relative;" type="checkbox" >Also subscribe us</p>
+                            <button type="submit">Send Message</button>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.540605041515!2d-0.1217423843643428!3d51.503297279634424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900d26973%3A0x4291f3172409ea92!2z0JvQvtC90LTQvtC90YHQutC40Lkg0JPQu9Cw0Lc!5e0!3m2!1sru!2s!4v1673183764212!5m2!1sru!2s" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

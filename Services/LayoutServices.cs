@@ -26,7 +26,7 @@ namespace MixmartBackEnd.Services
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
         }
-        public async Task<List<BasketVM>> GetBasketAsync()
+        public async Task<List<BasketVM>> GetBasket()
         {
             string basket = _httpContextAccessor.HttpContext.Request.Cookies["basket"];
 
@@ -43,7 +43,8 @@ namespace MixmartBackEnd.Services
 
             if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.UserName == _httpContextAccessor.HttpContext.User.Identity.Name);
+                var user= await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+                AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.UserName == user.UserName);
 
                 if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
                 {
@@ -79,7 +80,6 @@ namespace MixmartBackEnd.Services
             return basketVMs;
         }
 
-
         public async Task<List<WishlistVM>> GetWishlistAsync()
         {
             string coockie = _httpContextAccessor.HttpContext.Request.Cookies["wishlist"];
@@ -113,10 +113,12 @@ namespace MixmartBackEnd.Services
 
         public async Task<AppUser> GetUserAsync()
         {
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
             AppUser appUser = null;
+
             if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                appUser = await _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+              appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.UserName == user.UserName);
             }
 
             return appUser;
