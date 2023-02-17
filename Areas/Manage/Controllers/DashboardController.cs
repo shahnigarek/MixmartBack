@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MixmartBackEnd.Areas.Manage.Controllers
 {
+    [Area("manage")]
     public class DashboardController : Controller
     {
-        [Area("manage")]
         public IActionResult Index()
         {
             if (User.IsInRole("Member"))

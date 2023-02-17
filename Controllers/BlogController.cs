@@ -24,15 +24,14 @@ namespace MixmartBackEnd.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public async Task<IActionResult> Index(int pageIndex)
+        public async Task<IActionResult> Index()
         {
 
-            IQueryable<Blog> blogs = _context.Blogs.Where(b => b.IsDeleted == false).
-              Include(b => b.BlogCategories).ThenInclude(b => b.BCategory);
+            IEnumerable<Blog> blogs = await  _context.Blogs.Where(b => b.IsDeleted == false).
+              Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).ToListAsync();
 
+            return View(blogs);
 
-
-            return View(PageNationList<Blog>.Create(blogs, pageIndex, 3));
         }
         public async Task<IActionResult> Detail(int id)
         {

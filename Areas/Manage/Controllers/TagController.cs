@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 namespace MixmartBackEnd.Areas.Manage.Controllers
 {
     [Area("manage")]
-    [Authorize(Roles ="Admin")]
     public class TagController : Controller
     {
         private readonly AppDbContext _context;

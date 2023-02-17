@@ -24,7 +24,7 @@ namespace MixmartBackEnd.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
 
 
-        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,AppDbContext context, IHttpContextAccessor httpContextAccessor)
+        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, AppDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -85,44 +85,58 @@ namespace MixmartBackEnd.Controllers
         {
             if (!ModelState.IsValid) return View();
             var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
-            AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.NormalizedEmail == loginVM.Email.Trim().ToUpperInvariant() && !u.IsAdmin );
+            AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.NormalizedEmail == loginVM.Email.Trim().ToUpperInvariant() && !u.IsAdmin);
 
-            if (appUser.IsDeActive == true)
-            {
-                ModelState.AddModelError("", "You cannot login because you have been deactivated by the superadmin.");
-                return View(loginVM);
-
-            }
-            if (appUser == null)
-            {
-                ModelState.AddModelError("", "Email Or Password Is InCorrect");
-                return View(loginVM);
-            }
-
-
-            if (!await _userManager.CheckPasswordAsync(appUser, loginVM.Password))
-            {
-                ModelState.AddModelError("", "Email Or Password Is InCorrect");
-                return View(loginVM);
-            }
-
-            await _signInManager.SignInAsync(appUser, loginVM.RemindMe);
-
-            string basketCoockie = HttpContext.Request.Cookies["basket"];
-
-            if (!string.IsNullOrWhiteSpace(basketCoockie))
-            {
-                List<BasketVM> basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basketCoockie);
-
-                List<Basket> baskets = new List<Basket>();
-
-                foreach (BasketVM basketVM in basketVMs)
+                if (appUser == null)
                 {
-                    if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
-                    {
-                        Basket exsitedBasket = appUser.Baskets.FirstOrDefault(b => b.ProductId != basketVM.ProductId);
+                    ModelState.AddModelError("", "Email Or Password Is InCorrect ");
+                    return View(loginVM);
+                }
 
-                        if (exsitedBasket == null)
+            if (!appUser.IsDeActive  )
+            {
+
+
+                if (!await _userManager.CheckPasswordAsync(appUser, loginVM.Password))
+                {
+                    ModelState.AddModelError("", "Email Or Password Is InCorrect");
+                    return View(loginVM);
+                }
+
+                await _signInManager.SignInAsync(appUser, loginVM.RemindMe);
+
+                string basketCoockie = HttpContext.Request.Cookies["basket"];
+
+                if (!string.IsNullOrWhiteSpace(basketCoockie))
+                {
+                    List<BasketVM> basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basketCoockie);
+
+                    List<Basket> baskets = new List<Basket>();
+
+                    foreach (BasketVM basketVM in basketVMs)
+                    {
+                        if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
+                        {
+                            Basket exsitedBasket = appUser.Baskets.FirstOrDefault(b => b.ProductId != basketVM.ProductId);
+
+                            if (exsitedBasket == null)
+                            {
+                                Basket basket = new Basket
+                                {
+                                    AppUserId = appUser.Id,
+                                    ProductId = basketVM.ProductId,
+                                    Count = basketVM.Count
+                                };
+
+                                baskets.Add(basket);
+                            }
+                            else
+                            {
+                                exsitedBasket.Count += basketVM.Count;
+                                basketVM.Count = exsitedBasket.Count;
+                            }
+                        }
+                        else
                         {
                             Basket basket = new Basket
                             {
@@ -133,55 +147,45 @@ namespace MixmartBackEnd.Controllers
 
                             baskets.Add(basket);
                         }
-                        else
-                        {
-                            exsitedBasket.Count += basketVM.Count;
-                            basketVM.Count = exsitedBasket.Count;
-                        }
-                    }
-                    else
-                    {
-                        Basket basket = new Basket
-                        {
-                            AppUserId = appUser.Id,
-                            ProductId = basketVM.ProductId,
-                            Count = basketVM.Count
-                        };
-
-                        baskets.Add(basket);
-                    }
-                }
-
-                basketCoockie = JsonConvert.SerializeObject(basketVMs);
-
-                HttpContext.Response.Cookies.Append("basket", basketCoockie);
-
-                await _context.Baskets.AddRangeAsync(baskets);
-                await _context.SaveChangesAsync();
-            }
-            else
-            {
-                if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
-                {
-                    List<BasketVM> basketVMs = new List<BasketVM>();
-
-                    foreach (Basket basket in appUser.Baskets)
-                    {
-                        BasketVM basketVM = new BasketVM
-                        {
-                            ProductId = basket.ProductId,
-                            Count = basket.Count
-                        };
-
-                        basketVMs.Add(basketVM);
                     }
 
                     basketCoockie = JsonConvert.SerializeObject(basketVMs);
 
                     HttpContext.Response.Cookies.Append("basket", basketCoockie);
-                }
-            }
 
+                    await _context.Baskets.AddRangeAsync(baskets);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
+                    {
+                        List<BasketVM> basketVMs = new List<BasketVM>();
+
+                        foreach (Basket basket in appUser.Baskets)
+                        {
+                            BasketVM basketVM = new BasketVM
+                            {
+                                ProductId = basket.ProductId,
+                                Count = basket.Count
+                            };
+
+                            basketVMs.Add(basketVM);
+                        }
+
+                        basketCoockie = JsonConvert.SerializeObject(basketVMs);
+
+                        HttpContext.Response.Cookies.Append("basket", basketCoockie);
+                    }
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "You cannot login because you have been deactivated by the superadmin.");
+                return View(loginVM);
+
+            }
             return RedirectToAction("index", "home");
 
         }
@@ -198,7 +202,7 @@ namespace MixmartBackEnd.Controllers
                 Surname = appUser.Surname,
                 Email = appUser.Email,
                 UserName = appUser.UserName,
-                Age=appUser.Age
+                Age = appUser.Age
             };
 
             return View(profileVM);

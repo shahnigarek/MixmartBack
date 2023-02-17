@@ -1,9 +1,8 @@
-﻿@model PageNationList<Blog>
+﻿@model IEnumerable<Blog>
 @{
     ViewData["Title"] = "Index";
-    int counter = Model.PageIndex == 1 ? 0 : (Model.PageIndex - 1) * 3;
 }
-}
+
 
 <div class="title-bar"
      style="background-image: url(/assets/images/index/shop/breadcrumb_bkg2.jpg);background-size: cover;background-position: center;padding: 45px 0px;">
@@ -25,7 +24,7 @@
 
 <main class="blogmain">
     <div class="row">
-        @foreach (Blog blog in Model.Blogs)
+        @foreach (Blog blog in Model)
         {
 
             <div class="col-lg-4">
