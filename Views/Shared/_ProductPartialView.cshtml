@@ -15,7 +15,17 @@
                 </div>
                 <div class="action">
                     <a asp-action="AddToWishlist" asp-controller="wishlist" asp-route-id="@product.Id" class="addtowishlist"><i class="fa-regular fa-heart"></i></a>
-                    <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@product.Id" class="addbasket"><i class="fa-brands fa-opencart"></i></a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@product.Id" class="addbasket"><i class="fa-brands fa-opencart"></i></a>
+
+                    }
+                    else
+                    {
+                        <a asp-controller="account" asp-action="login"><i class="fa-brands fa-opencart"></i></a>
+
+                    }
+                    
 
                 </div>
                 <div class="product-caption">

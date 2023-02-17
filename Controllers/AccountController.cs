@@ -85,13 +85,20 @@ namespace MixmartBackEnd.Controllers
         {
             if (!ModelState.IsValid) return View();
             var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
-            AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.NormalizedEmail == loginVM.Email.Trim().ToUpperInvariant() && !u.IsAdmin && !u.IsDeActive);
+            AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.NormalizedEmail == loginVM.Email.Trim().ToUpperInvariant() && !u.IsAdmin );
 
+            if (appUser.IsDeActive == true)
+            {
+                ModelState.AddModelError("", "You cannot login because you have been deactivated by the superadmin.");
+                return View(loginVM);
+
+            }
             if (appUser == null)
             {
                 ModelState.AddModelError("", "Email Or Password Is InCorrect");
                 return View(loginVM);
             }
+
 
             if (!await _userManager.CheckPasswordAsync(appUser, loginVM.Password))
             {

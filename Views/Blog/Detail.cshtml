@@ -68,41 +68,6 @@
                 </div>
             </div>
         </div>
-        <div class="navigation">
-
-            <div class="previousnav">
-                <div class="navcontent">
-                    <div class="navimage">
-                        <img src="~/assets/images/index/blog/post4.jpg" alt="">
-                    </div>
-                    <div class="navlink">
-                        <div class="title">
-                            @*@if (Model.Blog.PreviousPost != null)
-                            {
-                                <a href="@Url.Action("Details", new { id = Model.Blog.PreviousPost.Id })">Previous Post</a>
-                            }
-                        </div>
-                        <a href="">Ready or Not, the Return of <br> the Hobo Bag Is Nigh</a>
-                    </div>
-                </div>
-            </div>
-            <div class="nextnav">
-                <div class="navcontent">
-                    <div class="navlink">
-                        <div class="title">
-                            @if (Model.Blog.NextPost != null)
-                            {
-                                <a href="@Url.Action("Details", new { id = Model.Blog.NextPost.Id })">Next Post</a>
-                            }*@
-                        </div>
-                        <a href="">Meet the Top 14 Models of Fall <br> 2019</a>
-                    </div>
-                    <div class="navimage" style="padding-left: 10px;">
-                        <img src="~/assets/images/index/blog/post2.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="comments">
             @foreach (var comment in Model.Comments.Where(f => f.IsAccess == true).OrderBy(f => f.Date))
             {

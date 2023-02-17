@@ -29,7 +29,7 @@
             <div class="col-lg-5">
                 <div class="productinfo">
                     <h1>@Model.Title</h1>
-                  
+
                     @if (Model.DiscountedPrice > 0)
                     {
                         <span style="color: #b3b3b3;text-decoration: line-through;font-size: 14px;"
@@ -63,12 +63,27 @@
                                    asp-route-id="@Model.Id"><i class="fal fa-plus"></i></a>
                             </div>
                         </div>
-                        <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@Model.Id" class="addbasket">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-controller="basket" asp-action="AddToBasket" asp-route-id="@Model.Id" class="addbasket">
+                                <button>
+                                    <i style="margin-right: 10px;" class="fa-brands fa-opencart"></i>Add To
+                                    Cart
+                                </button>
+                            </a>
+
+                        }
+                        else
+                        {
                             <button>
-                                <i style="margin-right: 10px;" class="fa-brands fa-opencart"></i>Add To
-                                Cart
+                                <a style="color:#fff;" asp-controller="account" asp-action="login">
+                                    <i style="margin-right: 10px;" class="fa-brands fa-opencart"></i>Add To
+                                    Cart
+                                </a>
                             </button>
-                        </a>
+
+                        }
+
 
                     </form>
                     <div class="">
@@ -103,7 +118,7 @@
                 <h2>Related products</h2>
                 <div class="relatedproductss">
                     <div class="row">
-                         @await Html.PartialAsync("_ProductPartialView",related) 
+                        @await Html.PartialAsync("_ProductPartialView", related)
                     </div>
                 </div>
             </div>

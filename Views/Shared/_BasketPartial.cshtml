@@ -2,41 +2,54 @@
 
 
 
-
-<a asp-controller="basket" asp-action="index"><i class="fa-solid fa-cart-shopping"></i><sup>@Model.Count</sup></a>
-
+@if (User.Identity.IsAuthenticated)
+{
+    <a asp-controller="basket" asp-action="index"><i class="fa-solid fa-cart-shopping"></i><sup>@Model.Count</sup></a>
+}
+else
+{
+    <a href="@Url.Action("Login", "Account")"><i class="fa-solid fa-cart-shopping"></i></a>
+}
 <div class="cart2">
-    <!-- <div class="content">
+    @if (Model.Count == 0)
+    {
+        <div class="content">
 
-        <i class="fa-solid fa-xmark"></i>
-        <div class="textt">
-            <p>No products in the cart.</p>
+            <i class="fa-solid fa-xmark"></i>
+            <div class="textt">
+                <p>No products in the cart.</p>
+            </div>
         </div>
-    </div> -->
-    <div class="price-content">
 
-        <div class="cart-total price_inline">
-            <span class="label">Total:</span>
-            <span class="value">€@(Model.Sum(b => b.Price * b.Count))</span>
-        </div>
-    </div>
-    @foreach (BasketVM basketVM in Model.Take(2))
+    }
+    else
     {
 
-        <div class="content2">
+        <div class="price-content">
 
-            <div class="picture">
-                <a asp-controller="shop" asp-action="Detail" asp-route-id="@basketVM.ProductId"> <img style="width: 100%;" src="~/assets/images/index/shop/@basketVM.Image" alt=""></a>
-
+            <div class="cart-total price_inline">
+                <span class="label">Total:</span>
+                <span class="value">€@(Model.Sum(b => b.Price * b.Count))</span>
             </div>
-            <div class="pricecount">
-                <h6>@basketVM.Title</h6>
-                <p><span>@(basketVM.Count)x</span>$@(basketVM.Price)</p>
-            </div>
-            <a asp-controller="basket" asp-action="DeleteFromBasket" asp-route-id="@basketVM.ProductId" class="product-close ">   <i class="fa-solid fa-xmark"></i></a>
-
         </div>
+        @foreach (BasketVM basketVM in Model.Take(2))
+        {
 
+            <div class="content2">
+
+                <div class="picture">
+                    <a asp-controller="shop" asp-action="Detail" asp-route-id="@basketVM.ProductId"> <img style="width: 100%;" src="~/assets/images/index/shop/@basketVM.Image" alt=""></a>
+
+                </div>
+                <div class="pricecount">
+                    <h6>@basketVM.Title</h6>
+                    <p><span>@(basketVM.Count)x</span>$@(basketVM.Price)</p>
+                </div>
+                <a asp-controller="basket" asp-action="DeleteFromBasket" asp-route-id="@basketVM.ProductId" class="product-close ">   <i class="fa-solid fa-xmark"></i></a>
+
+            </div>
+
+        }
     }
 </div>
 

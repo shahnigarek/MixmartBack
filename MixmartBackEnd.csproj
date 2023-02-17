@@ -23,6 +23,14 @@
     <Compile Remove="Migrations\20230213124332_Havenoideawhatiamaddingbutiamadding.Designer.cs" />
     <Compile Remove="Migrations\20230215175423_WishlistTableAdded.cs" />
     <Compile Remove="Migrations\20230215175423_WishlistTableAdded.Designer.cs" />
+    <Compile Remove="Migrations\20230216205244_UpdatedBlogTable.cs" />
+    <Compile Remove="Migrations\20230216205244_UpdatedBlogTable.Designer.cs" />
+    <Compile Remove="Migrations\20230216210153_UpdatedBlogTable2.cs" />
+    <Compile Remove="Migrations\20230216210153_UpdatedBlogTable2.Designer.cs" />
+    <Compile Remove="Migrations\20230216210446_UpdatedBlogTable3.cs" />
+    <Compile Remove="Migrations\20230216210446_UpdatedBlogTable3.Designer.cs" />
+    <Compile Remove="Migrations\20230217122637_UpdatedBloggTable.cs" />
+    <Compile Remove="Migrations\20230217122637_UpdatedBloggTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

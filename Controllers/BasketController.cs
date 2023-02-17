@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MixmartBackEnd.DAL;
@@ -16,11 +17,13 @@ namespace MixmartBackEnd.Controllers
     public class BasketController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<AppUser> _userManager;
 
-        public BasketController(AppDbContext context, UserManager<AppUser> userManager)
+        public BasketController(AppDbContext context, IHttpContextAccessor httpContextAccessor, UserManager<AppUser> userManager)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
         }
 
@@ -44,6 +47,8 @@ namespace MixmartBackEnd.Controllers
 
         public async Task<IActionResult> AddToBasket(int? id)
         {
+
+
             if (id == null)
             {
                 return BadRequest();
@@ -125,6 +130,9 @@ namespace MixmartBackEnd.Controllers
             HttpContext.Response.Cookies.Append("basket", basket);
 
             return PartialView("_BasketPartial", await getBasketItemAsync(basketVMs));
+
+            
+        
         }
 
         public async Task<IActionResult> GetBasket()
@@ -177,6 +185,7 @@ namespace MixmartBackEnd.Controllers
 
             if (!await _context.Products.AnyAsync(p => p.Id == id)) return NotFound();
 
+
             string basket = HttpContext.Request.Cookies["basket"];
 
             if (string.IsNullOrWhiteSpace(basket)) return BadRequest();
@@ -191,6 +200,24 @@ namespace MixmartBackEnd.Controllers
 
             basket = JsonConvert.SerializeObject(basketVMs);
             HttpContext.Response.Cookies.Append("basket", basket);
+
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+                AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.UserName == user.UserName);
+
+                if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
+                {
+                    var basketItem = appUser.Baskets.FirstOrDefault(b => b.ProductId == id);
+
+                    if (basketItem != null)
+                    {
+                        appUser.Baskets.Remove(basketItem);
+                        await _userManager.UpdateAsync(appUser);
+                    }
+                }
+            }
+
 
             return PartialView("_BasketPartial", await getBasketItemAsync(basketVMs));
         }
@@ -246,6 +273,24 @@ namespace MixmartBackEnd.Controllers
 
             basket = JsonConvert.SerializeObject(basketVMs);
             HttpContext.Response.Cookies.Append("basket", basket);
+
+            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+                AppUser appUser = await _userManager.Users.Include(u => u.Baskets).FirstOrDefaultAsync(u => u.UserName == user.UserName);
+
+                if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
+                {
+                    var basketItem = appUser.Baskets.FirstOrDefault(b => b.ProductId == id);
+
+                    if (basketItem != null)
+                    {
+                        appUser.Baskets.Remove(basketItem);
+                        await _userManager.UpdateAsync(appUser);
+                    }
+                }
+            }
+
 
             return PartialView("_BasketIndexPartial", await getBasketItemAsync(basketVMs));
         }

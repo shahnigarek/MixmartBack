@@ -27,7 +27,8 @@ namespace MixmartBackEnd.Controllers
         {
             BlogVM blogVM = new BlogVM()
             {
-                Blogs = await _context.Blogs.Where(b => b.IsDeleted == false).Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).ToListAsync(),      
+                Blogs = await _context.Blogs.Where(b => b.IsDeleted == false).
+                Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).ToListAsync(),
             };
 
 
@@ -38,8 +39,8 @@ namespace MixmartBackEnd.Controllers
             BlogDetailVM blogdetailVM = new BlogDetailVM()
             {
                 Blog = await _context.Blogs.Where(b => b.IsDeleted == false && b.Id == id)
-                .Include(b=>b.Comments).ThenInclude(b=>b.AppUser)
-                .Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).FirstOrDefaultAsync(),
+                .Include(b => b.Comments).ThenInclude(b => b.AppUser).
+                Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).FirstOrDefaultAsync(),
                 Comments = await _context.Comments.Include(c => c.Blog).Include(c => c.AppUser).Where(c => c.BlogId == id).ToListAsync()
             };
 
@@ -49,10 +50,10 @@ namespace MixmartBackEnd.Controllers
         [Authorize]
         [AutoValidateAntiforgeryToken]
         [HttpPost]
-        public async Task<IActionResult> AddComment(Comment comment,int id)
+        public async Task<IActionResult> AddComment(Comment comment, int id)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (!ModelState.IsValid) return RedirectToAction("detail", "Blog",new { id = id });
+            if (!ModelState.IsValid) return RedirectToAction("detail", "Blog", new { id = id });
             if (!_context.Blogs.Any(f => f.Id != id)) return NotFound();
             Comment cmnt = new Comment
             {
@@ -64,7 +65,7 @@ namespace MixmartBackEnd.Controllers
             };
             _context.Comments.Add(cmnt);
             _context.SaveChanges();
-            return RedirectToAction("detail", "Blog",new { id=id});
+            return RedirectToAction("detail", "Blog", new { id = id });
         }
         [Authorize]
         public async Task<IActionResult> DeleteComment(int id)
@@ -75,31 +76,10 @@ namespace MixmartBackEnd.Controllers
             Comment comment = _context.Comments.FirstOrDefault(c => c.Id == id && c.AppUserId == user.Id);
             _context.Comments.Remove(comment);
             _context.SaveChanges();
-            return RedirectToAction("detail", "Blog",new { id = comment.BlogId });
+            return RedirectToAction("detail", "Blog", new { id = comment.BlogId });
         }
-        //public IActionResult PreviousPost(int id)
-        //{
-        //    var posts = _context.Blogs.OrderBy(p => p.Date).ToList();
-        //    var index = posts.FindIndex(p => p.Id == id);
-        //    if (index == -1)
-        //    {
-        //        return RedirectToAction("Index");
-        //    }
-        //    var previousPost = index > 0 ? posts[index - 1] : null;
-        //    return previousPost != null ? RedirectToAction("Details", new { id = previousPost.Id }) : RedirectToAction("Index");
-        //}
+      
 
-        //public IActionResult NextPost(int id)
-        //{
-        //    var posts = _context.Blogs.OrderBy(p => p.Date).ToList();
-        //    var index = posts.FindIndex(p => p.Id == id);
-        //    if (index == -1)
-        //    {
-        //        return RedirectToAction("Index");
-        //    }
-        //    var nextPost = index < posts.Count - 1 ? posts[index + 1] : null;
-        //    return nextPost != null ? RedirectToAction("Details", new { id = nextPost.Id }) : RedirectToAction("Index");
-        //}
 
     }
 }

@@ -63,6 +63,7 @@ namespace MixmartBackEnd.Controllers
             return PartialView("_SearchPartial", products);
         }
 
+
     }
 }
 

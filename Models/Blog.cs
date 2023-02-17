@@ -47,10 +47,7 @@ namespace MixmartBackEnd.Models
         public string EnvelopeUrl { get; set; }
         public IEnumerable<BlogCategory> BlogCategories { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
-        //[NotMapped]
-        //public Blog NextPost { get; set; }
-        //public Blog PreviousPost { get; set; }
-
+  
         [NotMapped]
         public IFormFile File { get; set; }
         [NotMapped]

@@ -70,5 +70,37 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
 
             return RedirectToAction("index");
         }
+        [HttpGet]
+        public async Task<IActionResult> Deactivate(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) return BadRequest();
+
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+
+            if (appUser == null) return NotFound();
+
+            appUser.IsDeActive = true;
+
+            await _userManager.UpdateAsync(appUser);
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Activate(string id, bool? status)
+        {
+            if (string.IsNullOrWhiteSpace(id)) return BadRequest();
+
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+
+            if (appUser == null) return NotFound();
+
+            appUser.IsDeActive = false;
+
+            await _userManager.UpdateAsync(appUser);
+
+            return RedirectToAction("Index", new { status });
+        }
+
+
     }
 }

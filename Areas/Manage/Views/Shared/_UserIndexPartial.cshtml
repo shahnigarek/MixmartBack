@@ -13,9 +13,18 @@
             <td>@appUser.Role</td>
             <td class="text @(appUser.IsDeActive ? "text-danger":"text-success")">@(appUser.IsDeActive ? "DeActive":"Active")</td>
             <td>
-                <a class="btn @(appUser.IsDeActive ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="user" asp-action="@(appUser.IsDeActive ? "Activate":"DeActive")" asp-route-id="@appUser.Id" asp-route-status="@ViewBag.Status">@(appUser.IsDeActive ? "Activate":"DeActive")</a>
+                @if (appUser.IsDeActive)
+                {
+                    <a class="btn btn-primary deleteandrestorebtn" asp-area="manage" asp-controller="user" asp-action="Activate" asp-route-id="@appUser.Id" asp-route-status="@ViewBag.Status">Activate</a>
+                }
+                else
+                {
+                    <a class="btn btn-danger deleteandrestorebtn" asp-area="manage" asp-controller="user" asp-action="Deactivate" asp-route-id="@appUser.Id" asp-route-status="@ViewBag.Status">Deactive</a>
+                }
                 <a class="btn btn-warning" asp-area="manage" asp-controller="user" asp-action="ResetPassword" asp-route-id="@appUser.Id">Reset Password</a>
             </td>
         </tr>
     }
+
+
 </main>
