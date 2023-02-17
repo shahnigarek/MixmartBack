@@ -104,7 +104,7 @@ using MixmartBackEnd.ViewModels.Wishlist;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e8854bde4e673bf83e70792b40c372586339799a", @"/Views/ShippingMethod/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a9d39968ac3ec5aa31520319a2c0727657aa058d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb1d173417e7714ef7856b82bc06bf004e3c5063", @"/Views/_ViewImports.cshtml")]
     public class Views_ShippingMethod_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<ShippingMethod>>
     {
         #pragma warning disable 1998

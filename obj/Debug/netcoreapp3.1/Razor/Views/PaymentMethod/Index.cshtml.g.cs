@@ -104,7 +104,7 @@ using MixmartBackEnd.ViewModels.Wishlist;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d73ae94fe013a61e749e7df96bd326c53dd11a47", @"/Views/PaymentMethod/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a9d39968ac3ec5aa31520319a2c0727657aa058d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb1d173417e7714ef7856b82bc06bf004e3c5063", @"/Views/_ViewImports.cshtml")]
     public class Views_PaymentMethod_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<PaymentMethod>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString(""), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

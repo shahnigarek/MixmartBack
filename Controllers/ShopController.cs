@@ -33,7 +33,7 @@ namespace MixmartBackEnd.Controllers
 
         public async Task<IActionResult> Detail(int? id)
         {
-           
+
 
             Product product = await _context.Products.Include(p => p.ProductCategories).ThenInclude(pc => pc.Category).FirstOrDefaultAsync(p => p.Id == id);
             var categoryIds = _context.ProductCategories.Where(pc => pc.ProductId == product.Id).Select(pc => pc.Id);
@@ -42,23 +42,33 @@ namespace MixmartBackEnd.Controllers
         }
         public IActionResult CategoryProduct(int Id)
         {
-            IEnumerable<Product> products = _context.Products.Include(p => p.ProductCategories).ThenInclude(p=>p.Category).Include(p => p.ProductTags).ThenInclude(pt => pt.Tag).Where(p => p.ProductCategories.Any(pt => pt.CategoryId == Id)).ToList();
-            ViewBag.Categories = _context.Categories.Include(c => c.ProductCategories).ThenInclude(pt=>pt.Product).ToList();
+            IEnumerable<Product> products = _context.Products.Include(p => p.ProductCategories).ThenInclude(p => p.Category).Include(p => p.ProductTags).ThenInclude(pt => pt.Tag).Where(p => p.ProductCategories.Any(pt => pt.CategoryId == Id)).ToList();
+            ViewBag.Categories = _context.Categories.Include(c => c.ProductCategories).ThenInclude(pt => pt.Product).ToList();
             ViewBag.Tags = _context.Tags.Include(t => t.ProductTags).ThenInclude(bt => bt.Product).ToList();
             return View(products);
         }
         public IActionResult TagProduct(int id)
         {
-            IEnumerable<Product> products = _context.Products.Include(p => p.ProductCategories).ThenInclude(pt=>pt.Category).Include(p => p.ProductTags).ThenInclude(pt => pt.Tag).Where(c => c.ProductTags.Any(pt => pt.TagId == id)).ToList();
+            IEnumerable<Product> products = _context.Products.Include(p => p.ProductCategories).ThenInclude(pt => pt.Category).Include(p => p.ProductTags).ThenInclude(pt => pt.Tag).Where(c => c.ProductTags.Any(pt => pt.TagId == id)).ToList();
             ViewBag.Categories = _context.Categories.Include(c => c.ProductCategories).ThenInclude(pt => pt.Product).ToList();
             ViewBag.Tags = _context.Tags.Include(t => t.ProductTags).ThenInclude(bt => bt.Product).ToList();
             return View(products);
         }
-        public async Task<IActionResult> Search(string search)
+        public async Task<IActionResult> Search(int? id, string search)
         {
-            List<Product> products = await _context.Products
-                .Where(p => p.Title.ToLower().Contains(search.ToLower()) ||
-                p.ProductTags.Any(pt => pt.Tag.Name.ToLower().Contains(search.ToLower()))).ToListAsync();
+            IEnumerable<ProductListVM> products = await _context.Products
+     .Where(p => search == null ||
+            p.Title.ToLower().Contains(search.ToLower()))
+     .OrderByDescending(p => p.Id)
+     .Take(3)
+     .Select(p => new ProductListVM
+     {
+         Id = p.Id,
+         Title = p.Title,
+         Image = p.Image
+     })
+     .ToListAsync();
+
 
             return PartialView("_SearchPartial", products);
         }

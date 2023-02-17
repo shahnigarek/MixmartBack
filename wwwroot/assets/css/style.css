@@ -1060,7 +1060,7 @@ a {
 
 .header2-right {
     display: flex;
-    padding: 15px 25px;
+    padding: 15px 18px;
     position: absolute;
 }
 
@@ -1097,8 +1097,8 @@ a {
     }
 
     .header2-right .account .user1 {
-        margin-top: 22px;
-        left: 75px;
+        left: 80px;
+        margin-top:22px;
         padding: 0px 10px;
         display: none;
         background: #fff;
@@ -1111,7 +1111,6 @@ a {
     }
 
 .header-middle-right .account .user1 {
-    margin-top: 15px;
     right: 135px;
     padding: 0px 10px;
     display: none;
@@ -1173,7 +1172,7 @@ a {
         background: #fff;
         right: 40px;
         width: 270px;
-        height: 280px;
+        height: 140px;
         padding: 20px;
         display: none;
         margin-top: 10px;
@@ -1202,7 +1201,7 @@ a {
 
         .header2-right .cart2 .content {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 0px;
         }
 
     .header2-right .cart:hover .cart2 {
@@ -1313,7 +1312,7 @@ a {
     background: #fff;
     right: 40px;
     width: 270px;
-    height: 280px;
+    height: 140px;
     padding: 20px;
     z-index:999;
     display: none;
@@ -1329,7 +1328,7 @@ a {
 
     .header-middle-right .cart2 .content {
         text-align: center;
-        padding-top: 30px;
+        padding-top: 0px;
     }
 
 .header-middle-right .cart:hover .cart2 {

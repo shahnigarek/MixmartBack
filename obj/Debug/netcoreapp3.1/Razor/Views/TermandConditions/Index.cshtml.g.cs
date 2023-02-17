@@ -104,7 +104,7 @@ using MixmartBackEnd.ViewModels.Wishlist;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5fc5a49cc73087c61ba11f4971d1536672d4ca66", @"/Views/TermandConditions/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a9d39968ac3ec5aa31520319a2c0727657aa058d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb1d173417e7714ef7856b82bc06bf004e3c5063", @"/Views/_ViewImports.cshtml")]
     public class Views_TermandConditions_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<TermandCondition>>
     {
         #pragma warning disable 1998

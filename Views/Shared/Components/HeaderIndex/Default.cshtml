@@ -94,13 +94,7 @@
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="header-middle-right">
-                    <div style="padding: 10px;" class="search">
-                        <input type="search" class="searchinput" placeholder="Search...">
-                        <div class="search-body" style="position:absolute; z-index:999;background-color:white; width:100%">
-                            <ul class="list-group">
-                            </ul>
-                        </div>
-                    </div>
+               
                     <div style="padding: 10px;" class="account">
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -126,8 +120,8 @@
                     <div style="padding: 10px;" class="cart">
 
                         @await Html.PartialAsync("_BasketPartial", Model.BasketVMs)
-                        </div>
                     </div>
+                </div>
                 </div>
         </div>
 

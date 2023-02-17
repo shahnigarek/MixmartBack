@@ -95,3 +95,17 @@ $(document).on('click', '.product-close', function (e) {
         .then(res => res.text())
         .then(data => { $('.cart').html(data) });
 })
+
+$(".searchBtn").click(() => {
+    let searchInput = $(".searchInput").val();
+
+    if (searchInput.length >= 0) {
+        fetch('/shop/search?search=' + searchInput)
+            .then(response => {
+                return response.text();
+            })
+            .then(data => {
+                $("#searchList").html(data);
+            })
+    }
+})
