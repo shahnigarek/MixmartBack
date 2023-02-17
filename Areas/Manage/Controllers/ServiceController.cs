@@ -23,58 +23,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(services);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(Service service)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            if (service.Icon == null)
-            {
-                ModelState.AddModelError("Icon", "It is important add ICON  it can't be empty");
-                return View(service);
-            }
-            if (service.Title == null)
-            {
-                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
-                return View(service);
-            }
-            if (service.Description == null)
-            {
-                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
-                return View(service);
-            }
-            if (await _context.Services.AnyAsync(s => s.IsDeleted == false && s.Title.ToLower() == service.Title.ToLower().Trim()))
-            {
-                ModelState.AddModelError("Title", $"This title = {service.Title} already exists ");
-                return View(service);
-            }
-
-
-
-            service.Title = service.Title.Trim();
-            service.Description = service.Description.Trim();
-            service.Icon = service.Icon.Trim();
-            service.IsDeleted = false;
-            service.CreatedAt = DateTime.UtcNow.AddHours(4);
-            service.CreatedBy = "System";
-
-
-            await _context.Services.AddAsync(service);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
+     
 
         [HttpGet]
         public async Task<IActionResult> Update(int? id)

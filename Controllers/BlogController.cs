@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MixmartBackEnd.DAL;
 using MixmartBackEnd.Models;
+using MixmartBackEnd.ViewModels;
 using MixmartBackEnd.ViewModels.BlogDetailVM;
 using MixmartBackEnd.ViewModels.BlogVM;
 using System;
@@ -23,16 +24,15 @@ namespace MixmartBackEnd.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex)
         {
-            BlogVM blogVM = new BlogVM()
-            {
-                Blogs = await _context.Blogs.Where(b => b.IsDeleted == false).
-                Include(b => b.BlogCategories).ThenInclude(b => b.BCategory).ToListAsync(),
-            };
+
+            IQueryable<Blog> blogs = _context.Blogs.Where(b => b.IsDeleted == false).
+              Include(b => b.BlogCategories).ThenInclude(b => b.BCategory);
 
 
-            return View(blogVM);
+
+            return View(PageNationList<Blog>.Create(blogs, pageIndex, 3));
         }
         public async Task<IActionResult> Detail(int id)
         {

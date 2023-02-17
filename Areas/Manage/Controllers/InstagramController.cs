@@ -27,52 +27,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(instagrams);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(Instagram instagram)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
-            if (instagram.File == null)
-            {
-                ModelState.AddModelError("File", "It is important add image");
-                return View(instagram);
-            }
-
-            if (instagram.File.CheckFileSize(2200) == false)
-            {
-                ModelState.AddModelError("File", "File's size is bigger than required");
-                return View(instagram);
-            }
-
-            if (instagram.File.CheckFileType("image/jpeg") == false)
-            {
-                ModelState.AddModelError("File", "Format of image is wrong");
-                return View(instagram);
-            }
-
-
-            instagram.Image = instagram.File.CreateImage(_env, "assets", "images", "index", "instagram");
-            await _context.Instagrams.AddAsync(instagram);
-            instagram.IsDeleted = false;
-            instagram.CreatedAt = DateTime.UtcNow.AddHours(4);
-            instagram.CreatedBy = "System";
-
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
+ 
 
         [HttpGet]
         public async Task<IActionResult> Update(int? id)

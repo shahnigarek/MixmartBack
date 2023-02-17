@@ -5,12 +5,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     <a asp-controller="basket" asp-action="index"><i class="fa-solid fa-cart-shopping"></i><sup>@Model.Count</sup></a>
-}
-else
-{
-    <a href="@Url.Action("Login", "Account")"><i class="fa-solid fa-cart-shopping"></i></a>
-}
-<div class="cart2">
+<div class="cart2" style="height:auto">
     @if (Model.Count == 0)
     {
         <div class="content">
@@ -52,5 +47,10 @@ else
         }
     }
 </div>
+}
+else
+{
+    <a href="@Url.Action("Login", "Account")"><i class="fa-solid fa-cart-shopping"></i></a>
+}
 
 @await Html.PartialAsync("_ValidationPartial")

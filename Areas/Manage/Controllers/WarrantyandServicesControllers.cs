@@ -24,53 +24,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(warrantyandServices);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(WarrantyandService warrantyandService)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View(warrantyandService);
-            }
-            if (warrantyandService.Title == null)
-            {
-                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
-                return View(warrantyandService);
-            }
-            if (warrantyandService.Description == null)
-            {
-                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
-                return View(warrantyandService);
-            }
-            if (await _context.WarrantyandServices.AnyAsync(ws => ws.IsDeleted == false && ws.Title.ToLower() == warrantyandService.Title.ToLower().Trim()))
-            {
-                ModelState.AddModelError("Title", $"This title = {warrantyandService.Title} already exists ");
-                return View(warrantyandService);
-            }
-
-
-
-            warrantyandService.Title = warrantyandService.Title.Trim();
-            warrantyandService.Description = warrantyandService.Description.Trim();
-            warrantyandService.IsDeleted = false;
-            warrantyandService.CreatedAt = DateTime.UtcNow.AddHours(4);
-            warrantyandService.CreatedBy = "System";
-
-
-            await _context.WarrantyandServices.AddAsync(warrantyandService);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
+     
         [HttpGet]
         public async Task<IActionResult> Update(int? id)
         {

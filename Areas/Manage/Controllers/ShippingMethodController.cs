@@ -24,52 +24,6 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(ShippingMethod shippingMethod)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View(shippingMethod);
-            }
-            if (shippingMethod.Title == null)
-            {
-                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
-                return View(shippingMethod);
-            }
-            if (shippingMethod.Description == null)
-            {
-                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
-                return View(shippingMethod);
-            }
-            if (await _context.ShippingMethods.AnyAsync(sm => sm.IsDeleted == false && sm.Title.ToLower() == shippingMethod.Title.ToLower().Trim()))
-            {
-                ModelState.AddModelError("Title", $"This title = {shippingMethod.Title} already exists ");
-                return View(shippingMethod);
-            }
-
-
-            shippingMethod.Title = shippingMethod.Title.Trim();
-            shippingMethod.Description = shippingMethod.Description.Trim();
-            shippingMethod.IsDeleted = false;
-            shippingMethod.CreatedAt = DateTime.UtcNow.AddHours(4);
-            shippingMethod.CreatedBy = "System";
-
-
-            await _context.ShippingMethods.AddAsync(shippingMethod);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null)

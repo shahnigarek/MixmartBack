@@ -30,53 +30,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(brands);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(Brand brand)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
-            if (brand.File == null)
-            {
-                ModelState.AddModelError("File", "It is important add image");
-                return View(brand);
-            }
-
-            if (brand.File.CheckFileSize(2200) == false)
-            {
-                ModelState.AddModelError("File", "File's size is bigger than required");
-                return View(brand);
-            }
-
-            if (brand.File.CheckFileType("image/jpeg") == false)
-            {
-                ModelState.AddModelError("File", "Format of image is wrong");
-                return View(brand);
-            }
-
-
-            brand.Image = brand.File.CreateImage(_env, "assets", "images", "index", "brand");
-            await _context.Brands.AddAsync(brand);
-            brand.IsDeleted = false;
-            brand.CreatedAt = DateTime.UtcNow.AddHours(4);
-            brand.CreatedBy = "System";
-
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
+   
         [HttpGet]
         public async Task<IActionResult> Update(int? id)
         {

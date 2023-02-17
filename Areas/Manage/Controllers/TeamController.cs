@@ -26,59 +26,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             IEnumerable<Team> teams = await _context.Teams.Where(t => t.IsDeleted == false).ToListAsync();
             return View(teams);
         }
-        [HttpGet]
-
-        public async Task< IActionResult> Create()
-        {
-            ViewBag.Position = await _context.Positions.Where(p => p.IsDeleted == false).ToListAsync();
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(Team team)
-        {
-            ViewBag.Position = await _context.Positions.Where(p => p.IsDeleted == false).ToListAsync();
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            if (team == null)
-            {
-                return BadRequest();
-            }
-
-            if (team.File == null)
-            {
-                ModelState.AddModelError("File", "Please add photo");
-                return View(team);
-            }
-            if (team.File.CheckFileSize(102400) == false)
-            {
-                ModelState.AddModelError("File", "File size is bigger than required");
-                return View(team);
-            }
-
-            if (team.File.CheckFileType("image/jpeg") == false)
-            {
-                ModelState.AddModelError("File", "Format of file is wrong ");
-                return View(team);
-            }
-
-
-
-
-            team.FullName.Trim();
-            team.Image = team.File.CreateImage(_env, "assets", "images", "index","team");
-            _context.Teams.Add(team);
-            team.IsDeleted = false;
-            team.CreatedAt = DateTime.UtcNow.AddHours(4);
-            team.CreatedBy = "System";
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
-        }
+     
 
         [HttpGet]
         public async Task<IActionResult> Update(int? id)

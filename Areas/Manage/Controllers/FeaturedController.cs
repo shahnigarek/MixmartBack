@@ -24,57 +24,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(featureds);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(Featured featured)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            if (featured.Question == null)
-            {
-                ModelState.AddModelError("Question", "It is important add Question  it can't be empty");
-                return View(featured);
-            }
-            if (featured.Answer == null)
-            {
-                ModelState.AddModelError("Answer", "It is important add Answer  it can't be empty");
-                return View(featured);
-            }
-            if (await _context.Featureds.AnyAsync(f => f.IsDeleted == false && f.Question.ToLower() == featured.Question.ToLower().Trim()))
-            {
-                ModelState.AddModelError("Question", $"This Question = {featured.Question} already exists ");
-                return View(featured);
-            }
-
-            if (await _context.Featureds.AnyAsync(f => f.IsDeleted == false && f.Answer.ToLower() == featured.Answer.ToLower().Trim()))
-            {
-                ModelState.AddModelError("Answer", $"This Answer = {featured.Answer} already exists ");
-                return View(featured);
-            }
-
-         
      
-            await _context.Featureds.AddAsync(featured);
-            featured.Question = featured.Question.Trim();
-            featured.Answer = featured.Answer.Trim();
-            featured.IsDeleted = false;
-            featured.CreatedAt = DateTime.UtcNow.AddHours(4);
-            featured.CreatedBy = "System";
-
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
 
         [HttpGet]
         public async Task<IActionResult> Update(int? id)

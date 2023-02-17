@@ -197,7 +197,8 @@ namespace MixmartBackEnd.Controllers
                 Name = appUser.Name,
                 Surname = appUser.Surname,
                 Email = appUser.Email,
-                UserName = appUser.UserName
+                UserName = appUser.UserName,
+                Age=appUser.Age
             };
 
             return View(profileVM);
@@ -219,6 +220,7 @@ namespace MixmartBackEnd.Controllers
                 dbAppUser.Surname = profileVM.Surname;
                 dbAppUser.Email = profileVM.Email;
                 dbAppUser.UserName = profileVM.UserName;
+                dbAppUser.Age = profileVM.Age;
 
                 IdentityResult identityResult = await _userManager.UpdateAsync(dbAppUser);
 

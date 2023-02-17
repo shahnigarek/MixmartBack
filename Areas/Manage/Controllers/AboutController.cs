@@ -27,58 +27,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(abouts);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(About about)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            if (about.Phrase == null)
-            {
-                ModelState.AddModelError("Phrase", "It is important add phrase  it can't be empty");
-                return View(about);
-            }
-            if (about.File == null)
-            {
-                ModelState.AddModelError("File", "It is important add image");
-                return View(about);
-            }
-
-            if (about.File.CheckFileSize(2200) == false)
-            {
-                ModelState.AddModelError("File", "File's size is bigger than required");
-                return View(about);
-            }
-
-            if (about.File.CheckFileType("image/jpeg") == false)
-            {
-                ModelState.AddModelError("File", "Format of image is wrong");
-                return View(about);
-            }
-
-
-            about.Image = about.File.CreateImage(_env, "assets", "images", "index", "blog");
-            await _context.Abouts.AddAsync(about);
-            about.Phrase = about.Phrase.Trim();
-            about.IsDeleted = false;
-            about.CreatedAt = DateTime.UtcNow.AddHours(4);
-            about.CreatedBy = "System";
-
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
+    
         [HttpGet]
         public async Task<IActionResult> Update(int? id)
         {

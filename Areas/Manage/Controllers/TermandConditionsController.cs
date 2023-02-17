@@ -23,53 +23,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(termandConditions);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(TermandCondition termandCondition)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View(termandCondition);
-            }
-            if (termandCondition.Title == null)
-            {
-                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
-                return View(termandCondition);
-            }
-            if (termandCondition.Description == null)
-            {
-                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
-                return View(termandCondition);
-            }
-            if (await _context.TermandConditions.AnyAsync(tc => tc.IsDeleted == false && tc.Title.ToLower() == termandCondition.Title.ToLower().Trim()))
-            {
-                ModelState.AddModelError("Title", $"This title = {termandCondition.Title} already exists ");
-                return View(termandCondition);
-            }
-
-
-
-            termandCondition.Title = termandCondition.Title.Trim();
-            termandCondition.Description = termandCondition.Description.Trim();
-            termandCondition.IsDeleted = false;
-            termandCondition.CreatedAt = DateTime.UtcNow.AddHours(4);
-            termandCondition.CreatedBy = "System";
-
-
-            await _context.TermandConditions.AddAsync(termandCondition);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
+   
         [HttpGet]
         public async Task<IActionResult> Update(int? id)
         {

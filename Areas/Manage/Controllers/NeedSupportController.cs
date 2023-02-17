@@ -23,54 +23,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(needSupports);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(NeedSupport needSupport)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            if (needSupport.Icon == null)
-            {
-                ModelState.AddModelError("Icon", "It is important add ICON  it can't be empty");
-                return View(needSupport);
-            }
-            if (needSupport.Title == null)
-            {
-                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
-                return View(needSupport);
-            }
-           
-            if (await _context.NeedSupports.AnyAsync(ns => ns.IsDeleted == false && ns.Title.ToLower() == needSupport.Title.ToLower().Trim()))
-            {
-                ModelState.AddModelError("Title", $"This title = {needSupport.Title} already exists ");
-                return View(needSupport);
-            }
-
-
-
-            needSupport.Title = needSupport.Title.Trim();
-            needSupport.Icon = needSupport.Icon.Trim();
-            needSupport.IsDeleted = false;
-            needSupport.CreatedAt = DateTime.UtcNow.AddHours(4);
-            needSupport.CreatedBy = "System";
-
-
-            await _context.NeedSupports.AddAsync(needSupport);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
+      
         [HttpGet]
         public async Task<IActionResult> Update(int? id)
         {

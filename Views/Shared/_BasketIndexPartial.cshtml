@@ -1,5 +1,6 @@
 ﻿@model List<BasketVM>
-
+@if (User.Identity.IsAuthenticated)
+{
 <div class="shopping-cart">
 
     <div class="shopping-cart-table table-responsive">
@@ -76,4 +77,9 @@
 
     </div>
 </div>
+
+}
+else
+{
+}
 @await Html.PartialAsync("_ValidationPartial")

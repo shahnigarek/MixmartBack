@@ -2,7 +2,7 @@
 
 @foreach (ProductListVM productListVM in Model)
 {
-    <li style="list-style:none;margin-bottom:5px">
+    <li style="list-style:none;margin-bottom:5px;border:1px solid #eee">
         <img width="20%" src="~/assets/images/index/shop/@productListVM.Image" alt="Alternate Text" />
         <a asp-controller="shop" asp-action="detail" asp-route-id="@productListVM.Id">@productListVM.Title</a>
     </li>

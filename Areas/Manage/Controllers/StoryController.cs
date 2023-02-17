@@ -27,70 +27,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return View(stories);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Create(Story story)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            if (story.Title == null)
-            {
-                ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
-                return View(story);
-            }
-            if (story.Description == null)
-            {
-                ModelState.AddModelError("Description", "It is important add Description  it can't be empty");
-                return View(story);
-            }
-            if (await _context.Stories.AnyAsync(s => s.IsDeleted == false && s.Title.ToLower() == story.Title.ToLower().Trim()))
-            {
-                ModelState.AddModelError("Title", $"This title = {story.Title} already exists ");
-                return View(story);
-            }
-
-            if (story.File == null)
-            {
-                ModelState.AddModelError("File", "It is important add image");
-                return View(story);
-            }
-
-            if (story.File.CheckFileSize(2200) == false)
-            {
-                ModelState.AddModelError("File", "File's size is bigger than required");
-                return View(story);
-            }
-
-            if (story.File.CheckFileType("image/jpeg") == false)
-            {
-                ModelState.AddModelError("File", "Format of image is wrong");
-                return View(story);
-            }
-
-
-            story.Image = story.File.CreateImage(_env, "assets", "images", "index", "error");
-            story.Title = story.Title.Trim();
-            story.Description = story.Description.Trim();
-            story.IsDeleted = false;
-            story.CreatedAt = DateTime.UtcNow.AddHours(4);
-            story.CreatedBy = "System";
-
-
-            await _context.Stories.AddAsync(story);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
+   
 
         [HttpGet]
         public async Task<IActionResult> Update(int? id)
