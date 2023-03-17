@@ -53,8 +53,6 @@ C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\MixmartBackEnd.csproj.CoreCompileInputs.cache
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\MixmartBackEnd.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\staticwebassets\MixmartBackEnd.StaticWebAssets.Manifest.cache
-C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\staticwebassets\MixmartBackEnd.StaticWebAssets.xml
-C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\scopedcss\bundle\MixmartBackEnd.styles.css
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\MixmartBackEnd.RazorTargetAssemblyInfo.cache
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\MixmartBackEnd.csproj.CopyComplete
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\MixmartBackEnd.dll
@@ -250,3 +248,5 @@ C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Wishlist\Index.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Contact\Index.cshtml.g.cs
 C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartial.cshtml.g.cs
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\staticwebassets\MixmartBackEnd.StaticWebAssets.xml
+C:\Users\ROG\source\repos\MixmartBackEnd\MixmartBackEnd\obj\Debug\netcoreapp3.1\scopedcss\bundle\MixmartBackEnd.styles.css

@@ -185,6 +185,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
                 ModelState.AddModelError("Title", "It is important add Title  it can't be empty");
                 return View(product);
             }
+         
 
             if (await _context.Products.AnyAsync(p => p.IsDeleted == false && p.Title.ToLower() == product.Title.ToLower().Trim()))
             {
@@ -209,8 +210,13 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
                 {
                     ModelState.AddModelError("TagIds", "Secilen Tag  Yanlisdir");
                     return View(product);
-                }
 
+                }
+            if (product.TagIds.Count() > 3)
+            {
+                ModelState.AddModelError("TagIds", "Tag related to product can't be more than 3");
+                return View(product);
+            }
                 ProductTag productTag = new ProductTag
                 {
                     UpdatedAt = DateTime.UtcNow.AddHours(+4),
@@ -222,16 +228,23 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
                 productTags.Add(productTag);
             }
 
+          
             foreach (int categoryId in product.CategoryIds)
             {
-               
 
-                if (!await _context.Categories.AnyAsync(c => c.IsDeleted == false && c.Id == categoryId))
+
+
+                if (!await _context.Categories.AnyAsync(c => c.IsDeleted == false && c.Id == categoryId  ))
                 {
                     ModelState.AddModelError("CategoryIds", "Choosen Catgeory is wrong");
                     return View(product);
                 }
-
+            if (product.CategoryIds.Count() > 3)
+            {
+                ModelState.AddModelError("CategoryIds", "Category related to product can't be more than 3");
+                return View(product);
+            }
+              
                 ProductCategory productCategory = new ProductCategory
                 {
                     UpdatedAt = DateTime.UtcNow.AddHours(+4),

@@ -218,7 +218,8 @@ namespace MixmartBackEnd.Controllers
             if (dbAppUser.NormalizedUserName != profileVM.UserName.Trim().ToUpperInvariant() ||
                 dbAppUser.Name.ToUpperInvariant() != profileVM.Name.Trim().ToUpperInvariant() ||
                 dbAppUser.Surname.ToUpperInvariant() != profileVM.Surname.Trim().ToUpperInvariant() ||
-                dbAppUser.NormalizedEmail != profileVM.Email.Trim().ToUpperInvariant())
+                dbAppUser.NormalizedEmail != profileVM.Email.Trim().ToUpperInvariant() ||
+                dbAppUser.Age != profileVM.Age)
             {
                 dbAppUser.Name = profileVM.Name;
                 dbAppUser.Surname = profileVM.Surname;
