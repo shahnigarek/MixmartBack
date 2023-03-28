@@ -84,6 +84,11 @@
                                         </li>
                                         <li><a asp-action="index" asp-controller="blog">Blog</a></li>
                                         <li><a asp-action="index" asp-controller="contact">Contact</a></li>
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                                        {
+                                        <li><a asp-area="manage" asp-action="index" asp-controller="Dashboard">Admin Panel</a></li>
+
+                                        }
                                     </ul>
                                 </nav>
 

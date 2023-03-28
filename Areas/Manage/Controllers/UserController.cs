@@ -101,6 +101,44 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             return RedirectToAction("Index", new { status });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(CreateUserVM createUserVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(createUserVM);
+            }
+
+            AppUser appUser = new AppUser
+            {
+                Name = createUserVM.Name,
+                Email = createUserVM.Email,
+                Age = createUserVM.Age,
+                Surname = createUserVM.Surname,
+                UserName = createUserVM.UserName
+            };
+            if (createUserVM.Age < 18 && createUserVM.Age > 0)
+            {
+                ModelState.AddModelError("Age", "Age must be 18+");
+                return View(createUserVM);
+            }
+
+            IdentityResult identityResult = await _userManager.CreateAsync(appUser, createUserVM.Password);
+            if (!identityResult.Succeeded)
+            {
+                foreach (var item in identityResult.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+                return View(createUserVM);
+            }
+
+            await _userManager.AddToRoleAsync(appUser, "Admin");
+
+            return RedirectToAction("index");
+        }
+
+
 
     }
 }

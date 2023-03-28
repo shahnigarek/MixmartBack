@@ -1,0 +1,144 @@
+﻿@model CreateUserVM
+@{
+    ViewData["Title"] = "CreateUser";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/manage/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/manage/img/favicon.png">
+    <title>
+        Soft UI Dashboard by Creative Tim
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="~/manage/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/manage/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="~/manage/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="~/manage/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+</head>
+
+<body class="">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
+        <div class="container">
+
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" asp-action="index" asp-controller="dashboard">
+                            <i class="fa fa-chart-pie opacity-6  me-1"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" asp-action="profile" asp-controller="account">
+                            <i class="fa fa-user opacity-6  me-1"></i>
+                            Profile
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link me-2" asp-action="login" asp-controller="account">
+                            <i class="fas fa-key opacity-6  me-1"></i>
+                            Sign In
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <main class="main-content  mt-0">
+        <section class="min-vh-100 mb-8">
+            <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('/manage/img/curved-images/curved14.jpg');">
+               
+            </div>
+            <div class="container">
+                <div class="row mt-lg-n10 mt-md-n11 mt-n10">
+                    <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+                        <div class="card z-index-0">
+
+                            <div class="card-body">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text text-danger"></div>
+                                    <div class="mb-3">
+                                        <input asp-for="Name" class="form-control" placeholder="Name" aria-label="Name">
+                                        <span asp-validation-for="Name" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="mb-3">
+
+                                        <input asp-for="Surname" class="form-control" placeholder="Surname" aria-label="Surname">
+                                        <span asp-validation-for="Surname" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="mb-3">
+
+                                        <input asp-for="Age" class="form-control" placeholder="Age" aria-label="Age">
+                                        <span asp-validation-for="Age" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="mb-3">
+
+                                        <input asp-for="UserName" class="form-control" placeholder="UserName" aria-label="UserName">
+                                        <span asp-validation-for="UserName" class="text text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input asp-for="Email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                                        <span asp-validation-for="Email" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <input asp-for="Password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                                        <span asp-validation-for="Password" class="text text-danger"></span>
+
+                                    </div>
+                                    <div class="mb-3">
+
+                                        <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword" aria-label="Repeat Password" aria-describedby="ConfirmPassword-addon">
+                                        <span asp-validation-for="ConfirmPassword" class="text text-danger"></span>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
+                                    </div>
+                                    <p class="text-sm mt-3 mb-0">Already have an account? <a asp-action="login" asp-controller="account" class="text-dark font-weight-bolder">Sign in</a></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!--   Core JS Files   -->
+    <script src="~/manage/js/core/popper.min.js"></script>
+    <script src="~/manage/js/core/bootstrap.min.js"></script>
+    <script src="~/manage/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="~/manage/js/plugins/smooth-scrollbar.min.js"></script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/manage/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+</body>
+
+</html>

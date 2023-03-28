@@ -212,11 +212,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
                     return View(product);
 
                 }
-            if (product.TagIds.Count() > 3)
-            {
-                ModelState.AddModelError("TagIds", "Tag related to product can't be more than 3");
-                return View(product);
-            }
+          
                 ProductTag productTag = new ProductTag
                 {
                     UpdatedAt = DateTime.UtcNow.AddHours(+4),
@@ -239,11 +235,7 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
                     ModelState.AddModelError("CategoryIds", "Choosen Catgeory is wrong");
                     return View(product);
                 }
-            if (product.CategoryIds.Count() > 3)
-            {
-                ModelState.AddModelError("CategoryIds", "Category related to product can't be more than 3");
-                return View(product);
-            }
+          
               
                 ProductCategory productCategory = new ProductCategory
                 {
@@ -278,16 +270,9 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             existedProduct.Description2 = product.Description2.Trim();
             existedProduct.Description3 = product.Description3;
             existedProduct.DiscountedPrice = product.DiscountedPrice;
-            existedProduct.EnvelopeUrl = product.EnvelopeUrl;
-            existedProduct.FacebookUrl = product.FacebookUrl;
-            existedProduct.GooglePlusUrl = product.GooglePlusUrl;
-            existedProduct.LinkedinUrl = product.LinkedinUrl;
-            existedProduct.PinterestUrl = product.PinterestUrl;
             existedProduct.Price = product.Price;
             existedProduct.IsBestSeller = product.IsBestSeller;
             existedProduct.IsNewArrival = product.IsNewArrival;
-            existedProduct.TumblrUrl = product.TumblrUrl;
-            existedProduct.TwitterUrl = product.TwitterUrl;
             existedProduct.ProductTags = productTags;
             existedProduct.ProductCategories = productCategories;
 

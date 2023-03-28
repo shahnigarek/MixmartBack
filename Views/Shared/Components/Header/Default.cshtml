@@ -48,6 +48,11 @@
                                         </li>
                                         <li><a asp-action="index" asp-controller="blog">Blog</a></li>
                                         <li><a asp-action="index" asp-controller="contact">Contact</a></li>
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                                        {
+                                        <li><a asp-area="manage" asp-action="index" asp-controller="Dashboard">Admin Panel</a></li>
+
+                                        }
                                     </ul>
                                 </nav>
 
@@ -157,7 +162,7 @@
 
             </div>
             
-            <div style="padding: 10px;" class="cart">
+            <div style="padding-top: 10px;" class="cart">
                 @await Html.PartialAsync("_BasketPartial", Model.BasketVMs)
             </div>
 

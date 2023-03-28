@@ -3,9 +3,10 @@
     ViewData["Title"] = "Index";
 }
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  " style="padding-top:40px">
-    <div class="col-lg-2">
+    <div class="">
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Users</h1>
+        <a asp-action="createuser" asp-controller="user" >Create new User</a>
     </div>
     <div class="col-lg-6">
         <form asp-area="manage" asp-controller="user" asp-action="index" method="get">

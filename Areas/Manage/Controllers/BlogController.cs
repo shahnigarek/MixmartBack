@@ -222,14 +222,6 @@ namespace MixmartBackEnd.Areas.Manage.Controllers
             existedblog.Description1 = blog.Description1.Trim();
             existedblog.Description2 = blog.Description2.Trim();
             existedblog.Author = blog.Author;
-            existedblog.Date = blog.Date;
-            existedblog.EnvelopeUrl = blog.EnvelopeUrl;
-            existedblog.FacebookUrl = blog.FacebookUrl;
-            existedblog.GooglePlusUrl = blog.GooglePlusUrl;
-            existedblog.LinkedinUrl = blog.LinkedinUrl;
-            existedblog.PinterestUrl = blog.PinterestUrl;
-            existedblog.TumblrUrl = blog.TumblrUrl;
-            existedblog.TwitterUrl = blog.TwitterUrl;
             existedblog.BlogCategories = blogCategories;
 
             await _context.SaveChangesAsync();

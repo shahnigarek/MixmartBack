@@ -1,58 +1,72 @@
 ﻿@model List<WishlistVM>
+@if (Model.Count == 0)
+{
+    <div class="content" style="text-align:center;padding:66px">
 
-<div class="shopping-cart">
-
-    <div class="shopping-cart-table table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="image">Image</th>
-                    <th class="productt">Product</th>
-                    <th class="price">Price</th>
-                    <th class="delete">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (WishlistVM wishlistVM in Model)
-                {
-
-                    <tr>
-                        <td>
-                            <div class="product-image ">
-                                <a asp-action="detail" asp-controller="shop" asp-route-id="@wishlistVM.Id"><img style="width:100px" src="~/assets/images/index/shop/@wishlistVM.Image" alt="cart"></a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="product-title">
-                                <h4 class="title"><a asp-action="detail" asp-controller="shop" asp-route-id="@wishlistVM.Id">@wishlistVM.Title</a></h4>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="product-price">
-                                <span class="price">€@wishlistVM.Price.ToString("F2")</span>
-                            </div>
-                        </td>
-
-
-                        <td>
-                            <div class="product-delete">
-                                <a class="deletewishlist" asp-controller="wishlist" asp-action="DeleteFromWishlist"
-                                   asp-route-id="@wishlistVM.Id"><i class="fa-regular fa-trash-can"></i></a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="product-delete">
-                                <a class="addbasket" asp-controller="basket" asp-action="AddToBasket"
-                                   asp-route-id="@wishlistVM.Id">Add to basket </a>
-                            </div>
-                        </td>
-                    </tr>
-                }
-
-            </tbody>
-        </table>
+        <i class="fa-solid fa-xmark" style="color:crimson;font-size:100px"></i>
+        <div class="textt">
+            <p style="font-size:25px">You have no products.Click to add products <a style="color:black" asp-controller="shop" asp-action="index"><i class="fa-solid fa-cart-arrow-down"></i></a></p>
+        </div>
     </div>
-</div>
+
+}
+else
+{
+
+    <div class="shopping-cart">
+
+        <div class="shopping-cart-table table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="image">Image</th>
+                        <th class="productt">Product</th>
+                        <th class="price">Price</th>
+                        <th class="delete">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (WishlistVM wishlistVM in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                <div class="product-image ">
+                                    <a asp-action="detail" asp-controller="shop" asp-route-id="@wishlistVM.Id"><img style="width:100px" src="~/assets/images/index/shop/@wishlistVM.Image" alt="cart"></a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="product-title">
+                                    <h4 class="title"><a asp-action="detail" asp-controller="shop" asp-route-id="@wishlistVM.Id">@wishlistVM.Title</a></h4>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="product-price">
+                                    <span class="price">€@wishlistVM.Price.ToString("F2")</span>
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="product-delete">
+                                    <a class="deletewishlist" asp-controller="wishlist" asp-action="DeleteFromWishlist"
+                                       asp-route-id="@wishlistVM.Id"><i class="fa-regular fa-trash-can"></i></a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="product-delete">
+                                    <a class="addbasket" asp-controller="basket" asp-action="AddToBasket"
+                                       asp-route-id="@wishlistVM.Id">Add to basket </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
 
 
 @await Html.PartialAsync("_ValidationPartial")
