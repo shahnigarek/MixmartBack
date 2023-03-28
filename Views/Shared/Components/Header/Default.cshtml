@@ -130,14 +130,21 @@
         <div class="header2-right">
             <div style="padding: 10px;" class="search">
                 <div style="display:flex;">
-                <input type="text" class="searchInput" placeholder="Search...">
-                <button style="outline:none;border:1px solid #eee;" type="button" class="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" class="searchInput" placeholder="Search...">
+                    <button style="outline:none;border:1px solid #eee;" type="button" class="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <ul id="searchList" style="background-color: white; text-decoration: none; width: 100%; right: 140px; padding: 0; position: absolute; box-shadow: 0 0 30px rgb(0 0 0 / 10%); ">
-                
                 </ul>
             </div>
+            <div style="padding: 10px;" class="account">
+                @if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                {
 
+                    <a asp-area="manage" asp-action="index" asp-controller="dashboard">  <i class="fa-solid fa-user-tie"></i></a>
+
+                }
+
+            </div>
             <div style="padding: 10px;" class="account">
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -161,7 +168,7 @@
                 </a>
 
             </div>
-            
+
             <div style="padding-top: 10px;" class="cart">
                 @await Html.PartialAsync("_BasketPartial", Model.BasketVMs)
             </div>

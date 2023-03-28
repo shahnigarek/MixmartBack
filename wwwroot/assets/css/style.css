@@ -1060,7 +1060,7 @@ a {
 
 .header2-right {
     display: flex;
-    padding: 15px 18px;
+    padding: 15px 5px;
     position: absolute;
 }
 
@@ -7046,14 +7046,14 @@ label {
     .header2-right {
         display: flex;
         margin-left: 130px;
-        padding: 15px 25px;
+        padding: 15px 0px;
         top: 10px;
         left: 265px;
         position: absolute;
     }
 
     .header2-right .cart{
-        padding:8px !important;
+        padding-top:8px !important;
     }
     .header-middle-right .search{
         display:none;

@@ -99,10 +99,20 @@
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="header-middle-right">
-               
+                    <div style="padding: 10px;" class="account">
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                        {
+
+                            <a  asp-area="manage" asp-action="index" asp-controller="dashboard">  <i class="fa-solid fa-user-tie"></i></a>
+                           
+                        }
+                      
+                    </div>
+
                     <div style="padding: 10px;" class="account">
                         @if (User.Identity.IsAuthenticated)
                         {
+
                             <a asp-action="profile" asp-controller="account">  <i class="fa-regular fa-user"></i></a>
                             <div class="user1">
                                 <div class="text1">
@@ -117,6 +127,7 @@
 
                         }
                     </div>
+
                     <div style="padding: 10px;" class="wishlisttt">
                         <a asp-action="index" asp-controller="wishlist">
                             <i class="fa-regular fa-heart"></i>
